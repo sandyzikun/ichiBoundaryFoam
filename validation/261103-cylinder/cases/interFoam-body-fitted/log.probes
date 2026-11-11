@@ -1,0 +1,35 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _1d8f0d55f7-20231221 OPENFOAM=2312 version=v2312
+Arch   : "LSB;label=32;scalar=64"
+Exec   : postProcess -case validation/261103-cylinder/cases/interFoam-body-fitted -func probes -latestTime
+Date   : Nov 04 2026
+Time   : 00:04:29
+Host   : login1.barkla2.liv.alces.network
+PID    : 64
+I/O    : uncollated
+Case   : /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/interFoam-body-fitted
+nProcs : 1
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0.5
+
+Time = 0.5
+
+Reading fields:
+    volScalarField: alpha.water p_rgh
+    volVectorField: U
+
+Executing functionObjects
+
+End
+

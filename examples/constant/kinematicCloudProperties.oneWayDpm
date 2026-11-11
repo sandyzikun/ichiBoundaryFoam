@@ -1,0 +1,82 @@
+// Passive one-way DPM example for ichiBoundaryFoam.
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      kinematicCloudProperties;
+}
+//
+solution
+{
+    active          true;
+    coupled         no;
+    transient       yes;
+    cellValueSourceCorrection no;
+    maxCo           0.3;
+    //
+    interpolationSchemes
+    {
+        rho             cell;
+        U               cellPoint;
+        oneWayDpmMu     cell;
+    }
+    //
+    integrationSchemes
+    {
+        U               Euler;
+    }
+}
+//
+constantProperties
+{
+    rho0            2650;
+}
+//
+subModels
+{
+    particleForces
+    {
+        sphereDrag;
+        gravity;
+    }
+    //
+    injectionModels
+    {
+        inletInjection
+        {
+            type                patchInjection;
+            massTotal           1e-6;
+            SOI                 0;
+            parcelBasisType     mass;
+            patch               inlet;
+            duration            1;
+            parcelsPerSecond    10;
+            velocityType        patchValue;
+            flowRateProfile     constant 1;
+            sizeDistribution
+            {
+                type        fixedValue;
+                fixedValueDistribution
+                {
+                    value   1e-4;
+                }
+            }
+        }
+    }
+    //
+    dispersionModel             none;
+    patchInteractionModel       standardWallInteraction;
+    stochasticCollisionModel    none;
+    surfaceFilmModel            none;
+    //
+    standardWallInteractionCoeffs
+    {
+        type        rebound;
+    }
+}
+//
+cloudFunctions
+{
+}
+// End of file.

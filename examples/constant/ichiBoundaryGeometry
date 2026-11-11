@@ -1,0 +1,87 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      ichiBoundaryGeometry;
+}
+//
+fieldName      signedDistance;
+//
+geometry
+{
+    type                    cappedCylinder;
+    centre                  (0 0 0.5);
+    radius                  0.1;
+    length                  1;
+    referenceRotation       (0 0 0);
+}
+//
+motion
+{
+    type                    static;
+    referenceTime           0;
+    //
+    // Used only when type is harmonic6DoF.
+    translationAmplitude    (0 0 0);
+    translationFrequency    (0 0 0);
+    translationPhase        (0 0 0);
+    rotationAmplitude       (0 0 0);
+    rotationFrequency       (0 0 0);
+    rotationPhase           (0 0 0);
+}
+
+ibm
+{
+    enabled                         false;
+    forcingMethod                   diffuseVelocity;
+    // noSlip constrains all relative-velocity components.
+    // freeSlip constrains only the surface-normal component.
+    velocityBoundaryCondition       noSlip;
+    transitionWidth                 0;
+    sharpInterpolationLimit         1;
+    multiDirectForcing              false;
+    nMultiDirectForcingCorrectors   1;
+    slipTolerance                   0;
+    slipSamplingBandWidth           0;
+    slipLiquidThreshold             0.5;
+    //
+    // Optional Ye-style phase-fraction extension into the solid.
+    extendAlphaIntoSolid            false;
+    nAlphaExtensionLayers           5;
+    alphaExtensionWeightPower       2;
+    boundExtendedAlpha              true;
+}
+
+immersedTurbulenceWallTreatment
+{
+    // This run-time switch is deliberately disabled by default.
+    enabled                         false;
+    model                           kOmegaSSTLowRe;
+    kField                          k;
+    omegaField                      omega;
+    nutField                        nut;
+    bandWidthFactor                 2;
+    minimumWallDistanceFactor       0.05;
+    kWallValue                      1e-12;
+    beta1                           0.075;
+    omegaViscousCoefficient         6;
+    liquidThreshold                 0.5;
+    logDiagnostics                  true;
+    diagnosticInterval              100;
+    writeDiagnosticFields           false;
+}
+
+ibmAwareProjection
+{
+    // Both the build-time and run-time switches default to off.
+    enabled                         false;
+    algorithm                       alternatingConstraintProjection;
+    operatorModel                   cellVolumeWeightedDiffuse;
+    constraintTolerance             1e-6;
+    continuityTolerance             1e-8;
+    adjointTolerance                1e-12;
+    minimumIterations               1;
+    maximumIterations               8;
+    requireConvergence              false;
+    writeDiagnostics                false;
+}

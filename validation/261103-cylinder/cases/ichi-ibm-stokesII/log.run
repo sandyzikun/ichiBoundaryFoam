@@ -1,0 +1,969 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _1d8f0d55f7-20231221 OPENFOAM=2312 version=v2312
+Arch   : "LSB;label=32;scalar=64"
+Exec   : ./platforms/linux64GccDPInt32-spack/bin/ichiBoundaryFoam -case validation/261103-cylinder/cases/ichi-ibm-stokesII
+Date   : Nov 04 2026
+Time   : 00:10:12
+Host   : login1.barkla2.liv.alces.network
+PID    : 62
+I/O    : uncollated
+Case   : /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/ichi-ibm-stokesII
+nProcs : 1
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: Operating solver in PISO mode
+
+Reading field p_rgh
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Reading transportProperties
+
+Selecting incompressible transport model Newtonian
+Selecting incompressible transport model Newtonian
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+
+Reading g
+
+Reading hRef
+Calculating field g.h
+
+No MRF models present
+
+No finite volume options present
+DICPCG:  Solving for pcorr, Initial residual = 0, Final residual = 0, No Iterations 0
+time step continuity errors : sum local = 0, global = 0, cumulative = 0
+Direct-forcing IBM: enabled
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Courant Number mean: 0 max: 0
+
+Starting time loop
+
+Courant Number mean: 0 max: 0
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.0119048
+Time = 0.0119048
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Selecting waveModel StokesII
+Wave model: patch inlet
+    Type : StokesII
+    Velocity field name : U
+    Phase fraction field name : alpha.water
+    Transformation from local to global system : (1 -0 -0 0 1 0 -0 -0 1)
+    Number of paddles: 1
+    Reference water depth : 0.4
+    Active absorption: 1
+    Ramp time : 3
+    Wave height : 0.05
+    Wave angle  : 0
+    Wave period : 3
+    Wave length : 5.76514
+    Wave phase : 4.71239
+    Wave type: Intermediate
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727273  Min(alpha.water) = 0  Max(alpha.water) = 1
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727273  Min(alpha.water) = 0  Max(alpha.water) = 1
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727273  Min(alpha.water) = 0  Max(alpha.water) = 1
+Updating StokesII wave model for patch inlet
+Selecting waveModel shallowWaterAbsorption
+Wave model: patch outlet
+    Type : shallowWaterAbsorption
+    Velocity field name : U
+    Phase fraction field name : alpha.water
+    Transformation from local to global system : (-1 -0 -0 0 -1 0 -0 -0 1)
+    Number of paddles: 1
+    Reference water depth : 0.4
+    Active absorption: 1
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 1, Final residual = 0.00088863, No Iterations 1
+time step continuity errors : sum local = 0.0845809, global = -0.000809568, cumulative = -0.000809568
+GAMG:  Solving for p_rgh, Initial residual = 0.000387745, Final residual = 4.99082e-08, No Iterations 10
+time step continuity errors : sum local = 1.09039e-05, global = -8.23446e-06, cumulative = -0.000817803
+IBM projection residuals: max slip = 0.00284188, max divergence = 0.00224203
+ExecutionTime = 0.19 s  ClockTime = 0 s
+
+Courant Number mean: 0.00037128 max: 0.00152074
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.0143557
+Time = 0.0262605
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727273  Min(alpha.water) = 0  Max(alpha.water) = 1.00001
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727273  Min(alpha.water) = 0  Max(alpha.water) = 1.00002
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727273  Min(alpha.water) = 0  Max(alpha.water) = 1.00003
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000127196, Final residual = 2.0092e-07, No Iterations 1
+time step continuity errors : sum local = 0.000140179, global = -1.81549e-05, cumulative = -0.000835958
+GAMG:  Solving for p_rgh, Initial residual = 2.01553e-07, Final residual = 2.29332e-08, No Iterations 1
+time step continuity errors : sum local = 1.59984e-05, global = -5.08707e-06, cumulative = -0.000841045
+IBM projection residuals: max slip = 0.000854352, max divergence = 0.00303705
+ExecutionTime = 0.22 s  ClockTime = 0 s
+
+Courant Number mean: 0.000399685 max: 0.00247366
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.0169193
+Time = 0.0431798
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727272  Min(alpha.water) = 0  Max(alpha.water) = 1.00005
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727272  Min(alpha.water) = 0  Max(alpha.water) = 1.00006
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727272  Min(alpha.water) = 0  Max(alpha.water) = 1.00008
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000137292, Final residual = 4.20112e-08, No Iterations 1
+time step continuity errors : sum local = 4.0517e-05, global = -1.01014e-06, cumulative = -0.000842055
+GAMG:  Solving for p_rgh, Initial residual = 4.22323e-08, Final residual = 4.22323e-08, No Iterations 0
+time step continuity errors : sum local = 4.07247e-05, global = -9.82573e-07, cumulative = -0.000843038
+IBM projection residuals: max slip = 0.0004039, max divergence = 0.0920723
+ExecutionTime = 0.24 s  ClockTime = 0 s
+
+Courant Number mean: 0.000413013 max: 0.00427256
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.0198617
+Time = 0.0630415
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727272  Min(alpha.water) = 0  Max(alpha.water) = 1.0001
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727272  Min(alpha.water) = 0  Max(alpha.water) = 1.00013
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727271  Min(alpha.water) = -5.22274e-27  Max(alpha.water) = 1.00015
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 7.95202e-05, Final residual = 4.14803e-08, No Iterations 1
+time step continuity errors : sum local = 5.48249e-05, global = 3.81769e-06, cumulative = -0.00083922
+GAMG:  Solving for p_rgh, Initial residual = 4.15294e-08, Final residual = 4.15294e-08, No Iterations 0
+time step continuity errors : sum local = 5.48851e-05, global = 3.84643e-06, cumulative = -0.000835373
+IBM projection residuals: max slip = 0.000589208, max divergence = 0.391337
+ExecutionTime = 0.26 s  ClockTime = 0 s
+
+Courant Number mean: 0.000424071 max: 0.0086876
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.0242755
+Time = 0.087317
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727271  Min(alpha.water) = -5.22228e-27  Max(alpha.water) = 1.00019
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727271  Min(alpha.water) = -1.02133e-25  Max(alpha.water) = 1.00023
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72727  Min(alpha.water) = -1.02133e-25  Max(alpha.water) = 1.00027
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 4.30748e-05, Final residual = 7.17291e-08, No Iterations 1
+time step continuity errors : sum local = 0.000140529, global = 1.05429e-05, cumulative = -0.000824831
+GAMG:  Solving for p_rgh, Initial residual = 7.18998e-08, Final residual = 7.18998e-08, No Iterations 0
+time step continuity errors : sum local = 0.000140856, global = 1.05684e-05, cumulative = -0.000814262
+IBM projection residuals: max slip = 0.0207926, max divergence = 16.3292
+ExecutionTime = 0.29 s  ClockTime = 0 s
+
+Courant Number mean: 0.00075608 max: 0.233976
+Interface Courant Number mean: 6.46072e-07 max: 0.017767
+deltaT = 0.0294774
+Time = 0.116794
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727269  Min(alpha.water) = -3.96847e-24  Max(alpha.water) = 1.00032
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727269  Min(alpha.water) = -1.01596e-21  Max(alpha.water) = 1.00038
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727268  Min(alpha.water) = -6.34882e-23  Max(alpha.water) = 1.00044
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000105288, Final residual = 2.75321e-06, No Iterations 1
+time step continuity errors : sum local = 0.00748499, global = -9.80101e-05, cumulative = -0.000912272
+GAMG:  Solving for p_rgh, Initial residual = 2.76119e-06, Final residual = 2.66528e-08, No Iterations 2
+time step continuity errors : sum local = 7.24602e-05, global = -6.87355e-05, cumulative = -0.000981008
+IBM projection residuals: max slip = 0.0110393, max divergence = 0.0455216
+ExecutionTime = 0.32 s  ClockTime = 0 s
+
+Courant Number mean: 0.00113185 max: 0.0399026
+Interface Courant Number mean: 1.0813e-06 max: 0.0173722
+deltaT = 0.0348369
+Time = 0.151631
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727266  Min(alpha.water) = -3.52522e-19  Max(alpha.water) = 1.00046
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727265  Min(alpha.water) = -3.52415e-19  Max(alpha.water) = 1.00047
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727264  Min(alpha.water) = -3.52296e-19  Max(alpha.water) = 1.00049
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 8.69411e-05, Final residual = 1.31224e-06, No Iterations 1
+time step continuity errors : sum local = 0.00491109, global = -0.000114335, cumulative = -0.00109534
+GAMG:  Solving for p_rgh, Initial residual = 1.31627e-06, Final residual = 5.27838e-08, No Iterations 1
+time step continuity errors : sum local = 0.000197528, global = 6.2864e-05, cumulative = -0.00103248
+IBM projection residuals: max slip = 0.00576988, max divergence = 0.227959
+ExecutionTime = 0.34 s  ClockTime = 0 s
+
+Courant Number mean: 0.00203193 max: 0.0403066
+Interface Courant Number mean: 3.25184e-06 max: 0.0232964
+deltaT = 0.0435461
+Time = 0.195177
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727262  Min(alpha.water) = -2.53154e-21  Max(alpha.water) = 1.00049
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727259  Min(alpha.water) = -2.52756e-21  Max(alpha.water) = 1.00048
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727257  Min(alpha.water) = -2.5236e-21  Max(alpha.water) = 1.00048
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000142467, Final residual = 2.5922e-06, No Iterations 1
+time step continuity errors : sum local = 0.0146594, global = 9.8483e-05, cumulative = -0.000933995
+GAMG:  Solving for p_rgh, Initial residual = 2.60329e-06, Final residual = 1.89533e-08, No Iterations 2
+time step continuity errors : sum local = 0.000107176, global = -7.40075e-05, cumulative = -0.001008
+IBM projection residuals: max slip = 0.00824166, max divergence = 0.0458822
+ExecutionTime = 0.37 s  ClockTime = 0 s
+
+Courant Number mean: 0.00146228 max: 0.0418384
+Interface Courant Number mean: 6.90119e-06 max: 0.033842
+deltaT = 0.0508038
+Time = 0.245981
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727254  Min(alpha.water) = -2.51964e-21  Max(alpha.water) = 1.00047
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727251  Min(alpha.water) = -7.34421e-21  Max(alpha.water) = 1.00046
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727247  Min(alpha.water) = -2.51174e-21  Max(alpha.water) = 1.00044
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000358707, Final residual = 6.55282e-06, No Iterations 1
+time step continuity errors : sum local = 0.0458132, global = -0.00103253, cumulative = -0.00204053
+GAMG:  Solving for p_rgh, Initial residual = 6.59087e-06, Final residual = 2.82273e-08, No Iterations 3
+time step continuity errors : sum local = 0.000197321, global = -0.000175155, cumulative = -0.00221569
+IBM projection residuals: max slip = 0.0172607, max divergence = 0.0405785
+ExecutionTime = 0.4 s  ClockTime = 0 s
+
+Courant Number mean: 0.0025688 max: 0.0774798
+Interface Courant Number mean: 1.15582e-05 max: 0.0427851
+deltaT = 0.0508038
+Time = 0.296785
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727243  Min(alpha.water) = -1.46884e-20  Max(alpha.water) = 1.00043
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727239  Min(alpha.water) = -2.49903e-21  Max(alpha.water) = 1.00042
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727234  Min(alpha.water) = -2.6264e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000296357, Final residual = 3.68895e-06, No Iterations 1
+time step continuity errors : sum local = 0.0248757, global = -0.000601683, cumulative = -0.00281737
+GAMG:  Solving for p_rgh, Initial residual = 3.71105e-06, Final residual = 5.83167e-08, No Iterations 2
+time step continuity errors : sum local = 0.000393182, global = -0.000369658, cumulative = -0.00318703
+IBM projection residuals: max slip = 0.0329549, max divergence = 0.12769
+ExecutionTime = 0.43 s  ClockTime = 0 s
+
+Courant Number mean: 0.0045864 max: 0.113963
+Interface Courant Number mean: 1.42053e-05 max: 0.0428333
+deltaT = 0.0508038
+Time = 0.347589
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727229  Min(alpha.water) = -2.48457e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727224  Min(alpha.water) = -7.34421e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727218  Min(alpha.water) = -1.46884e-20  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000194762, Final residual = 7.80502e-07, No Iterations 1
+time step continuity errors : sum local = 0.00521251, global = -0.000551382, cumulative = -0.00373841
+GAMG:  Solving for p_rgh, Initial residual = 7.88251e-07, Final residual = 6.4324e-08, No Iterations 1
+time step continuity errors : sum local = 0.000429506, global = -0.000335648, cumulative = -0.00407406
+IBM projection residuals: max slip = 0.0352483, max divergence = 0.564831
+ExecutionTime = 0.46 s  ClockTime = 0 s
+
+Courant Number mean: 0.00513086 max: 0.128065
+Interface Courant Number mean: 1.16373e-05 max: 0.0347879
+deltaT = 0.0508038
+Time = 0.398392
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727212  Min(alpha.water) = -2.46213e-21  Max(alpha.water) = 1.00038
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727205  Min(alpha.water) = -2.45587e-21  Max(alpha.water) = 1.00037
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727199  Min(alpha.water) = -2.44963e-21  Max(alpha.water) = 1.00037
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000155612, Final residual = 8.91758e-07, No Iterations 1
+time step continuity errors : sum local = 0.00596024, global = -0.000201363, cumulative = -0.00427542
+GAMG:  Solving for p_rgh, Initial residual = 8.99732e-07, Final residual = 3.81015e-08, No Iterations 1
+time step continuity errors : sum local = 0.00025462, global = 3.85291e-05, cumulative = -0.00423689
+IBM projection residuals: max slip = 0.0364766, max divergence = 0.40766
+ExecutionTime = 0.48 s  ClockTime = 0 s
+
+Courant Number mean: 0.00275855 max: 0.134123
+Interface Courant Number mean: 9.84656e-06 max: 0.0294312
+deltaT = 0.0508038
+Time = 0.449196
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727191  Min(alpha.water) = -2.44443e-21  Max(alpha.water) = 1.00037
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727184  Min(alpha.water) = -2.43924e-21  Max(alpha.water) = 1.00037
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727176  Min(alpha.water) = -2.43407e-21  Max(alpha.water) = 1.00036
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000130933, Final residual = 1.0136e-06, No Iterations 1
+time step continuity errors : sum local = 0.00688999, global = 0.000518435, cumulative = -0.00371846
+GAMG:  Solving for p_rgh, Initial residual = 1.01938e-06, Final residual = 6.16538e-08, No Iterations 1
+time step continuity errors : sum local = 0.000419039, global = 0.000372676, cumulative = -0.00334578
+IBM projection residuals: max slip = 0.0355321, max divergence = 0.205911
+ExecutionTime = 0.51 s  ClockTime = 0 s
+
+Courant Number mean: 0.0051479 max: 0.133755
+Interface Courant Number mean: 1.03295e-05 max: 0.0276828
+deltaT = 0.0508038
+Time = 0.5
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727167  Min(alpha.water) = -2.42807e-21  Max(alpha.water) = 1.00037
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727158  Min(alpha.water) = -2.42209e-21  Max(alpha.water) = 1.00037
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72715  Min(alpha.water) = -2.41611e-21  Max(alpha.water) = 1.00037
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000116184, Final residual = 7.42049e-07, No Iterations 1
+time step continuity errors : sum local = 0.00503988, global = 0.000730344, cumulative = -0.00261544
+GAMG:  Solving for p_rgh, Initial residual = 7.46108e-07, Final residual = 5.61889e-08, No Iterations 1
+time step continuity errors : sum local = 0.000381581, global = 0.000362649, cumulative = -0.00225279
+IBM projection residuals: max slip = 0.0328746, max divergence = 0.131375
+ExecutionTime = 0.64 s  ClockTime = 1 s
+
+Courant Number mean: 0.00476731 max: 0.128978
+Interface Courant Number mean: 1.28069e-05 max: 0.0302374
+deltaT = 0.05
+Time = 0.55
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72714  Min(alpha.water) = -2.40753e-21  Max(alpha.water) = 1.00038
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72713  Min(alpha.water) = -2.39898e-21  Max(alpha.water) = 1.00038
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727121  Min(alpha.water) = -3.43965e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000119432, Final residual = 3.27106e-07, No Iterations 1
+time step continuity errors : sum local = 0.00216853, global = 0.000334598, cumulative = -0.00191819
+GAMG:  Solving for p_rgh, Initial residual = 3.3007e-07, Final residual = 2.23274e-08, No Iterations 1
+time step continuity errors : sum local = 0.000147999, global = 0.000128787, cumulative = -0.00178941
+IBM projection residuals: max slip = 0.0299644, max divergence = 0.0788587
+ExecutionTime = 0.67 s  ClockTime = 1 s
+
+Courant Number mean: 0.00248182 max: 0.120908
+Interface Courant Number mean: 1.77843e-05 max: 0.0348065
+deltaT = 0.05
+Time = 0.6
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72711  Min(alpha.water) = -2.37792e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.7271  Min(alpha.water) = -2.36546e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727089  Min(alpha.water) = -2.35305e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000176425, Final residual = 6.99847e-07, No Iterations 1
+time step continuity errors : sum local = 0.00466478, global = -0.000149326, cumulative = -0.00193873
+GAMG:  Solving for p_rgh, Initial residual = 7.04332e-07, Final residual = 2.97058e-08, No Iterations 1
+time step continuity errors : sum local = 0.000197969, global = -0.000120614, cumulative = -0.00205935
+IBM projection residuals: max slip = 0.0280284, max divergence = 0.129731
+ExecutionTime = 0.69 s  ClockTime = 1 s
+
+Courant Number mean: 0.00311458 max: 0.116447
+Interface Courant Number mean: 3.63356e-05 max: 0.0379158
+deltaT = 0.05
+Time = 0.65
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727078  Min(alpha.water) = -2.33842e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727066  Min(alpha.water) = -2.32387e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727055  Min(alpha.water) = -3.40769e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000232575, Final residual = 1.36209e-06, No Iterations 1
+time step continuity errors : sum local = 0.00893089, global = -0.000469722, cumulative = -0.00252907
+GAMG:  Solving for p_rgh, Initial residual = 1.37226e-06, Final residual = 7.38017e-08, No Iterations 1
+time step continuity errors : sum local = 0.000483802, global = -0.000380964, cumulative = -0.00291003
+IBM projection residuals: max slip = 0.0262127, max divergence = 0.228224
+ExecutionTime = 0.73 s  ClockTime = 1 s
+
+Courant Number mean: 0.00634735 max: 0.112408
+Interface Courant Number mean: 7.50254e-05 max: 0.0387626
+deltaT = 0.05
+Time = 0.7
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727042  Min(alpha.water) = -3.61401e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72703  Min(alpha.water) = -2.28059e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727017  Min(alpha.water) = -2.26631e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000245414, Final residual = 1.54556e-06, No Iterations 1
+time step continuity errors : sum local = 0.00994189, global = -0.000746236, cumulative = -0.00365627
+GAMG:  Solving for p_rgh, Initial residual = 1.56186e-06, Final residual = 9.96599e-08, No Iterations 1
+time step continuity errors : sum local = 0.000640939, global = -0.00052828, cumulative = -0.00418455
+IBM projection residuals: max slip = 0.0245946, max divergence = 0.274104
+ExecutionTime = 0.75 s  ClockTime = 1 s
+
+Courant Number mean: 0.00809185 max: 0.108232
+Interface Courant Number mean: 0.00010506 max: 0.0425706
+deltaT = 0.05
+Time = 0.75
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.727004  Min(alpha.water) = -2.2526e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72699  Min(alpha.water) = -7.22801e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726977  Min(alpha.water) = -2.22544e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000229653, Final residual = 1.28305e-06, No Iterations 1
+time step continuity errors : sum local = 0.00814603, global = -0.000737769, cumulative = -0.00492232
+GAMG:  Solving for p_rgh, Initial residual = 1.29768e-06, Final residual = 8.76549e-08, No Iterations 1
+time step continuity errors : sum local = 0.00055641, global = -0.000443279, cumulative = -0.0053656
+IBM projection residuals: max slip = 0.0234051, max divergence = 0.232868
+ExecutionTime = 0.77 s  ClockTime = 1 s
+
+Courant Number mean: 0.00720755 max: 0.104636
+Interface Courant Number mean: 0.000143987 max: 0.048047
+deltaT = 0.05
+Time = 0.8
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726963  Min(alpha.water) = -2.21193e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726948  Min(alpha.water) = -3.47383e-21  Max(alpha.water) = 1.00041
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726934  Min(alpha.water) = -2.18516e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000210988, Final residual = 8.03679e-07, No Iterations 1
+time step continuity errors : sum local = 0.00509104, global = -0.000384263, cumulative = -0.00574986
+GAMG:  Solving for p_rgh, Initial residual = 8.11771e-07, Final residual = 4.81248e-08, No Iterations 1
+time step continuity errors : sum local = 0.000304794, global = -0.000196321, cumulative = -0.00594618
+IBM projection residuals: max slip = 0.0224714, max divergence = 0.15251
+ExecutionTime = 0.8 s  ClockTime = 1 s
+
+Courant Number mean: 0.00471841 max: 0.101522
+Interface Courant Number mean: 0.000191182 max: 0.0518744
+deltaT = 0.05
+Time = 0.85
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726919  Min(alpha.water) = -2.17106e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726903  Min(alpha.water) = -2.15705e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726888  Min(alpha.water) = -2.14313e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000212598, Final residual = 3.49839e-07, No Iterations 1
+time step continuity errors : sum local = 0.00222959, global = 4.60232e-05, cumulative = -0.00590016
+GAMG:  Solving for p_rgh, Initial residual = 3.55051e-07, Final residual = 1.61976e-08, No Iterations 1
+time step continuity errors : sum local = 0.000103207, global = 2.12399e-05, cumulative = -0.00587892
+IBM projection residuals: max slip = 0.0214569, max divergence = 0.150567
+ExecutionTime = 0.83 s  ClockTime = 1 s
+
+Courant Number mean: 0.00286071 max: 0.10782
+Interface Courant Number mean: 0.000245015 max: 0.0551864
+deltaT = 0.05
+Time = 0.9
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726872  Min(alpha.water) = -2.12862e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726855  Min(alpha.water) = -3.5031e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726839  Min(alpha.water) = -1.4456e-20  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000246521, Final residual = 3.40701e-07, No Iterations 1
+time step continuity errors : sum local = 0.00218853, global = 0.000238921, cumulative = -0.00564
+GAMG:  Solving for p_rgh, Initial residual = 3.44644e-07, Final residual = 2.45037e-08, No Iterations 1
+time step continuity errors : sum local = 0.000157361, global = 0.00010971, cumulative = -0.00553029
+IBM projection residuals: max slip = 0.021401, max divergence = 0.175475
+ExecutionTime = 0.85 s  ClockTime = 1 s
+
+Courant Number mean: 0.00354642 max: 0.120561
+Interface Courant Number mean: 0.000310085 max: 0.119787
+deltaT = 0.05
+Time = 0.95
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726822  Min(alpha.water) = -2.08615e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726805  Min(alpha.water) = -2.07249e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726788  Min(alpha.water) = -3.61401e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000270571, Final residual = 3.73364e-07, No Iterations 1
+time step continuity errors : sum local = 0.00240305, global = 0.000206337, cumulative = -0.00532395
+GAMG:  Solving for p_rgh, Initial residual = 3.77786e-07, Final residual = 2.42485e-08, No Iterations 1
+time step continuity errors : sum local = 0.000156023, global = 0.000113126, cumulative = -0.00521082
+IBM projection residuals: max slip = 0.0217722, max divergence = 0.188214
+ExecutionTime = 0.88 s  ClockTime = 1 s
+
+Courant Number mean: 0.00368614 max: 0.132182
+Interface Courant Number mean: 0.000372672 max: 0.132182
+deltaT = 0.05
+Time = 1
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72677  Min(alpha.water) = -7.22801e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726752  Min(alpha.water) = -2.03463e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726734  Min(alpha.water) = -2.02259e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.00027586, Final residual = 3.53197e-07, No Iterations 1
+time step continuity errors : sum local = 0.00227616, global = 0.000130018, cumulative = -0.00508081
+GAMG:  Solving for p_rgh, Initial residual = 3.57751e-07, Final residual = 2.02948e-08, No Iterations 1
+time step continuity errors : sum local = 0.00013075, global = 8.6186e-05, cumulative = -0.00499462
+IBM projection residuals: max slip = 0.0217436, max divergence = 0.179895
+ExecutionTime = 1.02 s  ClockTime = 1 s
+
+Courant Number mean: 0.00354089 max: 0.14248
+Interface Courant Number mean: 0.000435646 max: 0.14248
+deltaT = 0.05
+Time = 1.05
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726716  Min(alpha.water) = -3.45391e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726697  Min(alpha.water) = -2.00138e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726678  Min(alpha.water) = -3.51758e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000271796, Final residual = 3.1324e-07, No Iterations 1
+time step continuity errors : sum local = 0.00202228, global = 6.98527e-05, cumulative = -0.00492477
+GAMG:  Solving for p_rgh, Initial residual = 3.17615e-07, Final residual = 1.70658e-08, No Iterations 1
+time step continuity errors : sum local = 0.000110145, global = 5.48847e-05, cumulative = -0.00486988
+IBM projection residuals: max slip = 0.0214135, max divergence = 0.167916
+ExecutionTime = 1.05 s  ClockTime = 1 s
+
+Courant Number mean: 0.00345435 max: 0.151466
+Interface Courant Number mean: 0.000503763 max: 0.151466
+deltaT = 0.05
+Time = 1.1
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726659  Min(alpha.water) = -1.98116e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72664  Min(alpha.water) = -3.61401e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726621  Min(alpha.water) = -2.89121e-20  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000270853, Final residual = 3.2811e-07, No Iterations 1
+time step continuity errors : sum local = 0.00211789, global = 2.55522e-05, cumulative = -0.00484433
+GAMG:  Solving for p_rgh, Initial residual = 3.3253e-07, Final residual = 1.77252e-08, No Iterations 1
+time step continuity errors : sum local = 0.00011438, global = 2.5151e-05, cumulative = -0.00481918
+IBM projection residuals: max slip = 0.0208533, max divergence = 0.163152
+ExecutionTime = 1.08 s  ClockTime = 1 s
+
+Courant Number mean: 0.00367799 max: 0.159163
+Interface Courant Number mean: 0.000579434 max: 0.159163
+deltaT = 0.05
+Time = 1.15
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726601  Min(alpha.water) = -3.03274e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726582  Min(alpha.water) = -1.94291e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726562  Min(alpha.water) = -1.93347e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000278902, Final residual = 4.28643e-07, No Iterations 1
+time step continuity errors : sum local = 0.00275243, global = -1.36418e-05, cumulative = -0.00483282
+GAMG:  Solving for p_rgh, Initial residual = 4.33498e-07, Final residual = 2.20505e-08, No Iterations 1
+time step continuity errors : sum local = 0.00014155, global = -4.00926e-06, cumulative = -0.00483683
+IBM projection residuals: max slip = 0.0202924, max divergence = 0.161949
+ExecutionTime = 1.1 s  ClockTime = 1 s
+
+Courant Number mean: 0.00412505 max: 0.165216
+Interface Courant Number mean: 0.000662022 max: 0.165216
+deltaT = 0.05
+Time = 1.2
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726542  Min(alpha.water) = -1.92348e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726523  Min(alpha.water) = -1.91354e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726503  Min(alpha.water) = -1.90365e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000285415, Final residual = 4.70555e-07, No Iterations 1
+time step continuity errors : sum local = 0.00301128, global = -4.56395e-05, cumulative = -0.00488247
+GAMG:  Solving for p_rgh, Initial residual = 4.75664e-07, Final residual = 2.48923e-08, No Iterations 1
+time step continuity errors : sum local = 0.000159249, global = -2.11734e-05, cumulative = -0.00490364
+IBM projection residuals: max slip = 0.0197436, max divergence = 0.176732
+ExecutionTime = 1.14 s  ClockTime = 1 s
+
+Courant Number mean: 0.00452845 max: 0.168987
+Interface Courant Number mean: 0.000743375 max: 0.168987
+deltaT = 0.05
+Time = 1.25
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726484  Min(alpha.water) = -7.22801e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726464  Min(alpha.water) = -1.4456e-20  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726445  Min(alpha.water) = -3.44659e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000288684, Final residual = 4.82346e-07, No Iterations 1
+time step continuity errors : sum local = 0.00307897, global = -5.50601e-05, cumulative = -0.0049587
+GAMG:  Solving for p_rgh, Initial residual = 4.8857e-07, Final residual = 2.73197e-08, No Iterations 1
+time step continuity errors : sum local = 0.000174339, global = -2.819e-05, cumulative = -0.00498689
+IBM projection residuals: max slip = 0.0193528, max divergence = 0.320215
+ExecutionTime = 1.16 s  ClockTime = 2 s
+
+Courant Number mean: 0.0047947 max: 0.17001
+Interface Courant Number mean: 0.000821229 max: 0.17001
+deltaT = 0.05
+Time = 1.3
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726426  Min(alpha.water) = -7.22801e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726407  Min(alpha.water) = -1.84968e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726389  Min(alpha.water) = -1.83875e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000281924, Final residual = 4.74777e-07, No Iterations 1
+time step continuity errors : sum local = 0.00302451, global = -5.32693e-05, cumulative = -0.00504016
+GAMG:  Solving for p_rgh, Initial residual = 4.82867e-07, Final residual = 2.91882e-08, No Iterations 1
+time step continuity errors : sum local = 0.000185887, global = -2.76793e-05, cumulative = -0.00506784
+IBM projection residuals: max slip = 0.0189703, max divergence = 0.974925
+ExecutionTime = 1.18 s  ClockTime = 2 s
+
+Courant Number mean: 0.00502544 max: 0.168122
+Interface Courant Number mean: 0.000908075 max: 0.168122
+deltaT = 0.05
+Time = 1.35
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726371  Min(alpha.water) = -1.82781e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726353  Min(alpha.water) = -1.4456e-20  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726336  Min(alpha.water) = -1.80614e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000267901, Final residual = 4.61068e-07, No Iterations 1
+time step continuity errors : sum local = 0.00293419, global = -4.24957e-05, cumulative = -0.00511034
+GAMG:  Solving for p_rgh, Initial residual = 4.69199e-07, Final residual = 2.94976e-08, No Iterations 1
+time step continuity errors : sum local = 0.000187671, global = -2.18319e-05, cumulative = -0.00513217
+IBM projection residuals: max slip = 0.0186257, max divergence = 1.39742
+ExecutionTime = 1.21 s  ClockTime = 2 s
+
+Courant Number mean: 0.00518512 max: 0.188697
+Interface Courant Number mean: 0.000994487 max: 0.163298
+deltaT = 0.05
+Time = 1.4
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.72632  Min(alpha.water) = -1.79561e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726304  Min(alpha.water) = -1.78513e-21  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726288  Min(alpha.water) = -5.18312e-20  Max(alpha.water) = 1.0004
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000263713, Final residual = 5.05156e-07, No Iterations 1
+time step continuity errors : sum local = 0.00321386, global = -3.18703e-05, cumulative = -0.00516404
+GAMG:  Solving for p_rgh, Initial residual = 5.15288e-07, Final residual = 3.16278e-08, No Iterations 1
+time step continuity errors : sum local = 0.000201172, global = -2.24081e-05, cumulative = -0.00518645
+IBM projection residuals: max slip = 0.0182745, max divergence = 1.49125
+ExecutionTime = 1.24 s  ClockTime = 2 s
+
+Courant Number mean: 0.0054487 max: 0.208909
+Interface Courant Number mean: 0.00109102 max: 0.171089
+deltaT = 0.05
+Time = 1.45
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726275  Min(alpha.water) = -3.44675e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726261  Min(alpha.water) = -1.80338e-21  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726247  Min(alpha.water) = -2.69787e-20  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.00027342, Final residual = 5.71437e-07, No Iterations 1
+time step continuity errors : sum local = 0.00363688, global = -4.23478e-05, cumulative = -0.0052288
+GAMG:  Solving for p_rgh, Initial residual = 5.83132e-07, Final residual = 3.47529e-08, No Iterations 1
+time step continuity errors : sum local = 0.000221137, global = -3.44917e-05, cumulative = -0.00526329
+IBM projection residuals: max slip = 0.0179976, max divergence = 1.39862
+ExecutionTime = 1.26 s  ClockTime = 2 s
+
+Courant Number mean: 0.00577076 max: 0.200999
+Interface Courant Number mean: 0.00117596 max: 0.18341
+deltaT = 0.05
+Time = 1.5
+
+PIMPLE: iteration 1
+SDF geometry: centre = (5 0.02 0.25), rotation = (0 0 0), min/max = -0.08/14.8801
+IBM classification: solid volume = 0.0039912, forcing cells = 128
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726237  Min(alpha.water) = -2.64574e-20  Max(alpha.water) = 1.00039
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726226  Min(alpha.water) = -2.59459e-20  Max(alpha.water) = 1.00043
+Updating StokesII wave model for patch inlet
+MULES: Solving for alpha.water
+Phase-1 volume fraction = 0.726215  Min(alpha.water) = -2.54443e-20  Max(alpha.water) = 1.00065
+Updating StokesII wave model for patch inlet
+Updating shallowWaterAbsorption wave model for patch outlet
+DICPCG:  Solving for p_rgh, Initial residual = 0.000294714, Final residual = 6.26206e-07, No Iterations 1
+time step continuity errors : sum local = 0.00398446, global = -6.89203e-05, cumulative = -0.00533221
+GAMG:  Solving for p_rgh, Initial residual = 6.39402e-07, Final residual = 3.72759e-08, No Iterations 1
+time step continuity errors : sum local = 0.000237141, global = -5.36486e-05, cumulative = -0.00538586
+IBM projection residuals: max slip = 0.017723, max divergence = 1.30401
+ExecutionTime = 1.4 s  ClockTime = 2 s
+
+End
+

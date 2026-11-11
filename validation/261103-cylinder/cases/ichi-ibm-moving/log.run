@@ -1,0 +1,2484 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _1d8f0d55f7-20231221 OPENFOAM=2312 version=v2312
+Arch   : "LSB;label=32;scalar=64"
+Exec   : /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/platforms/linux64GccDPInt32-spack/bin/ichiBoundaryFoam -case validation/261103-cylinder/cases/ichi-ibm-moving
+Date   : Nov 04 2026
+Time   : 00:03:00
+Host   : login1.barkla2.liv.alces.network
+PID    : 60
+I/O    : uncollated
+Case   : /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/ichi-ibm-moving
+nProcs : 1
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: Operating solver in PISO mode
+
+Reading field p_rgh
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Reading transportProperties
+
+Selecting incompressible transport model Newtonian
+Selecting incompressible transport model Newtonian
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+
+Reading g
+
+Reading hRef
+Calculating field g.h
+
+No MRF models present
+
+No finite volume options present
+DICPCG:  Solving for pcorr, Initial residual = 0.899066981873, Final residual = 9.13739700639e-09, No Iterations 234
+time step continuity errors : sum local = 1.37952396681e-20, global = 5.4056235419e-22, cumulative = 5.4056235419e-22
+Direct-forcing IBM: enabled
+SDF geometry: centre = (0 0 0), rotation = (0 0 0), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+Courant Number mean: 0.0032506975398 max: 0.00325069754141
+
+Starting time loop
+
+Courant Number mean: 0.0032506975398 max: 0.00325069754141
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.0030303030303
+Time = 0.003030303
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.000606060606061), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0, Final residual = 0, No Iterations 0
+Phase-1 volume fraction = 1  Min(alpha.water) = 1  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 1  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000303037660078, Final residual = 0.000289708565929, No Iterations 1000
+smoothSolver:  Solving for Uy, Initial residual = 0.979325083778, Final residual = 4.84011671036e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 1, Final residual = 0.0464957929975, No Iterations 102
+time step continuity errors : sum local = 2.15387677776e-07, global = -3.06193549647e-09, cumulative = -3.06193549647e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00567804669787, Final residual = 0.000268506192597, No Iterations 31
+time step continuity errors : sum local = 1.06469205786e-08, global = -5.78993261308e-10, cumulative = -3.64092875778e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00027139655881, Final residual = 8.8178873269e-09, No Iterations 175
+time step continuity errors : sum local = 3.48124855665e-13, global = 4.29552218649e-15, cumulative = -3.64092446225e-09
+IBM projection residuals: max slip = 0.00918102095488, max divergence = 8.95145762556e-10
+ExecutionTime = 0.72 s  ClockTime = 1 s
+
+Courant Number mean: 0.00398040145375 max: 0.00650664015526
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00359147025814
+Time = 0.0066217733
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.00132435465769), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.999999997201, Final residual = 0.000143195150785, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999997  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999997  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.403947089985, Final residual = 3.90433494084e-12, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.32599605725, Final residual = 2.62272907957e-12, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0746848133137, Final residual = 0.00348265553551, No Iterations 102
+time step continuity errors : sum local = 1.81261288379e-07, global = 2.64621459389e-09, cumulative = -9.94709868366e-10
+DICPCG:  Solving for p_rgh, Initial residual = 0.00793796691681, Final residual = 0.000368472892237, No Iterations 32
+time step continuity errors : sum local = 9.18412451957e-09, global = 4.60950210128e-10, cumulative = -5.33759658237e-10
+DICPCG:  Solving for p_rgh, Initial residual = 0.000374761163231, Final residual = 9.59039554233e-09, No Iterations 176
+time step continuity errors : sum local = 2.37126355998e-13, global = 1.3496689117e-15, cumulative = -5.33758308568e-10
+IBM projection residuals: max slip = 0.0058462054167, max divergence = 2.69953564802e-09
+ExecutionTime = 1.27 s  ClockTime = 2 s
+
+Courant Number mean: 0.00474017919715 max: 0.00849731037589
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00424446485053
+Time = 0.010866238
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.00217324762779), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.294364213149, Final residual = 6.87869204406e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999988  Max(alpha.water) = 1.00000000001
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999988  Max(alpha.water) = 1.00000000001
+smoothSolver:  Solving for Ux, Initial residual = 0.177096312752, Final residual = 3.52167266636e-12, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.150302706426, Final residual = 4.02205512625e-12, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0702756085279, Final residual = 0.00319748173294, No Iterations 102
+time step continuity errors : sum local = 1.04029287568e-07, global = 1.5684188467e-09, cumulative = 1.03466053813e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00684521753634, Final residual = 0.000310301347189, No Iterations 37
+time step continuity errors : sum local = 5.24330573436e-09, global = 2.23805168381e-10, cumulative = 1.25846570651e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000316139229199, Final residual = 8.775104728e-09, No Iterations 175
+time step continuity errors : sum local = 1.47248848355e-13, global = -1.03396647707e-15, cumulative = 1.25846467255e-09
+IBM projection residuals: max slip = 0.00425000279626, max divergence = 4.32640132637e-10
+ExecutionTime = 1.83 s  ClockTime = 2 s
+
+Courant Number mean: 0.00561759245924 max: 0.0107961166419
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.015818114
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.00316362275958), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.161108743173, Final residual = 6.66510547327e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.0881807033339, Final residual = 3.46471949105e-12, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.0778481557281, Final residual = 4.95837600847e-12, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0661550109629, Final residual = 0.00298805371647, No Iterations 102
+time step continuity errors : sum local = 6.48572737428e-08, global = 9.53464137645e-10, cumulative = 2.21192881019e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00600174323558, Final residual = 0.000296191256423, No Iterations 38
+time step continuity errors : sum local = 3.64955781555e-09, global = 1.2469894452e-10, cumulative = 2.33662775471e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000302710784514, Final residual = 8.85833817488e-09, No Iterations 175
+time step continuity errors : sum local = 1.08507695086e-13, global = 1.04192359741e-15, cumulative = 2.33662879663e-09
+IBM projection residuals: max slip = 0.00308684101833, max divergence = 4.87692816339e-10
+ExecutionTime = 2.39 s  ClockTime = 3 s
+
+Courant Number mean: 0.00656437434739 max: 0.0130379251322
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.020769989
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.00415399789137), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.101445756657, Final residual = 6.76158859919e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.0420804829087, Final residual = 1.73761123955e-12, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.0381951270851, Final residual = 2.80014658119e-12, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0523071531842, Final residual = 0.00209169006252, No Iterations 102
+time step continuity errors : sum local = 2.49348576928e-08, global = 3.86988034141e-10, cumulative = 2.72361683078e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00352801096429, Final residual = 0.000167269006608, No Iterations 45
+time step continuity errors : sum local = 1.41420992888e-09, global = 1.53701767854e-11, cumulative = 2.73898700756e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00017061383511, Final residual = 9.66597509203e-09, No Iterations 172
+time step continuity errors : sum local = 8.14486832965e-14, global = -9.03417230053e-16, cumulative = 2.73898610414e-09
+IBM projection residuals: max slip = 0.00238111320045, max divergence = 7.307401182e-10
+ExecutionTime = 2.93 s  ClockTime = 3 s
+
+Courant Number mean: 0.00657094402819 max: 0.0132824026561
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.025721865
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.00514437302316), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0762123125136, Final residual = 6.68170239412e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999989  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999989  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.025629153635, Final residual = 1.09037350642e-12, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.0235620419215, Final residual = 1.88509392327e-12, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0493078716441, Final residual = 0.00215908530207, No Iterations 101
+time step continuity errors : sum local = 1.78374387465e-08, global = 3.87829801682e-10, cumulative = 3.12681590583e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00335220920787, Final residual = 0.000165369039562, No Iterations 39
+time step continuity errors : sum local = 1.05723482305e-09, global = 3.41009915629e-11, cumulative = 3.16091689739e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.0001689900365, Final residual = 9.69732792936e-09, No Iterations 172
+time step continuity errors : sum local = 6.18053698906e-14, global = -3.71693393628e-17, cumulative = 3.16091686022e-09
+IBM projection residuals: max slip = 0.00214269640883, max divergence = 1.0431639861e-10
+ExecutionTime = 3.47 s  ClockTime = 4 s
+
+Courant Number mean: 0.00657538423237 max: 0.0133998453197
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.030673741
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.00613474815495), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0579732606691, Final residual = 6.75840077518e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999989  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999989  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.0170083424483, Final residual = 7.40971502731e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.0158188629884, Final residual = 1.33417138689e-12, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0501479787273, Final residual = 0.00241875412006, No Iterations 99
+time step continuity errors : sum local = 1.49596822129e-08, global = 5.17829874592e-10, cumulative = 3.67874673481e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00352183667158, Final residual = 0.000170253270455, No Iterations 28
+time step continuity errors : sum local = 8.60196753996e-10, global = 5.23900048398e-11, cumulative = 3.73113673965e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000173637078842, Final residual = 9.9806819059e-09, No Iterations 170
+time step continuity errors : sum local = 5.02654261241e-14, global = -8.97919133759e-17, cumulative = 3.73113664986e-09
+IBM projection residuals: max slip = 0.00192467129856, max divergence = 1.05229379066e-10
+ExecutionTime = 4.03 s  ClockTime = 4 s
+
+Courant Number mean: 0.0065785374608 max: 0.0134484840167
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.035625616
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.00712512328674), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0472927673013, Final residual = 6.82639130268e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.0121635781257, Final residual = 5.35483803677e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.0114826794464, Final residual = 9.92333221497e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0420382009499, Final residual = 0.00187357772328, No Iterations 99
+time step continuity errors : sum local = 9.17599948842e-09, global = 3.21445808288e-10, cumulative = 4.05258245815e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00276799743564, Final residual = 0.000136906095175, No Iterations 32
+time step continuity errors : sum local = 5.72671985599e-10, global = 2.83339445683e-11, cumulative = 4.08091640272e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000140212119629, Final residual = 9.62117365595e-09, No Iterations 171
+time step continuity errors : sum local = 4.0147204615e-14, global = 1.81212843263e-16, cumulative = 4.08091658393e-09
+IBM projection residuals: max slip = 0.00179649187366, max divergence = 6.41374762188e-11
+ExecutionTime = 4.58 s  ClockTime = 5 s
+
+Courant Number mean: 0.00658091064303 max: 0.0134598160325
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.040577492
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.00811549841853), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0380432518656, Final residual = 6.78308660574e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00922791217916, Final residual = 4.12121171157e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00881647340124, Final residual = 7.7385288799e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0389035691659, Final residual = 0.00192401209723, No Iterations 56
+time step continuity errors : sum local = 7.82517327527e-09, global = 1.40177121047e-09, cumulative = 5.4826877944e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.0024782750885, Final residual = 0.000121423865092, No Iterations 87
+time step continuity errors : sum local = 4.81307589117e-10, global = -9.62210575126e-13, cumulative = 5.48172558383e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000137256899266, Final residual = 8.8261248047e-09, No Iterations 169
+time step continuity errors : sum local = 3.17143606516e-14, global = -3.13003481989e-16, cumulative = 5.48172527082e-09
+IBM projection residuals: max slip = 0.00169209159646, max divergence = 6.33737552713e-11
+ExecutionTime = 5.13 s  ClockTime = 6 s
+
+Courant Number mean: 0.00658282881417 max: 0.0134510106471
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.045529368
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.00910587355032), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0300132286178, Final residual = 6.77766567547e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00739835080088, Final residual = 3.3789783398e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00712301107411, Final residual = 6.31524008842e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0339362155985, Final residual = 0.0016427598056, No Iterations 54
+time step continuity errors : sum local = 5.78315253382e-09, global = 9.73518895579e-10, cumulative = 6.4552441664e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00219600826602, Final residual = 0.000108085687782, No Iterations 87
+time step continuity errors : sum local = 3.72606855103e-10, global = -5.26678544512e-12, cumulative = 6.44997738096e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000119984081355, Final residual = 9.04097348432e-09, No Iterations 169
+time step continuity errors : sum local = 2.88703362176e-14, global = -3.44897511847e-16, cumulative = 6.44997703606e-09
+IBM projection residuals: max slip = 0.00159682598641, max divergence = 6.93718795602e-11
+ExecutionTime = 5.67 s  ClockTime = 6 s
+
+Courant Number mean: 0.00658442975004 max: 0.0134780558176
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.050481243
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0100962486821), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0272455024005, Final residual = 6.77423353506e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00616307348157, Final residual = 2.86083702584e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00597093046016, Final residual = 5.32094022444e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0304856129399, Final residual = 0.00146896810342, No Iterations 53
+time step continuity errors : sum local = 4.62094372171e-09, global = 7.02181810951e-10, cumulative = 7.15215884701e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00200586116768, Final residual = 8.94525701846e-05, No Iterations 90
+time step continuity errors : sum local = 2.77192856553e-10, global = -2.8131113965e-12, cumulative = 7.14934573561e-09
+DICPCG:  Solving for p_rgh, Initial residual = 9.83055528095e-05, Final residual = 9.70892442876e-09, No Iterations 162
+time step continuity errors : sum local = 2.83553435497e-14, global = 6.72077053548e-16, cumulative = 7.14934640769e-09
+IBM projection residuals: max slip = 0.00151032010894, max divergence = 3.37404617361e-10
+ExecutionTime = 6.22 s  ClockTime = 7 s
+
+Courant Number mean: 0.00658579934896 max: 0.0134977703425
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.055433119
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0110866238139), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0269762587791, Final residual = 6.7772035456e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00529789475473, Final residual = 2.49267228191e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00516193994222, Final residual = 4.5970085885e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0305659180723, Final residual = 0.00149702068438, No Iterations 48
+time step continuity errors : sum local = 4.32207763785e-09, global = 2.43874128931e-10, cumulative = 7.39322053662e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00201156004025, Final residual = 9.01343403186e-05, No Iterations 70
+time step continuity errors : sum local = 2.57414709603e-10, global = -1.21549994839e-11, cumulative = 7.38106553714e-09
+DICPCG:  Solving for p_rgh, Initial residual = 9.72748877809e-05, Final residual = 9.09757716493e-09, No Iterations 173
+time step continuity errors : sum local = 2.48187283426e-14, global = 4.07858144233e-16, cumulative = 7.381065945e-09
+IBM projection residuals: max slip = 0.00143199507759, max divergence = 4.30654574685e-11
+ExecutionTime = 6.76 s  ClockTime = 7 s
+
+Courant Number mean: 0.00658700775915 max: 0.0135092717514
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.060384995
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0120769989457), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0237518713164, Final residual = 6.80894938167e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.99999999999  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00466459056906, Final residual = 2.22329281363e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00457678858089, Final residual = 4.05171622341e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0264753574826, Final residual = 0.00128627587778, No Iterations 48
+time step continuity errors : sum local = 3.4674018685e-09, global = 1.94610455895e-10, cumulative = 7.57567640089e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00180293968058, Final residual = 8.53490884164e-05, No Iterations 83
+time step continuity errors : sum local = 2.27454371079e-10, global = -6.9220419622e-12, cumulative = 7.56875435893e-09
+DICPCG:  Solving for p_rgh, Initial residual = 9.17554039948e-05, Final residual = 9.14195067507e-09, No Iterations 157
+time step continuity errors : sum local = 2.34559049902e-14, global = 2.01139282135e-16, cumulative = 7.56875456007e-09
+IBM projection residuals: max slip = 0.00136064837501, max divergence = 3.0196824105e-10
+ExecutionTime = 7.31 s  ClockTime = 8 s
+
+Courant Number mean: 0.00658809040615 max: 0.0135150811244
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.06533687
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0130673740775), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0224400993547, Final residual = 6.79209585416e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.0041697580001, Final residual = 2.00948137013e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00411781246746, Final residual = 3.61747465796e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0217767297959, Final residual = 0.00100975737503, No Iterations 49
+time step continuity errors : sum local = 2.5645105154e-09, global = 2.19245839965e-10, cumulative = 7.78800040003e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00152301419369, Final residual = 7.03913231778e-05, No Iterations 87
+time step continuity errors : sum local = 1.77028652939e-10, global = 7.12769505466e-13, cumulative = 7.78871316954e-09
+DICPCG:  Solving for p_rgh, Initial residual = 7.56551587872e-05, Final residual = 9.65302844476e-09, No Iterations 154
+time step continuity errors : sum local = 2.34846339968e-14, global = -1.7380184906e-16, cumulative = 7.78871299574e-09
+IBM projection residuals: max slip = 0.00129538103997, max divergence = 9.92666563257e-11
+ExecutionTime = 7.85 s  ClockTime = 8 s
+
+Courant Number mean: 0.00658906560387 max: 0.013516853886
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.070288746
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0140577492093), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0226260339203, Final residual = 6.80624080962e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00377031694153, Final residual = 1.83270595812e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.0037406722472, Final residual = 3.25997915671e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0189194212343, Final residual = 0.000942699228905, No Iterations 48
+time step continuity errors : sum local = 2.27605381177e-09, global = 1.40235734172e-10, cumulative = 7.92894872991e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00143582746761, Final residual = 6.62631943455e-05, No Iterations 87
+time step continuity errors : sum local = 1.58842550085e-10, global = -1.22478020109e-12, cumulative = 7.92772394971e-09
+DICPCG:  Solving for p_rgh, Initial residual = 7.11526599727e-05, Final residual = 8.96179686308e-09, No Iterations 154
+time step continuity errors : sum local = 2.08738424541e-14, global = 3.24102912822e-17, cumulative = 7.92772398212e-09
+IBM projection residuals: max slip = 0.00123566621334, max divergence = 1.28735141648e-10
+ExecutionTime = 8.39 s  ClockTime = 9 s
+
+Courant Number mean: 0.00658995201081 max: 0.0135156970531
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.075240622
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0150481243411), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0201690727131, Final residual = 6.81075547663e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00344691128871, Final residual = 1.69684226365e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00343153436626, Final residual = 2.96367434134e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0172778819001, Final residual = 0.000819784503179, No Iterations 48
+time step continuity errors : sum local = 1.89751057902e-09, global = 1.16958821211e-10, cumulative = 8.04468280333e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00129901690216, Final residual = 6.00387139534e-05, No Iterations 87
+time step continuity errors : sum local = 1.38151733824e-10, global = -6.28054071665e-13, cumulative = 8.04405474926e-09
+DICPCG:  Solving for p_rgh, Initial residual = 6.43860362479e-05, Final residual = 9.62917003622e-09, No Iterations 149
+time step continuity errors : sum local = 2.16113169366e-14, global = -4.85122144163e-18, cumulative = 8.04405474441e-09
+IBM projection residuals: max slip = 0.00118092077263, max divergence = 3.86480428665e-11
+ExecutionTime = 8.93 s  ClockTime = 9 s
+
+Courant Number mean: 0.0065907644467 max: 0.0135124003298
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.080192497
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0160384994728), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0209285459819, Final residual = 6.9056768864e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00317897265029, Final residual = 1.58572547377e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00317191995506, Final residual = 2.71614262082e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0165052180112, Final residual = 0.000812091140709, No Iterations 47
+time step continuity errors : sum local = 1.81278130383e-09, global = 7.12875858853e-11, cumulative = 8.11534233029e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00127691005421, Final residual = 6.15361245048e-05, No Iterations 84
+time step continuity errors : sum local = 1.36676728271e-10, global = -4.11448726926e-12, cumulative = 8.11122784302e-09
+DICPCG:  Solving for p_rgh, Initial residual = 6.55410081313e-05, Final residual = 9.26023152036e-09, No Iterations 166
+time step continuity errors : sum local = 2.01207737922e-14, global = -3.25461654657e-16, cumulative = 8.11122751756e-09
+IBM projection residuals: max slip = 0.00113080268095, max divergence = 2.53344641955e-10
+ExecutionTime = 9.49 s  ClockTime = 10 s
+
+Courant Number mean: 0.00659151492253 max: 0.0135323272866
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.085144373
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0170288746046), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.019487814917, Final residual = 6.86975677353e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00295322620618, Final residual = 1.49027002155e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00295395287999, Final residual = 2.50822315561e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0164014203932, Final residual = 0.000807067045458, No Iterations 46
+time step continuity errors : sum local = 1.74622514217e-09, global = 4.04168781929e-11, cumulative = 8.15164439575e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00125734045385, Final residual = 5.60712582844e-05, No Iterations 69
+time step continuity errors : sum local = 1.20858514585e-10, global = 1.70295952033e-12, cumulative = 8.15334735527e-09
+DICPCG:  Solving for p_rgh, Initial residual = 5.97160331329e-05, Final residual = 9.85710895466e-09, No Iterations 167
+time step continuity errors : sum local = 2.08382898586e-14, global = 4.85449986729e-16, cumulative = 8.15334784072e-09
+IBM projection residuals: max slip = 0.00108527129792, max divergence = 4.26812315967e-11
+ExecutionTime = 10.02 s  ClockTime = 11 s
+
+Courant Number mean: 0.00659221316544 max: 0.0135490232041
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.090096249
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0180192497364), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0202514473702, Final residual = 6.92271180212e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00276158610508, Final residual = 1.40550483526e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00277113046123, Final residual = 2.33390328385e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0183701503561, Final residual = 0.000906298425717, No Iterations 42
+time step continuity errors : sum local = 1.9129691584e-09, global = 2.90100399007e-12, cumulative = 8.15624884471e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00133188041872, Final residual = 6.03500244651e-05, No Iterations 93
+time step continuity errors : sum local = 1.27257424132e-10, global = -2.46546492438e-13, cumulative = 8.15600229822e-09
+DICPCG:  Solving for p_rgh, Initial residual = 6.3919082346e-05, Final residual = 9.35799719273e-09, No Iterations 155
+time step continuity errors : sum local = 1.94184235569e-14, global = -4.42530790565e-16, cumulative = 8.15600185569e-09
+IBM projection residuals: max slip = 0.00104553473954, max divergence = 3.88949767335e-11
+ExecutionTime = 10.57 s  ClockTime = 11 s
+
+Courant Number mean: 0.00659287862184 max: 0.0135601704528
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.095048124
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.0190096248682), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0190384322245, Final residual = 6.94107167895e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00261248606235, Final residual = 1.33285911852e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00262790364125, Final residual = 2.19881132201e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0205230965213, Final residual = 0.000975122181916, No Iterations 45
+time step continuity errors : sum local = 2.00399337744e-09, global = 2.38032710225e-11, cumulative = 8.17980512671e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00139907694548, Final residual = 6.31029726225e-05, No Iterations 86
+time step continuity errors : sum local = 1.2850940019e-10, global = 7.31287787141e-13, cumulative = 8.1805364145e-09
+DICPCG:  Solving for p_rgh, Initial residual = 6.68600723328e-05, Final residual = 8.35020185909e-09, No Iterations 171
+time step continuity errors : sum local = 1.66524426993e-14, global = -1.79765289867e-16, cumulative = 8.18053623474e-09
+IBM projection residuals: max slip = 0.00100494734364, max divergence = 3.20821586564e-11
+ExecutionTime = 11.11 s  ClockTime = 12 s
+
+Courant Number mean: 0.00659350535774 max: 0.013567921367
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.00495187565895
+Time = 0.1
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.02), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0164800365631, Final residual = 6.9571298041e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00242203391056, Final residual = 1.27002199375e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00244310343329, Final residual = 2.02939587132e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0197101970216, Final residual = 0.000977321219633, No Iterations 45
+time step continuity errors : sum local = 1.92501708587e-09, global = 1.95178195625e-11, cumulative = 8.2000540543e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00140554433483, Final residual = 6.81970731194e-05, No Iterations 86
+time step continuity errors : sum local = 1.32744139711e-10, global = 5.53032737117e-13, cumulative = 8.20060708704e-09
+DICPCG:  Solving for p_rgh, Initial residual = 7.20650880191e-05, Final residual = 8.9636755143e-09, No Iterations 171
+time step continuity errors : sum local = 1.70893955087e-14, global = -2.16694902582e-16, cumulative = 8.20060687034e-09
+IBM projection residuals: max slip = 0.000962902055263, max divergence = 7.16204659297e-11
+ExecutionTime = 11.76 s  ClockTime = 13 s
+
+Courant Number mean: 0.00659407430215 max: 0.0135729456601
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.105
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.021), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0170401498886, Final residual = 7.02498987773e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999991  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00226117884408, Final residual = 1.26994962761e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00229432652828, Final residual = 1.95782772493e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0169630802677, Final residual = 0.000832851675229, No Iterations 45
+time step continuity errors : sum local = 1.59926325609e-09, global = 2.04286436022e-11, cumulative = 8.22103551394e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00126253226339, Final residual = 6.12040345704e-05, No Iterations 85
+time step continuity errors : sum local = 1.16163065198e-10, global = 1.02357450591e-12, cumulative = 8.22205908845e-09
+DICPCG:  Solving for p_rgh, Initial residual = 6.47911362772e-05, Final residual = 8.64514141423e-09, No Iterations 170
+time step continuity errors : sum local = 1.61112476021e-14, global = -1.38525968594e-16, cumulative = 8.22205894992e-09
+IBM projection residuals: max slip = 0.000923067565681, max divergence = 3.20518811757e-11
+ExecutionTime = 12.31 s  ClockTime = 13 s
+
+Courant Number mean: 0.0066587006837 max: 0.0137065403354
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.11
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.022), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0160141712372, Final residual = 7.09098669905e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00210911169537, Final residual = 1.20465598537e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00214804145116, Final residual = 1.81849460319e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0145591093124, Final residual = 0.000707110037305, No Iterations 43
+time step continuity errors : sum local = 1.30726376247e-09, global = 4.55590227576e-12, cumulative = 8.2266148522e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00112733250086, Final residual = 5.07710686035e-05, No Iterations 93
+time step continuity errors : sum local = 9.31527039245e-11, global = -3.56761997788e-13, cumulative = 8.2262580902e-09
+DICPCG:  Solving for p_rgh, Initial residual = 5.38971268365e-05, Final residual = 9.84564482805e-09, No Iterations 147
+time step continuity errors : sum local = 1.78251097611e-14, global = 2.1761520495e-16, cumulative = 8.22625830782e-09
+IBM projection residuals: max slip = 0.000885904831004, max divergence = 3.37683327661e-11
+ExecutionTime = 12.84 s  ClockTime = 14 s
+
+Courant Number mean: 0.00665921315279 max: 0.0137051889901
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.115
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.023), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0177626072625, Final residual = 7.05665407615e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00200193303583, Final residual = 1.15617273713e-13, No Iterations 2
+smoothSolver:  Solving for Uy, Initial residual = 0.00204419996118, Final residual = 1.72160807157e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0149464068775, Final residual = 0.00073750033006, No Iterations 39
+time step continuity errors : sum local = 1.32412728585e-09, global = 1.50259644466e-13, cumulative = 8.22640856746e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00114877294674, Final residual = 5.05336952931e-05, No Iterations 91
+time step continuity errors : sum local = 9.00123794731e-11, global = 5.33644359543e-13, cumulative = 8.22694221182e-09
+DICPCG:  Solving for p_rgh, Initial residual = 5.33550278936e-05, Final residual = 9.92385798981e-09, No Iterations 156
+time step continuity errors : sum local = 1.74832786117e-14, global = -4.73855549705e-16, cumulative = 8.22694173796e-09
+IBM projection residuals: max slip = 0.000851756663597, max divergence = 4.44822478472e-11
+ExecutionTime = 13.4 s  ClockTime = 14 s
+
+Courant Number mean: 0.00665970249617 max: 0.0137036335637
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.12
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.024), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0174421218222, Final residual = 7.05442936917e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00191385443871, Final residual = 9.76711625328e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00195883354018, Final residual = 1.6441692788e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0160228478517, Final residual = 0.000781731333617, No Iterations 15
+time step continuity errors : sum local = 1.36626690407e-09, global = 1.18357952263e-15, cumulative = 8.22694292154e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00114045087143, Final residual = 5.14809952646e-05, No Iterations 93
+time step continuity errors : sum local = 8.92840722877e-11, global = 3.40492947641e-13, cumulative = 8.22728341449e-09
+DICPCG:  Solving for p_rgh, Initial residual = 5.45003362904e-05, Final residual = 9.75168044065e-09, No Iterations 169
+time step continuity errors : sum local = 1.67649183864e-14, global = 2.38356363116e-16, cumulative = 8.22728365285e-09
+IBM projection residuals: max slip = 0.000821522294064, max divergence = 3.16031611305e-11
+ExecutionTime = 13.94 s  ClockTime = 15 s
+
+Courant Number mean: 0.00666017499379 max: 0.0137577078086
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.125
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.025), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0167707514478, Final residual = 7.12190199735e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00184669874886, Final residual = 9.40542038704e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00189071530103, Final residual = 1.58528815674e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0130930943234, Final residual = 0.000633977677337, No Iterations 42
+time step continuity errors : sum local = 1.08185953793e-09, global = 1.84895182883e-12, cumulative = 8.22913260468e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00104411099123, Final residual = 4.66109693315e-05, No Iterations 93
+time step continuity errors : sum local = 7.89828694081e-11, global = 9.59147551716e-14, cumulative = 8.22922851943e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.94436155069e-05, Final residual = 9.46033027878e-09, No Iterations 145
+time step continuity errors : sum local = 1.5849512698e-14, global = 2.06001081752e-16, cumulative = 8.22922872543e-09
+IBM projection residuals: max slip = 0.000792337228136, max divergence = 2.71252655689e-11
+ExecutionTime = 14.49 s  ClockTime = 15 s
+
+Courant Number mean: 0.00666064352636 max: 0.0138090373606
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.13
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.026), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0159348513126, Final residual = 7.10091129151e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00176103154142, Final residual = 9.04468178358e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00180949848827, Final residual = 1.51465846028e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0155890479574, Final residual = 0.000727856959899, No Iterations 44
+time step continuity errors : sum local = 1.21070173617e-09, global = 6.67711718322e-12, cumulative = 8.23590584262e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00114264981033, Final residual = 5.61291262743e-05, No Iterations 87
+time step continuity errors : sum local = 9.27366824268e-11, global = 3.93721624864e-14, cumulative = 8.23594521478e-09
+DICPCG:  Solving for p_rgh, Initial residual = 5.90831266233e-05, Final residual = 9.7752912777e-09, No Iterations 165
+time step continuity errors : sum local = 1.59245689961e-14, global = -3.13636701189e-16, cumulative = 8.23594490114e-09
+IBM projection residuals: max slip = 0.000761915757764, max divergence = 1.95181511927e-10
+ExecutionTime = 15.03 s  ClockTime = 16 s
+
+Courant Number mean: 0.00666107788947 max: 0.0138572346528
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.135
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.027), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0161293687552, Final residual = 7.13352197521e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00166124669855, Final residual = 8.64243468094e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.0017157673561, Final residual = 1.42941315883e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0115476193563, Final residual = 0.00054722542419, No Iterations 44
+time step continuity errors : sum local = 8.85060181883e-10, global = 6.52201216966e-12, cumulative = 8.24246691331e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000959398041014, Final residual = 4.36319022227e-05, No Iterations 86
+time step continuity errors : sum local = 7.00864749841e-11, global = 6.937366464e-13, cumulative = 8.24316064996e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.63757320353e-05, Final residual = 9.89505389427e-09, No Iterations 164
+time step continuity errors : sum local = 1.5717749094e-14, global = -1.28181857749e-16, cumulative = 8.24316052178e-09
+IBM projection residuals: max slip = 0.000732425899223, max divergence = 9.36935611703e-11
+ExecutionTime = 15.57 s  ClockTime = 17 s
+
+Courant Number mean: 0.00666148926999 max: 0.0139019670438
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.14
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.028), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.015881384492, Final residual = 7.18941080349e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00158477601155, Final residual = 8.30303130222e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00164266465799, Final residual = 1.36220630572e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0112441938293, Final residual = 0.00054723840332, No Iterations 42
+time step continuity errors : sum local = 8.63041425722e-10, global = 1.65393078845e-12, cumulative = 8.24481445256e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000957409480832, Final residual = 4.72090445616e-05, No Iterations 92
+time step continuity errors : sum local = 7.39462520342e-11, global = -1.58290780524e-13, cumulative = 8.24465616178e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.98824392362e-05, Final residual = 9.41538588957e-09, No Iterations 147
+time step continuity errors : sum local = 1.46043829976e-14, global = 3.36325898723e-17, cumulative = 8.24465619542e-09
+IBM projection residuals: max slip = 0.000704219761519, max divergence = 2.85396658018e-11
+ExecutionTime = 16.12 s  ClockTime = 17 s
+
+Courant Number mean: 0.00666188123856 max: 0.013943567235
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.145
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.029), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0149576155203, Final residual = 7.20001646917e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00151912082576, Final residual = 8.00272771589e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.0015798100946, Final residual = 1.30563964434e-13, No Iterations 2
+DICPCG:  Solving for p_rgh, Initial residual = 0.0112131343031, Final residual = 0.00053225710373, No Iterations 41
+time step continuity errors : sum local = 8.19378016833e-10, global = 7.56322775852e-13, cumulative = 8.24541251819e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000944487212275, Final residual = 4.44532428005e-05, No Iterations 92
+time step continuity errors : sum local = 6.79374236757e-11, global = 3.42071832464e-15, cumulative = 8.24541593891e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.704064079e-05, Final residual = 7.53677394297e-09, No Iterations 148
+time step continuity errors : sum local = 1.14158896456e-14, global = -6.60983311723e-17, cumulative = 8.24541587281e-09
+IBM projection residuals: max slip = 0.000677319303265, max divergence = 2.48714161018e-11
+ExecutionTime = 16.66 s  ClockTime = 18 s
+
+Courant Number mean: 0.00666226533249 max: 0.0139821268772
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.15
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.03), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0119135117635, Final residual = 7.229596108e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.0014594008077, Final residual = 7.72526195312e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00152274086002, Final residual = 9.88540218413e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.0110989192868, Final residual = 0.000520115431786, No Iterations 40
+time step continuity errors : sum local = 7.81500793267e-10, global = 3.26731712053e-13, cumulative = 8.24574260452e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000937620858288, Final residual = 4.46746034803e-05, No Iterations 91
+time step continuity errors : sum local = 6.66069620558e-11, global = 8.38827038645e-14, cumulative = 8.24582648723e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.6994178572e-05, Final residual = 9.0057493102e-09, No Iterations 149
+time step continuity errors : sum local = 1.33164172429e-14, global = -7.07508655211e-17, cumulative = 8.24582641648e-09
+IBM projection residuals: max slip = 0.000651679762061, max divergence = 2.30824107755e-11
+ExecutionTime = 17.21 s  ClockTime = 18 s
+
+Courant Number mean: 0.00666263954472 max: 0.0140178172676
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.155
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.031), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.013705826834, Final residual = 7.20474933252e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00140523318985, Final residual = 7.47167428684e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00147073781342, Final residual = 9.54351317899e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.0105429331086, Final residual = 0.000494278988781, No Iterations 40
+time step continuity errors : sum local = 7.25052685107e-10, global = 3.16143380068e-13, cumulative = 8.24614255986e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000910364395772, Final residual = 4.33066126111e-05, No Iterations 91
+time step continuity errors : sum local = 6.30384022005e-11, global = 2.72602904608e-14, cumulative = 8.24616982015e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.55804289804e-05, Final residual = 9.9562843836e-09, No Iterations 149
+time step continuity errors : sum local = 1.43804443828e-14, global = -1.56167912869e-16, cumulative = 8.24616966398e-09
+IBM projection residuals: max slip = 0.000627310196423, max divergence = 2.40292796105e-11
+ExecutionTime = 17.75 s  ClockTime = 19 s
+
+Courant Number mean: 0.0066629985864 max: 0.0140506197098
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.16
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.032), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0146833919298, Final residual = 7.2040203096e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999992  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00135639569919, Final residual = 7.24214959633e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00142333516787, Final residual = 9.23608871166e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.0101455849674, Final residual = 0.00047112451356, No Iterations 40
+time step continuity errors : sum local = 6.75234793879e-10, global = 3.09499001485e-13, cumulative = 8.24647916298e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000884632247502, Final residual = 4.05691566377e-05, No Iterations 91
+time step continuity errors : sum local = 5.77136883136e-11, global = 1.81760658787e-14, cumulative = 8.24649733905e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.28228357807e-05, Final residual = 9.32581604581e-09, No Iterations 149
+time step continuity errors : sum local = 1.31686108102e-14, global = -1.0588869402e-16, cumulative = 8.24649723316e-09
+IBM projection residuals: max slip = 0.000604151049047, max divergence = 2.12082360732e-11
+ExecutionTime = 18.29 s  ClockTime = 19 s
+
+Courant Number mean: 0.00666334356218 max: 0.0140809730286
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.165
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.033), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0134536738319, Final residual = 7.3150216764e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00131093351136, Final residual = 7.0244479805e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00137913545175, Final residual = 8.94814456478e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00996707609319, Final residual = 0.000492866100063, No Iterations 39
+time step continuity errors : sum local = 6.90713227854e-10, global = 1.38592928079e-13, cumulative = 8.24663582609e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00090079663222, Final residual = 4.3233863466e-05, No Iterations 90
+time step continuity errors : sum local = 6.01490201419e-11, global = -2.70519625654e-13, cumulative = 8.24636530646e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.55360903112e-05, Final residual = 9.43699063456e-09, No Iterations 151
+time step continuity errors : sum local = 1.30345967802e-14, global = -1.01364292389e-16, cumulative = 8.2463652051e-09
+IBM projection residuals: max slip = 0.000582135427827, max divergence = 2.42571961339e-11
+ExecutionTime = 18.84 s  ClockTime = 20 s
+
+Courant Number mean: 0.00666367522492 max: 0.0141090436016
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.17
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.034), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0134867897839, Final residual = 7.23609824157e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00126808025235, Final residual = 6.81907080045e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00133747251845, Final residual = 8.67538175563e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00977453041396, Final residual = 0.000486476994533, No Iterations 23
+time step continuity errors : sum local = 6.66984633613e-10, global = -2.67472950786e-16, cumulative = 8.24636493762e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000884049575669, Final residual = 4.09241176244e-05, No Iterations 84
+time step continuity errors : sum local = 5.57088299073e-11, global = 9.8230952083e-13, cumulative = 8.24734724714e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.31112085982e-05, Final residual = 9.80271883148e-09, No Iterations 148
+time step continuity errors : sum local = 1.3251599447e-14, global = 3.91663179634e-17, cumulative = 8.24734728631e-09
+IBM projection residuals: max slip = 0.000561197843122, max divergence = 2.28871168693e-11
+ExecutionTime = 19.37 s  ClockTime = 20 s
+
+Courant Number mean: 0.00666399424906 max: 0.0141349445365
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.175
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.035), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0138033589898, Final residual = 7.28255753897e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00122763842055, Final residual = 6.62274744641e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00129799371522, Final residual = 8.41552508094e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00958413669764, Final residual = 0.000471360754432, No Iterations 23
+time step continuity errors : sum local = 6.32574178233e-10, global = -1.4381842105e-15, cumulative = 8.24734584813e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000867780046396, Final residual = 4.03178594357e-05, No Iterations 84
+time step continuity errors : sum local = 5.37273627747e-11, global = 1.00037020005e-12, cumulative = 8.24834621833e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.24550619052e-05, Final residual = 9.42387276935e-09, No Iterations 149
+time step continuity errors : sum local = 1.24739370546e-14, global = 5.74869024317e-17, cumulative = 8.24834627581e-09
+IBM projection residuals: max slip = 0.00054127654158, max divergence = 2.19327048272e-11
+ExecutionTime = 19.91 s  ClockTime = 21 s
+
+Courant Number mean: 0.00666430302673 max: 0.014158777699
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.18
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.036), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0129730694236, Final residual = 7.29802376515e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00118981749126, Final residual = 6.43662534274e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00126064658719, Final residual = 8.1685379733e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00939322595805, Final residual = 0.000465077979003, No Iterations 22
+time step continuity errors : sum local = 6.11315926886e-10, global = -1.65487038382e-15, cumulative = 8.24834462094e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000856941445204, Final residual = 3.70766068061e-05, No Iterations 86
+time step continuity errors : sum local = 4.84074557515e-11, global = -6.93851387639e-14, cumulative = 8.2482752358e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.93038458417e-05, Final residual = 9.59916294933e-09, No Iterations 161
+time step continuity errors : sum local = 1.24515287414e-14, global = 2.2987615835e-16, cumulative = 8.24827546568e-09
+IBM projection residuals: max slip = 0.00052231377077, max divergence = 2.79504346761e-11
+ExecutionTime = 20.45 s  ClockTime = 22 s
+
+Courant Number mean: 0.00666460088561 max: 0.0141806377072
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.185
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.037), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0130059061212, Final residual = 7.28971451198e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00115398456348, Final residual = 6.2628909779e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00122528047534, Final residual = 7.93460475671e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00919783705701, Final residual = 0.000450018034468, No Iterations 22
+time step continuity errors : sum local = 5.79977134293e-10, global = -1.31805184788e-15, cumulative = 8.24827414763e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000840332875783, Final residual = 3.65294229611e-05, No Iterations 86
+time step continuity errors : sum local = 4.67862094795e-11, global = -9.94092161488e-15, cumulative = 8.24826420671e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.8702460909e-05, Final residual = 8.45475103374e-09, No Iterations 162
+time step continuity errors : sum local = 1.0760943676e-14, global = 2.81815853979e-16, cumulative = 8.24826448852e-09
+IBM projection residuals: max slip = 0.000504255893239, max divergence = 1.87598851813e-11
+ExecutionTime = 20.99 s  ClockTime = 22 s
+
+Courant Number mean: 0.00666488803591 max: 0.0142006227184
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.19
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.038), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.011518617087, Final residual = 7.31545502372e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.0011200189644, Final residual = 6.09917106423e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00119211023733, Final residual = 7.7127578975e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.0090198256518, Final residual = 0.000446451630133, No Iterations 21
+time step continuity errors : sum local = 5.64649475449e-10, global = -1.37706775193e-15, cumulative = 8.24826311146e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000831456332657, Final residual = 3.90908789129e-05, No Iterations 86
+time step continuity errors : sum local = 4.91400908063e-11, global = 2.64444466163e-13, cumulative = 8.24852755592e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.11483712928e-05, Final residual = 9.9851889763e-09, No Iterations 167
+time step continuity errors : sum local = 1.24764433001e-14, global = -1.26076414224e-16, cumulative = 8.24852742985e-09
+IBM projection residuals: max slip = 0.000487052936101, max divergence = 2.69367395084e-11
+ExecutionTime = 21.52 s  ClockTime = 23 s
+
+Courant Number mean: 0.00666516497668 max: 0.0142188292435
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.195
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.039), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0130515025439, Final residual = 7.39372241872e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00108789186218, Final residual = 5.94320682496e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00116069596771, Final residual = 7.50219024517e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00883814805108, Final residual = 0.000431595509449, No Iterations 21
+time step continuity errors : sum local = 5.35843571036e-10, global = -1.40204126138e-15, cumulative = 8.2485260278e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000816146991998, Final residual = 3.86511579274e-05, No Iterations 86
+time step continuity errors : sum local = 4.76924884028e-11, global = 2.46848098421e-13, cumulative = 8.2487728759e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.06737998366e-05, Final residual = 9.95772149239e-09, No Iterations 167
+time step continuity errors : sum local = 1.22157104581e-14, global = -1.60676625755e-16, cumulative = 8.24877271523e-09
+IBM projection residuals: max slip = 0.00047065908813, max divergence = 1.14059982439e-10
+ExecutionTime = 22.07 s  ClockTime = 23 s
+
+Courant Number mean: 0.00666543254559 max: 0.0142353542973
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.2
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.04), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0127569288023, Final residual = 7.48523618555e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00105739662501, Final residual = 5.79471817179e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00113081832301, Final residual = 7.3047596612e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00858723789458, Final residual = 0.000428083611805, No Iterations 20
+time step continuity errors : sum local = 5.21928542736e-10, global = -1.57934240494e-15, cumulative = 8.24877113588e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000811213927005, Final residual = 3.92556582516e-05, No Iterations 86
+time step continuity errors : sum local = 4.75779961865e-11, global = 8.3949091823e-13, cumulative = 8.2496106268e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.12556377727e-05, Final residual = 9.69045430726e-09, No Iterations 168
+time step continuity errors : sum local = 1.16793217108e-14, global = -3.4400794006e-17, cumulative = 8.2496105924e-09
+IBM projection residuals: max slip = 0.000455031425774, max divergence = 2.25511003704e-11
+ExecutionTime = 22.71 s  ClockTime = 24 s
+
+Courant Number mean: 0.00666569114712 max: 0.0142502878312
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.205
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.041), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0125021949349, Final residual = 7.44565985197e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00102844651912, Final residual = 5.65297412502e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00110260678943, Final residual = 7.11682845149e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00921283112358, Final residual = 0.000456011539494, No Iterations 17
+time step continuity errors : sum local = 5.45734781033e-10, global = -3.27411012465e-15, cumulative = 8.24960731829e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000831745716105, Final residual = 4.02685776061e-05, No Iterations 91
+time step continuity errors : sum local = 4.78629364558e-11, global = -8.67490521057e-14, cumulative = 8.24952056924e-09
+DICPCG:  Solving for p_rgh, Initial residual = 4.23256809332e-05, Final residual = 9.8482627891e-09, No Iterations 146
+time step continuity errors : sum local = 1.16426558652e-14, global = -3.79259226485e-17, cumulative = 8.24952053131e-09
+IBM projection residuals: max slip = 0.000440112500961, max divergence = 2.45838685335e-11
+ExecutionTime = 23.25 s  ClockTime = 25 s
+
+Courant Number mean: 0.00666594141058 max: 0.0142632261183
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.21
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.042), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0124305918963, Final residual = 7.486201682e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00100090174121, Final residual = 5.52208684473e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00107458626437, Final residual = 6.93363959549e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00867255782731, Final residual = 0.000426247592304, No Iterations 17
+time step continuity errors : sum local = 5.00555892093e-10, global = -3.8216237952e-15, cumulative = 8.24951670969e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000801161508214, Final residual = 3.71991749948e-05, No Iterations 91
+time step continuity errors : sum local = 4.34025743866e-11, global = 4.06685898402e-14, cumulative = 8.24955737828e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.91904259175e-05, Final residual = 8.97674966541e-09, No Iterations 163
+time step continuity errors : sum local = 1.04211006071e-14, global = 9.69695141703e-17, cumulative = 8.24955747525e-09
+IBM projection residuals: max slip = 0.000425876421665, max divergence = 3.11658200954e-11
+ExecutionTime = 23.8 s  ClockTime = 25 s
+
+Courant Number mean: 0.00666618379055 max: 0.0142746509851
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.215
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.043), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0113082381426, Final residual = 7.44375980706e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000975058489493, Final residual = 5.39675619165e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00104872326639, Final residual = 6.76237791835e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00815569172936, Final residual = 0.00039909896178, No Iterations 18
+time step continuity errors : sum local = 4.60479661846e-10, global = -3.20896091295e-15, cumulative = 8.24955426629e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000777440346817, Final residual = 3.6156314279e-05, No Iterations 90
+time step continuity errors : sum local = 4.14707769125e-11, global = 8.21730405455e-13, cumulative = 8.25037599669e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.80715670978e-05, Final residual = 8.70533615747e-09, No Iterations 165
+time step continuity errors : sum local = 9.93663876045e-15, global = 1.54473180613e-16, cumulative = 8.25037615117e-09
+IBM projection residuals: max slip = 0.000412296861891, max divergence = 1.8624004732e-11
+ExecutionTime = 24.34 s  ClockTime = 26 s
+
+Courant Number mean: 0.00666641855639 max: 0.0142849147919
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.22
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.044), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0108841814609, Final residual = 7.5201800667e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000950368056715, Final residual = 5.27423985943e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00102472940348, Final residual = 6.60065085529e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00793400625968, Final residual = 0.000392362252594, No Iterations 18
+time step continuity errors : sum local = 4.45185576032e-10, global = -3.94222107248e-15, cumulative = 8.25037220894e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000769215004314, Final residual = 3.56221010039e-05, No Iterations 90
+time step continuity errors : sum local = 4.01853570777e-11, global = 7.92926759239e-13, cumulative = 8.2511651357e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.75131717626e-05, Final residual = 8.55009719226e-09, No Iterations 165
+time step continuity errors : sum local = 9.59968699362e-15, global = 1.48203862194e-16, cumulative = 8.25116528391e-09
+IBM projection residuals: max slip = 0.000399339404414, max divergence = 2.09164173895e-11
+ExecutionTime = 24.88 s  ClockTime = 26 s
+
+Courant Number mean: 0.00666664594804 max: 0.0142940557825
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.225
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.045), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0105229369086, Final residual = 7.5210173592e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000926590810543, Final residual = 5.1556616157e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00100190614924, Final residual = 6.44504439122e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00775206874399, Final residual = 0.000383819703967, No Iterations 18
+time step continuity errors : sum local = 4.28422352998e-10, global = -3.80448570494e-15, cumulative = 8.25116147942e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000759465170719, Final residual = 3.48968965311e-05, No Iterations 90
+time step continuity errors : sum local = 3.87333840241e-11, global = 7.73630240286e-13, cumulative = 8.25193510966e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.67623348685e-05, Final residual = 8.3338033359e-09, No Iterations 165
+time step continuity errors : sum local = 9.20732534767e-15, global = 1.4130192932e-16, cumulative = 8.25193525096e-09
+IBM projection residuals: max slip = 0.000386971492282, max divergence = 3.0514474035e-11
+ExecutionTime = 25.42 s  ClockTime = 27 s
+
+Courant Number mean: 0.00666686625465 max: 0.0143021057449
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.23
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.046), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0101168046133, Final residual = 7.50288097604e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000903751899693, Final residual = 5.04195888604e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000980262506204, Final residual = 6.29565657383e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00758137197978, Final residual = 0.00037412871147, No Iterations 18
+time step continuity errors : sum local = 4.10974704402e-10, global = -3.6713349998e-15, cumulative = 8.25193157963e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.0007491993072, Final residual = 3.40521997566e-05, No Iterations 90
+time step continuity errors : sum local = 3.71994437831e-11, global = 7.61616480049e-13, cumulative = 8.25269319611e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.5894993601e-05, Final residual = 8.17900697221e-09, No Iterations 165
+time step continuity errors : sum local = 8.89494838476e-15, global = 1.33658524259e-16, cumulative = 8.25269332977e-09
+IBM projection residuals: max slip = 0.000375162902175, max divergence = 2.04162915384e-11
+ExecutionTime = 25.95 s  ClockTime = 27 s
+
+Courant Number mean: 0.00666707979977 max: 0.0143091010399
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.235
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.047), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00978318366008, Final residual = 7.5607552012e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000881848790803, Final residual = 4.93261445343e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000959537663246, Final residual = 6.15254050396e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00741722278696, Final residual = 0.00036394470759, No Iterations 18
+time step continuity errors : sum local = 3.93557050229e-10, global = -3.55580112914e-15, cumulative = 8.25268977397e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000738953026523, Final residual = 3.31488546426e-05, No Iterations 90
+time step continuity errors : sum local = 3.56501881203e-11, global = 7.5260642933e-13, cumulative = 8.2534423804e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.49700665916e-05, Final residual = 7.928536086e-09, No Iterations 165
+time step continuity errors : sum local = 8.48986584692e-15, global = 1.26441026354e-16, cumulative = 8.25344250684e-09
+IBM projection residuals: max slip = 0.000363885511084, max divergence = 3.54184787966e-11
+ExecutionTime = 26.48 s  ClockTime = 28 s
+
+Courant Number mean: 0.00666728689422 max: 0.0143150806008
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.24
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.048), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0093663295906, Final residual = 7.62345365292e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000860849647453, Final residual = 4.82753306188e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000939798005456, Final residual = 6.01602956424e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00725346541644, Final residual = 0.000353910217505, No Iterations 18
+time step continuity errors : sum local = 3.76864663796e-10, global = -3.44790549003e-15, cumulative = 8.25343905893e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000728762354631, Final residual = 3.22803558628e-05, No Iterations 90
+time step continuity errors : sum local = 3.41905536565e-11, global = 7.45435639456e-13, cumulative = 8.25418449457e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.40805648862e-05, Final residual = 9.84957001843e-09, No Iterations 164
+time step continuity errors : sum local = 1.03886925687e-14, global = 1.28369293929e-16, cumulative = 8.25418462294e-09
+IBM projection residuals: max slip = 0.000353113060798, max divergence = 2.22959048164e-11
+ExecutionTime = 27.02 s  ClockTime = 29 s
+
+Courant Number mean: 0.00666748783374 max: 0.0143200843998
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.245
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.049), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0114430564029, Final residual = 7.65073067202e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000840715464608, Final residual = 4.72654066924e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000920884995806, Final residual = 5.8857636654e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.007101021773, Final residual = 0.000344314844454, No Iterations 18
+time step continuity errors : sum local = 3.61171450596e-10, global = -3.36918242448e-15, cumulative = 8.25418125376e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000719009651458, Final residual = 3.14576150124e-05, No Iterations 90
+time step continuity errors : sum local = 3.28236571497e-11, global = 7.39040558539e-13, cumulative = 8.25492029432e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.32371900284e-05, Final residual = 9.58134007633e-09, No Iterations 164
+time step continuity errors : sum local = 9.95686147211e-15, global = 1.17942136272e-16, cumulative = 8.25492041226e-09
+IBM projection residuals: max slip = 0.000342820948851, max divergence = 3.00295624446e-11
+ExecutionTime = 27.56 s  ClockTime = 29 s
+
+Courant Number mean: 0.00666768291695 max: 0.014324152602
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.25
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.05), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0109918283704, Final residual = 7.583458669e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00082140172056, Final residual = 4.62944188406e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000902733417525, Final residual = 5.76164073164e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00694999104486, Final residual = 0.000346767376751, No Iterations 17
+time step continuity errors : sum local = 3.58403913167e-10, global = -3.59904285044e-15, cumulative = 8.25491681322e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000718355778619, Final residual = 3.57730895998e-05, No Iterations 90
+time step continuity errors : sum local = 3.67804924269e-11, global = 4.45428898157e-13, cumulative = 8.25536224211e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.75188131512e-05, Final residual = 8.45663045655e-09, No Iterations 166
+time step continuity errors : sum local = 8.66071961435e-15, global = 5.05723687642e-17, cumulative = 8.25536229269e-09
+IBM projection residuals: max slip = 0.000332986055442, max divergence = 2.84930115703e-11
+ExecutionTime = 28.09 s  ClockTime = 30 s
+
+Courant Number mean: 0.00666787240207 max: 0.0143273250546
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.255
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.051), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00975648655313, Final residual = 7.62295064027e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000802870559245, Final residual = 4.53722541997e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000885317942165, Final residual = 5.64464036817e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00680470672004, Final residual = 0.000337877650087, No Iterations 17
+time step continuity errors : sum local = 3.44172699445e-10, global = -3.75395600978e-15, cumulative = 8.25535853873e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000709424313718, Final residual = 3.50103634173e-05, No Iterations 90
+time step continuity errors : sum local = 3.54784374441e-11, global = 4.61803861524e-13, cumulative = 8.25582034259e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.67276874021e-05, Final residual = 8.20791606763e-09, No Iterations 166
+time step continuity errors : sum local = 8.28612600099e-15, global = 5.21344761286e-17, cumulative = 8.25582039473e-09
+IBM projection residuals: max slip = 0.000323586578537, max divergence = 3.43568110343e-11
+ExecutionTime = 28.63 s  ClockTime = 30 s
+
+Courant Number mean: 0.00666805653801 max: 0.014329640355
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.26
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.052), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00938078500164, Final residual = 7.72672958265e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000785192989916, Final residual = 4.45108716241e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000868630216049, Final residual = 5.53231703182e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00667745861192, Final residual = 0.000329600092148, No Iterations 17
+time step continuity errors : sum local = 3.30984058703e-10, global = -3.69526020706e-15, cumulative = 8.25581669947e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000701044051238, Final residual = 3.44284155779e-05, No Iterations 90
+time step continuity errors : sum local = 3.43977332669e-11, global = 4.75842635931e-13, cumulative = 8.2562925421e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.61246386995e-05, Final residual = 9.77126266014e-09, No Iterations 165
+time step continuity errors : sum local = 9.72671498966e-15, global = 6.63103151645e-17, cumulative = 8.25629260841e-09
+IBM projection residuals: max slip = 0.000317552480677, max divergence = 4.13141598947e-11
+ExecutionTime = 29.17 s  ClockTime = 31 s
+
+Courant Number mean: 0.00666823557037 max: 0.0143311361713
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.265
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.053), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0108087124919, Final residual = 7.71211569155e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000768227745479, Final residual = 4.36865245605e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000852657684743, Final residual = 5.42457627233e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00650671178051, Final residual = 0.0003225618, No Iterations 17
+time step continuity errors : sum local = 3.19416649364e-10, global = -3.66211687729e-15, cumulative = 8.2562889463e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000694111004506, Final residual = 3.40917450304e-05, No Iterations 90
+time step continuity errors : sum local = 3.35902597702e-11, global = 5.02463568999e-13, cumulative = 8.25679140986e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.57696496505e-05, Final residual = 9.42250764348e-09, No Iterations 165
+time step continuity errors : sum local = 9.25083849754e-15, global = 5.7444870118e-17, cumulative = 8.25679146731e-09
+IBM projection residuals: max slip = 0.000311742931111, max divergence = 1.67536803292e-11
+ExecutionTime = 29.7 s  ClockTime = 31 s
+
+Courant Number mean: 0.0066684098287 max: 0.0143318501916
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.27
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.054), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.010290558212, Final residual = 7.67424963387e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000751952701187, Final residual = 4.28943202208e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000837331189757, Final residual = 5.32107977279e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00647392696588, Final residual = 0.000317904693353, No Iterations 17
+time step continuity errors : sum local = 3.10485476696e-10, global = -3.7230424123e-15, cumulative = 8.25678774427e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000689667504651, Final residual = 3.43885786588e-05, No Iterations 90
+time step continuity errors : sum local = 3.34178735348e-11, global = 5.52017845881e-13, cumulative = 8.25733976211e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.60489853745e-05, Final residual = 9.4846340221e-09, No Iterations 165
+time step continuity errors : sum local = 9.18505377619e-15, global = 9.53138827887e-17, cumulative = 8.25733985743e-09
+IBM projection residuals: max slip = 0.000306116376159, max divergence = 2.53519094017e-11
+ExecutionTime = 30.23 s  ClockTime = 32 s
+
+Courant Number mean: 0.00666857959848 max: 0.0143359393032
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.275
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.055), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0102047728465, Final residual = 7.6914640503e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000736231842364, Final residual = 4.21319015652e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000822434437544, Final residual = 5.22277072023e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.0065225630143, Final residual = 0.000323985933916, No Iterations 16
+time step continuity errors : sum local = 3.12161497998e-10, global = -4.06960504641e-15, cumulative = 8.25733578782e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000692135409738, Final residual = 3.07913249454e-05, No Iterations 90
+time step continuity errors : sum local = 2.95230091849e-11, global = 8.2045772434e-13, cumulative = 8.25815624555e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.24390412777e-05, Final residual = 9.59021023847e-09, No Iterations 133
+time step continuity errors : sum local = 9.16402658954e-15, global = -1.1552426704e-15, cumulative = 8.2581550903e-09
+IBM projection residuals: max slip = 0.000300665484666, max divergence = 1.63836672095e-11
+ExecutionTime = 30.76 s  ClockTime = 32 s
+
+Courant Number mean: 0.00666874497792 max: 0.0143576827713
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.28
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.056), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0102741751834, Final residual = 7.68587720862e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000720939754749, Final residual = 4.13993535992e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000808083557198, Final residual = 5.13026836256e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00616006837068, Final residual = 0.000306741083896, No Iterations 17
+time step continuity errors : sum local = 2.91663019108e-10, global = -6.10477870747e-15, cumulative = 8.25814898552e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000677940502626, Final residual = 3.38080495229e-05, No Iterations 90
+time step continuity errors : sum local = 3.19937480603e-11, global = 5.59125539595e-13, cumulative = 8.25870811106e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.54446441976e-05, Final residual = 8.97943080359e-09, No Iterations 165
+time step continuity errors : sum local = 8.46942381021e-15, global = 8.01948204781e-17, cumulative = 8.25870819126e-09
+IBM projection residuals: max slip = 0.000295382773751, max divergence = 6.76364773118e-11
+ExecutionTime = 31.31 s  ClockTime = 33 s
+
+Courant Number mean: 0.00666890602987 max: 0.0143788712254
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.285
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.057), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00949402248524, Final residual = 7.82607896439e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000706165027887, Final residual = 4.06832005702e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000794555046169, Final residual = 5.0400524428e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.0076390040745, Final residual = 0.000366428322001, No Iterations 11
+time step continuity errors : sum local = 3.4378824846e-10, global = -2.9681742345e-15, cumulative = 8.25870522308e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000723158995652, Final residual = 3.10405622792e-05, No Iterations 94
+time step continuity errors : sum local = 2.89726181141e-11, global = 3.72951055438e-13, cumulative = 8.25907817414e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.28853615494e-05, Final residual = 9.74811909728e-09, No Iterations 163
+time step continuity errors : sum local = 9.06969519106e-15, global = -4.63686814177e-16, cumulative = 8.25907771045e-09
+IBM projection residuals: max slip = 0.000290259070853, max divergence = 1.48162750055e-11
+ExecutionTime = 31.84 s  ClockTime = 34 s
+
+Courant Number mean: 0.00666906574294 max: 0.014399396876
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.29
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.058), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0102609774706, Final residual = 7.73988691437e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000692644410048, Final residual = 3.99613111578e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000781501030896, Final residual = 4.94428552453e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00705997670987, Final residual = 0.000337630515682, No Iterations 11
+time step continuity errors : sum local = 3.12659687261e-10, global = -3.33458136529e-15, cumulative = 8.25907437587e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000695416496207, Final residual = 3.46810593671e-05, No Iterations 93
+time step continuity errors : sum local = 3.19695090563e-11, global = 6.66523434524e-13, cumulative = 8.25974089931e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.63768437057e-05, Final residual = 9.23604326022e-09, No Iterations 157
+time step continuity errors : sum local = 8.48955189996e-15, global = 9.8526199873e-17, cumulative = 8.25974099783e-09
+IBM projection residuals: max slip = 0.000285287792073, max divergence = 1.48011747847e-11
+ExecutionTime = 32.37 s  ClockTime = 34 s
+
+Courant Number mean: 0.00666922301341 max: 0.0144193133698
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.295
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.059), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00956843901324, Final residual = 7.74654172752e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000680253466941, Final residual = 3.93190896063e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000769775591593, Final residual = 4.86234455115e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.0085126381115, Final residual = 0.000410251884815, No Iterations 9
+time step continuity errors : sum local = 3.75217285123e-10, global = -2.6734690422e-15, cumulative = 8.25973832436e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000756585798033, Final residual = 3.74860438868e-05, No Iterations 100
+time step continuity errors : sum local = 3.41185413371e-11, global = -1.74768668017e-13, cumulative = 8.2595635557e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.95257817744e-05, Final residual = 8.96192651836e-09, No Iterations 167
+time step continuity errors : sum local = 8.13495046483e-15, global = 1.86893601486e-17, cumulative = 8.25956357439e-09
+IBM projection residuals: max slip = 0.000280460749872, max divergence = 1.53304479332e-11
+ExecutionTime = 32.91 s  ClockTime = 35 s
+
+Courant Number mean: 0.00666937878502 max: 0.014438478084
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.3
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.06), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0092300470134, Final residual = 7.78034758906e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000669834959773, Final residual = 3.86937653813e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000759199593215, Final residual = 4.78757040945e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.0067951909734, Final residual = 0.000330430791726, No Iterations 9
+time step continuity errors : sum local = 2.98506928548e-10, global = -1.80530585094e-15, cumulative = 8.25956176908e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000682491226197, Final residual = 2.77261482513e-05, No Iterations 94
+time step continuity errors : sum local = 2.4931404392e-11, global = 8.07009812199e-13, cumulative = 8.26036877889e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.96614969285e-05, Final residual = 9.76005246241e-09, No Iterations 161
+time step continuity errors : sum local = 8.75567757535e-15, global = -1.3438507611e-16, cumulative = 8.26036864451e-09
+IBM projection residuals: max slip = 0.000275774631016, max divergence = 1.51265919167e-11
+ExecutionTime = 33.54 s  ClockTime = 35 s
+
+Courant Number mean: 0.00666953197463 max: 0.0144570532615
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.305
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.061), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00982646761302, Final residual = 7.8433993091e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00065972948103, Final residual = 3.81673356689e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000749174478979, Final residual = 4.72397693373e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00753301862437, Final residual = 0.000366313904452, No Iterations 8
+time step continuity errors : sum local = 3.27081169166e-10, global = -3.22509650968e-15, cumulative = 8.26036541941e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000694598474953, Final residual = 3.19022476523e-05, No Iterations 96
+time step continuity errors : sum local = 2.83560168212e-11, global = 5.60860478765e-13, cumulative = 8.26092627989e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.37822626635e-05, Final residual = 9.05478676689e-09, No Iterations 160
+time step continuity errors : sum local = 8.02849644719e-15, global = 2.73227350185e-17, cumulative = 8.26092630721e-09
+IBM projection residuals: max slip = 0.000271223888912, max divergence = 1.6191649261e-11
+ExecutionTime = 34.08 s  ClockTime = 36 s
+
+Courant Number mean: 0.00666968190602 max: 0.0144750107933
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.31
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.062), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00926576522635, Final residual = 7.90914388504e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000650231560165, Final residual = 3.76370101149e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00073958022752, Final residual = 4.66494167739e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00612477212502, Final residual = 0.000297293893041, No Iterations 11
+time step continuity errors : sum local = 2.6237733698e-10, global = -3.05271959929e-15, cumulative = 8.26092325449e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000649765367242, Final residual = 2.94290018679e-05, No Iterations 93
+time step continuity errors : sum local = 2.58562190319e-11, global = 8.1957192699e-13, cumulative = 8.26174282642e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.10429951996e-05, Final residual = 9.05798665204e-09, No Iterations 166
+time step continuity errors : sum local = 7.93942183573e-15, global = 6.16724302993e-17, cumulative = 8.26174288809e-09
+IBM projection residuals: max slip = 0.000266805594259, max divergence = 1.42247956627e-11
+ExecutionTime = 34.62 s  ClockTime = 37 s
+
+Courant Number mean: 0.00666982874095 max: 0.0144924726458
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.315
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.063), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00919790584409, Final residual = 7.85753298962e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000639979913643, Final residual = 3.71400894483e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000729334358714, Final residual = 4.60232389042e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00594472681855, Final residual = 0.000297049116339, No Iterations 12
+time step continuity errors : sum local = 2.59150504416e-10, global = -3.53357883879e-15, cumulative = 8.26173935451e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000655642106714, Final residual = 2.9596786224e-05, No Iterations 93
+time step continuity errors : sum local = 2.57037575999e-11, global = 7.61759106246e-13, cumulative = 8.26250111362e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.12180395462e-05, Final residual = 9.45188987828e-09, No Iterations 165
+time step continuity errors : sum local = 8.18801605617e-15, global = 7.60636162443e-17, cumulative = 8.26250118968e-09
+IBM projection residuals: max slip = 0.000262515166293, max divergence = 1.27213785154e-11
+ExecutionTime = 35.15 s  ClockTime = 37 s
+
+Courant Number mean: 0.00666997230806 max: 0.0145094387885
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.32
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.064), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00940550927224, Final residual = 7.89804515046e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000629334615002, Final residual = 3.66232972763e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000718833671868, Final residual = 4.53713916585e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00582645212337, Final residual = 0.00028353921345, No Iterations 13
+time step continuity errors : sum local = 2.44478835543e-10, global = -3.48064209876e-15, cumulative = 8.26249770904e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000644221224406, Final residual = 3.00030790103e-05, No Iterations 92
+time step continuity errors : sum local = 2.57530699311e-11, global = 6.33508236722e-13, cumulative = 8.26313121728e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.16528660424e-05, Final residual = 9.91750314748e-09, No Iterations 165
+time step continuity errors : sum local = 8.49115339703e-15, global = 3.08075316918e-17, cumulative = 8.26313124808e-09
+IBM projection residuals: max slip = 0.000258348583207, max divergence = 4.6146968079e-11
+ExecutionTime = 35.68 s  ClockTime = 38 s
+
+Courant Number mean: 0.00667011260231 max: 0.0145259008039
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.325
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.065), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00973796761308, Final residual = 8.0132366431e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000618795492233, Final residual = 3.61062636259e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.00070854597845, Final residual = 4.47218624414e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00574156890915, Final residual = 0.000280590895247, No Iterations 13
+time step continuity errors : sum local = 2.39125742752e-10, global = -3.43464241443e-15, cumulative = 8.26312781344e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000641160409488, Final residual = 2.93597102199e-05, No Iterations 92
+time step continuity errors : sum local = 2.49092965016e-11, global = 6.00132657512e-13, cumulative = 8.2637279461e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.10052578897e-05, Final residual = 9.69908931751e-09, No Iterations 165
+time step continuity errors : sum local = 8.20825812984e-15, global = 2.92558532891e-17, cumulative = 8.26372797536e-09
+IBM projection residuals: max slip = 0.000254302589912, max divergence = 2.6979435199e-11
+ExecutionTime = 36.23 s  ClockTime = 38 s
+
+Courant Number mean: 0.00667024969446 max: 0.0145418516055
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.33
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.066), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00942054110931, Final residual = 7.87925060327e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000608462906385, Final residual = 3.55981988518e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000698511622661, Final residual = 4.40843378908e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00566192667049, Final residual = 0.000276130001003, No Iterations 13
+time step continuity errors : sum local = 2.32622787491e-10, global = -3.22903183734e-15, cumulative = 8.26372474632e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000636619930433, Final residual = 2.86381854956e-05, No Iterations 92
+time step continuity errors : sum local = 2.40197601115e-11, global = 5.61387419974e-13, cumulative = 8.26428613374e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.0280629349e-05, Final residual = 9.1611855454e-09, No Iterations 165
+time step continuity errors : sum local = 7.66478507051e-15, global = 4.00985790126e-17, cumulative = 8.26428617384e-09
+IBM projection residuals: max slip = 0.000250374191866, max divergence = 3.60606427045e-11
+ExecutionTime = 36.76 s  ClockTime = 39 s
+
+Courant Number mean: 0.00667038367493 max: 0.0145572877286
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.335
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.067), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0088337067325, Final residual = 7.95917170111e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000598407134236, Final residual = 3.51011996369e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000688757596893, Final residual = 4.34704078943e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00559671791258, Final residual = 0.000271223387801, No Iterations 13
+time step continuity errors : sum local = 2.25915006928e-10, global = -2.98094887877e-15, cumulative = 8.26428319289e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000631548590292, Final residual = 2.8011314874e-05, No Iterations 92
+time step continuity errors : sum local = 2.32318589616e-11, global = 5.25666122792e-13, cumulative = 8.26480885902e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.96501418026e-05, Final residual = 9.42884260906e-09, No Iterations 114
+time step continuity errors : sum local = 7.80098828929e-15, global = -4.31474414864e-16, cumulative = 8.26480842754e-09
+IBM projection residuals: max slip = 0.000246560551799, max divergence = 1.70162031599e-11
+ExecutionTime = 37.29 s  ClockTime = 39 s
+
+Courant Number mean: 0.00667051463704 max: 0.0145722089642
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.34
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.068), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00914038290272, Final residual = 7.9859750935e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000588648586827, Final residual = 3.46178547003e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000679359011373, Final residual = 4.2876930412e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00557548849041, Final residual = 0.000266418075532, No Iterations 13
+time step continuity errors : sum local = 2.1946856704e-10, global = -3.60493086104e-15, cumulative = 8.26480482261e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00062650636603, Final residual = 2.74602091525e-05, No Iterations 92
+time step continuity errors : sum local = 2.25263942838e-11, global = 4.89238840676e-13, cumulative = 8.26529406145e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.90947353646e-05, Final residual = 9.50113442013e-09, No Iterations 155
+time step continuity errors : sum local = 7.77535355444e-15, global = -1.5464456995e-16, cumulative = 8.26529390681e-09
+IBM projection residuals: max slip = 0.000242858888368, max divergence = 1.34234164582e-11
+ExecutionTime = 37.81 s  ClockTime = 40 s
+
+Courant Number mean: 0.00667064269186 max: 0.0145866179858
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.345
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.069), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00917242908774, Final residual = 7.96725042298e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000579197939704, Final residual = 3.41454894048e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000670306411543, Final residual = 4.23002092876e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00560376507732, Final residual = 0.000279188168056, No Iterations 12
+time step continuity errors : sum local = 2.2749940891e-10, global = -2.56343393001e-15, cumulative = 8.26529134337e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000638422560094, Final residual = 2.76777115774e-05, No Iterations 93
+time step continuity errors : sum local = 2.24600290277e-11, global = 6.42621839541e-13, cumulative = 8.26593396521e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.92718328975e-05, Final residual = 9.95687598184e-09, No Iterations 114
+time step continuity errors : sum local = 8.06065817879e-15, global = 3.36772566468e-16, cumulative = 8.26593430198e-09
+IBM projection residuals: max slip = 0.000239266469769, max divergence = 1.78410022584e-11
+ExecutionTime = 38.33 s  ClockTime = 40 s
+
+Courant Number mean: 0.00667076796622 max: 0.0146005223194
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.35
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.07), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00937349972015, Final residual = 7.97427830484e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000569960392464, Final residual = 3.36837313403e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000661403648919, Final residual = 4.17381967938e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00588038022412, Final residual = 0.000283144560472, No Iterations 9
+time step continuity errors : sum local = 2.28131933146e-10, global = -2.59015558626e-15, cumulative = 8.26593171183e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000635027839015, Final residual = 2.69658560632e-05, No Iterations 94
+time step continuity errors : sum local = 2.16253821841e-11, global = 8.94593560518e-13, cumulative = 8.26682630539e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.88032949544e-05, Final residual = 9.83012651744e-09, No Iterations 165
+time step continuity errors : sum local = 7.86893718303e-15, global = -4.49188728449e-17, cumulative = 8.26682626047e-09
+IBM projection residuals: max slip = 0.000235779378104, max divergence = 1.42206162211e-11
+ExecutionTime = 38.86 s  ClockTime = 41 s
+
+Courant Number mean: 0.00667089101835 max: 0.0146138897531
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.355
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.071), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00917428921585, Final residual = 8.02186423675e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000561581766448, Final residual = 3.32725459819e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000653690885071, Final residual = 4.12298131117e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00551503968627, Final residual = 0.000275709565178, No Iterations 10
+time step continuity errors : sum local = 2.19713537399e-10, global = -4.07097696535e-15, cumulative = 8.26682218949e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000626262935651, Final residual = 2.85844226888e-05, No Iterations 93
+time step continuity errors : sum local = 2.2679997717e-11, global = 8.15367018095e-13, cumulative = 8.26763755651e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.02170723604e-05, Final residual = 9.5614244858e-09, No Iterations 165
+time step continuity errors : sum local = 7.57103267086e-15, global = 3.31992754487e-17, cumulative = 8.26763758971e-09
+IBM projection residuals: max slip = 0.000232394590142, max divergence = 1.36001392411e-11
+ExecutionTime = 39.39 s  ClockTime = 41 s
+
+Courant Number mean: 0.00667101247489 max: 0.0146267270731
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.36
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.072), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00884619659492, Final residual = 8.11575867296e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000553317275322, Final residual = 3.28578996619e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000645987453767, Final residual = 4.07239625025e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.0055613231045, Final residual = 0.000264586994809, No Iterations 10
+time step continuity errors : sum local = 2.0856123257e-10, global = -2.97333163383e-15, cumulative = 8.26763461638e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000617683542624, Final residual = 2.77090780853e-05, No Iterations 93
+time step continuity errors : sum local = 2.17456341425e-11, global = 7.69361888542e-13, cumulative = 8.26840397827e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.9335804358e-05, Final residual = 9.78149412051e-09, No Iterations 165
+time step continuity errors : sum local = 7.66171009872e-15, global = 4.29541429336e-17, cumulative = 8.26840402122e-09
+IBM projection residuals: max slip = 0.000229108766213, max divergence = 1.32471034461e-11
+ExecutionTime = 39.94 s  ClockTime = 42 s
+
+Courant Number mean: 0.00667113166798 max: 0.0146390339434
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.365
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.073), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00892018739507, Final residual = 8.09398197654e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000545397763104, Final residual = 3.2462501935e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000638716624931, Final residual = 4.02395453042e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00566088773846, Final residual = 0.000282831112065, No Iterations 8
+time step continuity errors : sum local = 2.20513822954e-10, global = -3.08068251158e-15, cumulative = 8.26840094054e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000618923384377, Final residual = 2.67788908797e-05, No Iterations 94
+time step continuity errors : sum local = 2.07845170526e-11, global = 8.36251909205e-13, cumulative = 8.26923719245e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.85795621028e-05, Final residual = 9.03928244015e-09, No Iterations 165
+time step continuity errors : sum local = 7.0036765515e-15, global = -3.6116442552e-17, cumulative = 8.26923715633e-09
+IBM projection residuals: max slip = 0.00022591833066, max divergence = 1.45198527509e-11
+ExecutionTime = 40.47 s  ClockTime = 43 s
+
+Courant Number mean: 0.00667124881213 max: 0.0146508037844
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.37
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.074), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00828218702527, Final residual = 8.13588582212e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00053791689298, Final residual = 3.20903569113e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000631915779738, Final residual = 3.97787397724e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00514607993405, Final residual = 0.000246798732847, No Iterations 12
+time step continuity errors : sum local = 1.90434824819e-10, global = -2.63745792057e-15, cumulative = 8.26923451887e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000608948922233, Final residual = 3.01711297071e-05, No Iterations 92
+time step continuity errors : sum local = 2.31881392086e-11, global = 6.52697029947e-13, cumulative = 8.2698872159e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.16920741279e-05, Final residual = 8.67597298018e-09, No Iterations 165
+time step continuity errors : sum local = 6.65410724105e-15, global = -3.151016124e-17, cumulative = 8.26988718439e-09
+IBM projection residuals: max slip = 0.000222820631623, max divergence = 2.74176864831e-11
+ExecutionTime = 41 s  ClockTime = 43 s
+
+Courant Number mean: 0.00667136352872 max: 0.0146620666428
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.375
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.075), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00783074884271, Final residual = 8.08651350566e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000530263433962, Final residual = 3.16959103052e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000624698988857, Final residual = 3.93052868451e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00505759835985, Final residual = 0.000243212046165, No Iterations 12
+time step continuity errors : sum local = 1.85781606425e-10, global = -2.34480851587e-15, cumulative = 8.26988483959e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000605295957586, Final residual = 2.98351565814e-05, No Iterations 92
+time step continuity errors : sum local = 2.27011625313e-11, global = 6.59023363104e-13, cumulative = 8.27054386295e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.13515321678e-05, Final residual = 8.59687192371e-09, No Iterations 165
+time step continuity errors : sum local = 6.52798208904e-15, global = -2.96806651929e-17, cumulative = 8.27054383327e-09
+IBM projection residuals: max slip = 0.000219812634699, max divergence = 1.32460177191e-11
+ExecutionTime = 41.53 s  ClockTime = 44 s
+
+Courant Number mean: 0.00667147593244 max: 0.0146728392006
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.38
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.076), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0076824952219, Final residual = 8.16360657267e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000522826377916, Final residual = 3.13168538296e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000617659224872, Final residual = 3.88466286753e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00502499963319, Final residual = 0.000250436431279, No Iterations 11
+time step continuity errors : sum local = 1.89403830495e-10, global = -2.60525811231e-15, cumulative = 8.27054122801e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00060353831026, Final residual = 2.58827666765e-05, No Iterations 93
+time step continuity errors : sum local = 1.94987802956e-11, global = 5.6396241585e-13, cumulative = 8.27110519043e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.7424404416e-05, Final residual = 9.29252485293e-09, No Iterations 162
+time step continuity errors : sum local = 6.98677960239e-15, global = -1.06772837257e-16, cumulative = 8.27110508365e-09
+IBM projection residuals: max slip = 0.000216891170542, max divergence = 1.26188386114e-11
+ExecutionTime = 42.06 s  ClockTime = 44 s
+
+Courant Number mean: 0.00667158607731 max: 0.0146831315193
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.385
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.077), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00827648384298, Final residual = 8.16385703612e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000515615742526, Final residual = 3.09515423013e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000610794225621, Final residual = 3.84070885141e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00492905429471, Final residual = 0.000243922785922, No Iterations 11
+time step continuity errors : sum local = 1.82675622498e-10, global = -2.4927144958e-15, cumulative = 8.27110259094e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00059729891378, Final residual = 2.54129602089e-05, No Iterations 93
+time step continuity errors : sum local = 1.89591443204e-11, global = 5.46069329671e-13, cumulative = 8.27164866027e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.69482477182e-05, Final residual = 9.54764281557e-09, No Iterations 164
+time step continuity errors : sum local = 7.10935886947e-15, global = -2.056118348e-17, cumulative = 8.27164863971e-09
+IBM projection residuals: max slip = 0.000214053034557, max divergence = 1.38021764192e-11
+ExecutionTime = 42.59 s  ClockTime = 45 s
+
+Courant Number mean: 0.00667169403113 max: 0.0146929504054
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.39
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.078), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00863589149634, Final residual = 8.14905145889e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000508635873441, Final residual = 3.05966515295e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000604287729271, Final residual = 3.79847616906e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00485976019057, Final residual = 0.000238665601483, No Iterations 11
+time step continuity errors : sum local = 1.77019012382e-10, global = -2.386224485e-15, cumulative = 8.27164625348e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000592254302347, Final residual = 2.50269960378e-05, No Iterations 93
+time step continuity errors : sum local = 1.84920490206e-11, global = 5.35273692407e-13, cumulative = 8.27218152718e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.65563693344e-05, Final residual = 9.96618491769e-09, No Iterations 163
+time step continuity errors : sum local = 7.35016979675e-15, global = -6.97129511982e-17, cumulative = 8.27218145746e-09
+IBM projection residuals: max slip = 0.000211295078487, max divergence = 1.28813746961e-11
+ExecutionTime = 43.12 s  ClockTime = 45 s
+
+Courant Number mean: 0.00667179990736 max: 0.0147023012761
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.395
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.079), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00879115096581, Final residual = 8.16850933744e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000501892097564, Final residual = 3.02532553706e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000598024495104, Final residual = 3.75744756465e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00482108036241, Final residual = 0.00023411760571, No Iterations 11
+time step continuity errors : sum local = 1.71995953607e-10, global = -2.34405978985e-15, cumulative = 8.2721791134e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000587854090509, Final residual = 2.92592842486e-05, No Iterations 92
+time step continuity errors : sum local = 2.14147745503e-11, global = 7.04582207331e-13, cumulative = 8.27288369561e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.07881733265e-05, Final residual = 9.34826047572e-09, No Iterations 164
+time step continuity errors : sum local = 6.82963164211e-15, global = -3.38595504116e-17, cumulative = 8.27288366175e-09
+IBM projection residuals: max slip = 0.00020861423818, max divergence = 1.35494226454e-11
+ExecutionTime = 43.65 s  ClockTime = 46 s
+
+Courant Number mean: 0.00667190375252 max: 0.0147111886468
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.4
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.08), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0084657929325, Final residual = 8.18207464983e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000495359215466, Final residual = 2.99207480124e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000591922032674, Final residual = 3.71787216176e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00473846419679, Final residual = 0.000229356612251, No Iterations 11
+time step continuity errors : sum local = 1.66918978544e-10, global = -2.70668729979e-15, cumulative = 8.27288095506e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000583361011376, Final residual = 2.88057978233e-05, No Iterations 92
+time step continuity errors : sum local = 2.08860890646e-11, global = 6.83761359795e-13, cumulative = 8.27356471642e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.03244572613e-05, Final residual = 9.34276423611e-09, No Iterations 164
+time step continuity errors : sum local = 6.76217640799e-15, global = -3.44804330913e-17, cumulative = 8.27356468194e-09
+IBM projection residuals: max slip = 0.000206007520506, max divergence = 1.27492429318e-11
+ExecutionTime = 44.29 s  ClockTime = 47 s
+
+Courant Number mean: 0.00667200567476 max: 0.0147196159418
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.405
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.081), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00836539164261, Final residual = 8.24183242382e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000489019917127, Final residual = 2.95977422624e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000585986753478, Final residual = 3.67935780142e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00469197991303, Final residual = 0.000226266392413, No Iterations 11
+time step continuity errors : sum local = 1.63140318705e-10, global = -2.59579793456e-15, cumulative = 8.27356208614e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000580449461596, Final residual = 2.85818016609e-05, No Iterations 92
+time step continuity errors : sum local = 2.05312402782e-11, global = 6.81998518318e-13, cumulative = 8.27424408466e-09
+DICPCG:  Solving for p_rgh, Initial residual = 3.00940127885e-05, Final residual = 9.93246572335e-09, No Iterations 154
+time step continuity errors : sum local = 7.1224946847e-15, global = -6.97805698581e-17, cumulative = 8.27424401488e-09
+IBM projection residuals: max slip = 0.00020347198286, max divergence = 1.27313742729e-11
+ExecutionTime = 44.81 s  ClockTime = 47 s
+
+Courant Number mean: 0.00667210566641 max: 0.0147275855901
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.41
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.082), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00854962877944, Final residual = 8.19313684915e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000482836792142, Final residual = 2.92821611791e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000580133898648, Final residual = 3.64175120034e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00458523479136, Final residual = 0.00022205101874, No Iterations 11
+time step continuity errors : sum local = 1.58630681775e-10, global = -2.72268361801e-15, cumulative = 8.2742412922e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000576380406705, Final residual = 2.82322615182e-05, No Iterations 92
+time step continuity errors : sum local = 2.00952721922e-11, global = 6.53097203273e-13, cumulative = 8.2748943894e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.97400060153e-05, Final residual = 9.96716097397e-09, No Iterations 163
+time step continuity errors : sum local = 7.08240815862e-15, global = -6.19928426715e-17, cumulative = 8.27489432741e-09
+IBM projection residuals: max slip = 0.000201004593698, max divergence = 1.45074867287e-11
+ExecutionTime = 45.35 s  ClockTime = 48 s
+
+Courant Number mean: 0.00667220376823 max: 0.0147350983502
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.415
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.083), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00845487289176, Final residual = 8.26879175446e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00047681573882, Final residual = 2.8974038015e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000574499579055, Final residual = 3.60510108921e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00451982013854, Final residual = 0.000219444388789, No Iterations 11
+time step continuity errors : sum local = 1.55350028227e-10, global = -2.43051771789e-15, cumulative = 8.27489189689e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000573891250187, Final residual = 2.80388860918e-05, No Iterations 92
+time step continuity errors : sum local = 1.97778206956e-11, global = 6.35114178646e-13, cumulative = 8.27552701107e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.95420226923e-05, Final residual = 9.95024131704e-09, No Iterations 163
+time step continuity errors : sum local = 7.00683324815e-15, global = -6.22941938022e-17, cumulative = 8.27552694878e-09
+IBM projection residuals: max slip = 0.000198601865333, max divergence = 1.42593710429e-11
+ExecutionTime = 45.88 s  ClockTime = 48 s
+
+Courant Number mean: 0.0066723000244 max: 0.0147421529338
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.42
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.084), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00835207462436, Final residual = 8.27428538781e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000470923121023, Final residual = 2.86720733752e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000569037530649, Final residual = 3.56914424122e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00446438174904, Final residual = 0.000217409084343, No Iterations 11
+time step continuity errors : sum local = 1.52532035154e-10, global = -2.39421008691e-15, cumulative = 8.27552455457e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000571985944003, Final residual = 2.79058606429e-05, No Iterations 92
+time step continuity errors : sum local = 1.95087006424e-11, global = 6.18862530285e-13, cumulative = 8.2761434171e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.94034520846e-05, Final residual = 9.92073918742e-09, No Iterations 163
+time step continuity errors : sum local = 6.92393366223e-15, global = -6.20901909019e-17, cumulative = 8.27614335501e-09
+IBM projection residuals: max slip = 0.000196260895159, max divergence = 1.39927350411e-11
+ExecutionTime = 46.41 s  ClockTime = 49 s
+
+Courant Number mean: 0.00667239447397 max: 0.0147487446963
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.425
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.085), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00824311300687, Final residual = 8.22694623559e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000465147794371, Final residual = 2.8375900896e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000563756065922, Final residual = 3.5337982577e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00441325149611, Final residual = 0.000216877983321, No Iterations 9
+time step continuity errors : sum local = 1.50813049103e-10, global = -2.51227620182e-15, cumulative = 8.27614084273e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000570503076125, Final residual = 2.75216792296e-05, No Iterations 49
+time step continuity errors : sum local = 1.90705889135e-11, global = 4.21137277159e-12, cumulative = 8.2803522155e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.87731165499e-05, Final residual = 9.44897342712e-09, No Iterations 162
+time step continuity errors : sum local = 6.54816813429e-15, global = 4.5866948669e-17, cumulative = 8.28035226137e-09
+IBM projection residuals: max slip = 0.000194013546309, max divergence = 6.6844756577e-11
+ExecutionTime = 46.93 s  ClockTime = 49 s
+
+Courant Number mean: 0.00667248919316 max: 0.0147548546768
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.43
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.086), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00799197961598, Final residual = 8.29790852326e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000460050324208, Final residual = 2.81027818738e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000559098305568, Final residual = 3.50190208101e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00464159335424, Final residual = 0.000231257568283, No Iterations 8
+time step continuity errors : sum local = 1.59443662102e-10, global = -2.89503548665e-14, cumulative = 8.28032331101e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000571814787069, Final residual = 2.75035207794e-05, No Iterations 49
+time step continuity errors : sum local = 1.8897323696e-11, global = 4.00199303871e-12, cumulative = 8.28432530405e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.87732041949e-05, Final residual = 9.01354635928e-09, No Iterations 157
+time step continuity errors : sum local = 6.19370156877e-15, global = -1.0143880731e-17, cumulative = 8.28432529391e-09
+IBM projection residuals: max slip = 0.000191823127319, max divergence = 1.80385413441e-11
+ExecutionTime = 47.45 s  ClockTime = 50 s
+
+Courant Number mean: 0.00667258326412 max: 0.0147604706524
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.435
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.087), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0076266966337, Final residual = 8.32942301756e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000455148009415, Final residual = 2.783913062e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000554594503868, Final residual = 3.47033417108e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00452004121726, Final residual = 0.000213157491794, No Iterations 10
+time step continuity errors : sum local = 1.45710489622e-10, global = -2.60600351815e-14, cumulative = 8.28429923387e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000566000546042, Final residual = 2.81876209765e-05, No Iterations 49
+time step continuity errors : sum local = 1.91987591362e-11, global = 4.25973315067e-12, cumulative = 8.28855896702e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.95002167146e-05, Final residual = 9.7067552231e-09, No Iterations 161
+time step continuity errors : sum local = 6.611924673e-15, global = 1.59794972709e-17, cumulative = 8.288558983e-09
+IBM projection residuals: max slip = 0.000189678932306, max divergence = 1.9043597637e-11
+ExecutionTime = 47.97 s  ClockTime = 50 s
+
+Courant Number mean: 0.00667267590289 max: 0.01476555866
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.44
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.088), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00808610171893, Final residual = 8.32852608848e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000450016169707, Final residual = 2.75845207733e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000549935740337, Final residual = 3.43780731682e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00437628855308, Final residual = 0.000218427629945, No Iterations 10
+time step continuity errors : sum local = 1.48003770399e-10, global = -2.84719507407e-14, cumulative = 8.28853051105e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00056975998847, Final residual = 2.45070688814e-05, No Iterations 93
+time step continuity errors : sum local = 1.65464664595e-11, global = 5.98060766971e-13, cumulative = 8.28912857182e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.60444485021e-05, Final residual = 9.24587569269e-09, No Iterations 163
+time step continuity errors : sum local = 6.23316729035e-15, global = -6.95815727573e-17, cumulative = 8.28912850224e-09
+IBM projection residuals: max slip = 0.000187590673392, max divergence = 1.18133683256e-11
+ExecutionTime = 48.5 s  ClockTime = 51 s
+
+Courant Number mean: 0.00667276729427 max: 0.0147700438924
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.445
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.089), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00771064794429, Final residual = 8.3116842537e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000444872791663, Final residual = 2.73307881745e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000545260217194, Final residual = 3.40506721015e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00431210200656, Final residual = 0.000207649231773, No Iterations 12
+time step continuity errors : sum local = 1.39480254707e-10, global = -2.15947933852e-15, cumulative = 8.28912634276e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000571277757218, Final residual = 2.65430943676e-05, No Iterations 92
+time step continuity errors : sum local = 1.77670988435e-11, global = 5.07707048549e-13, cumulative = 8.28963404981e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.80137954456e-05, Final residual = 9.07753463228e-09, No Iterations 164
+time step continuity errors : sum local = 6.06619332882e-15, global = -5.55559864405e-17, cumulative = 8.28963399425e-09
+IBM projection residuals: max slip = 0.000185559586313, max divergence = 4.23375187785e-11
+ExecutionTime = 49.03 s  ClockTime = 51 s
+
+Courant Number mean: 0.00667285736785 max: 0.0147737591751
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.45
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.09), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00776219815635, Final residual = 8.41718827556e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000439607629673, Final residual = 2.7069278977e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000540395975731, Final residual = 3.37075312071e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00520267502419, Final residual = 0.000257803233214, No Iterations 9
+time step continuity errors : sum local = 1.71663744139e-10, global = -2.32130976159e-15, cumulative = 8.28963167294e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000602958702625, Final residual = 2.83120943376e-05, No Iterations 93
+time step continuity errors : sum local = 1.87870296747e-11, global = 7.50412443743e-13, cumulative = 8.29038208538e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.99152625108e-05, Final residual = 9.12461628294e-09, No Iterations 165
+time step continuity errors : sum local = 6.04468061443e-15, global = -6.34975124031e-17, cumulative = 8.29038202189e-09
+IBM projection residuals: max slip = 0.000183585359535, max divergence = 1.00622021877e-11
+ExecutionTime = 49.57 s  ClockTime = 52 s
+
+Courant Number mean: 0.00667294578933 max: 0.0147761302319
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.455
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.091), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0074237229152, Final residual = 8.36938302665e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000434381559805, Final residual = 2.67948775517e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000535547474795, Final residual = 3.33393628379e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00471649796362, Final residual = 0.00021326603546, No Iterations 6
+time step continuity errors : sum local = 1.4078121027e-10, global = -3.80885979434e-15, cumulative = 8.29037821303e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000556584509676, Final residual = 2.75769436651e-05, No Iterations 48
+time step continuity errors : sum local = 1.81427416877e-11, global = 2.53574267404e-12, cumulative = 8.2929139557e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.89085067229e-05, Final residual = 8.57804418974e-09, No Iterations 164
+time step continuity errors : sum local = 5.64414137863e-15, global = -6.23882345169e-17, cumulative = 8.29291389331e-09
+IBM projection residuals: max slip = 0.000181656923079, max divergence = 1.22470185239e-11
+ExecutionTime = 50.08 s  ClockTime = 53 s
+
+Courant Number mean: 0.00667303602387 max: 0.0147791512516
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.46
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.092), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00730122938298, Final residual = 8.49043802626e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000430707103066, Final residual = 2.6603287456e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000532413818759, Final residual = 3.31178410999e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00624092574846, Final residual = 0.000277006840111, No Iterations 4
+time step continuity errors : sum local = 1.81379852017e-10, global = -1.65625642153e-14, cumulative = 8.29289733075e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000586433546213, Final residual = 2.83241334397e-05, No Iterations 36
+time step continuity errors : sum local = 1.84763541105e-11, global = -1.32357249752e-14, cumulative = 8.29288409502e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.97509622059e-05, Final residual = 9.59745548581e-09, No Iterations 167
+time step continuity errors : sum local = 6.26151893747e-15, global = 5.36095442323e-17, cumulative = 8.29288414863e-09
+IBM projection residuals: max slip = 0.000179760139348, max divergence = 1.28739075614e-11
+ExecutionTime = 50.59 s  ClockTime = 53 s
+
+Courant Number mean: 0.00667312700087 max: 0.0147843655172
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.465
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.093), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00787811581388, Final residual = 8.40985507362e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999993  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000429388260798, Final residual = 2.65325333044e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000531836259765, Final residual = 3.31048004061e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00434019949456, Final residual = 0.000203434786463, No Iterations 5
+time step continuity errors : sum local = 1.32310962932e-10, global = 2.05820681075e-16, cumulative = 8.29288435445e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000531431387281, Final residual = 2.55750168529e-05, No Iterations 47
+time step continuity errors : sum local = 1.65776051946e-11, global = 1.74804982173e-12, cumulative = 8.29463240428e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.70125275331e-05, Final residual = 9.42457658095e-09, No Iterations 142
+time step continuity errors : sum local = 6.10976882673e-15, global = 5.52632787757e-17, cumulative = 8.29463245954e-09
+IBM projection residuals: max slip = 0.000177904288727, max divergence = 7.53805142363e-11
+ExecutionTime = 51.11 s  ClockTime = 54 s
+
+Courant Number mean: 0.00667321704546 max: 0.0147896014371
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.47
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.094), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00762905435216, Final residual = 8.41360587564e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000426238137939, Final residual = 2.6377677663e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000529076423654, Final residual = 3.29421277619e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00401023212224, Final residual = 0.000198952198299, No Iterations 7
+time step continuity errors : sum local = 1.28425753208e-10, global = -1.160683114e-14, cumulative = 8.29462085271e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000543889791504, Final residual = 2.46925047887e-05, No Iterations 49
+time step continuity errors : sum local = 1.58865871084e-11, global = 3.0669550005e-12, cumulative = 8.29768780771e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.60485242271e-05, Final residual = 9.31699338206e-09, No Iterations 141
+time step continuity errors : sum local = 5.99509100092e-15, global = 2.36876421487e-17, cumulative = 8.2976878314e-09
+IBM projection residuals: max slip = 0.000176092632227, max divergence = 7.68176788405e-11
+ExecutionTime = 51.62 s  ClockTime = 54 s
+
+Courant Number mean: 0.00667330581496 max: 0.0147945101025
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.475
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.095), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00751102881511, Final residual = 8.47973647589e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.0004224572236, Final residual = 2.61887234865e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000525638768331, Final residual = 3.27288418119e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00393576235292, Final residual = 0.000185863275656, No Iterations 9
+time step continuity errors : sum local = 1.19049126559e-10, global = -1.9784034491e-14, cumulative = 8.29766804736e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000540599702575, Final residual = 2.56487935759e-05, No Iterations 48
+time step continuity errors : sum local = 1.6375051003e-11, global = 3.43183938345e-12, cumulative = 8.30109988675e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.69647230369e-05, Final residual = 9.02529408967e-09, No Iterations 156
+time step continuity errors : sum local = 5.76280786115e-15, global = 1.44617716361e-18, cumulative = 8.30109988819e-09
+IBM projection residuals: max slip = 0.000174326042604, max divergence = 1.12941168904e-11
+ExecutionTime = 52.13 s  ClockTime = 55 s
+
+Courant Number mean: 0.00667339322062 max: 0.0147990281961
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.48
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.096), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00732828236173, Final residual = 8.53368762583e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000418477128826, Final residual = 2.59884798459e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000522006368391, Final residual = 3.24964587657e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00389030831378, Final residual = 0.000189652874582, No Iterations 9
+time step continuity errors : sum local = 1.20534981807e-10, global = -2.18825155651e-14, cumulative = 8.30107800568e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000543959867419, Final residual = 2.60655711333e-05, No Iterations 48
+time step continuity errors : sum local = 1.65129837295e-11, global = 3.5009202853e-12, cumulative = 8.30457892596e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.7376916947e-05, Final residual = 9.51527660218e-09, No Iterations 156
+time step continuity errors : sum local = 6.0288736239e-15, global = 7.30317718777e-18, cumulative = 8.30457893326e-09
+IBM projection residuals: max slip = 0.000172604438535, max divergence = 1.67813025142e-11
+ExecutionTime = 52.65 s  ClockTime = 55 s
+
+Courant Number mean: 0.00667347925038 max: 0.0148031417089
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.485
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.097), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00761149262582, Final residual = 8.53400928073e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000414469263627, Final residual = 2.57851275821e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000518327671833, Final residual = 3.22576677681e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00385851363562, Final residual = 0.000189480815556, No Iterations 9
+time step continuity errors : sum local = 1.19497626828e-10, global = -2.2388828809e-14, cumulative = 8.30455654444e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000543762425775, Final residual = 2.60260276954e-05, No Iterations 48
+time step continuity errors : sum local = 1.63614396579e-11, global = 3.48104728717e-12, cumulative = 8.30803759172e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.73372115858e-05, Final residual = 9.40374098614e-09, No Iterations 156
+time step continuity errors : sum local = 5.91248771674e-15, global = 1.26757181896e-17, cumulative = 8.3080376044e-09
+IBM projection residuals: max slip = 0.000170927294787, max divergence = 1.15800220618e-11
+ExecutionTime = 53.18 s  ClockTime = 56 s
+
+Courant Number mean: 0.00667356392302 max: 0.0148068542991
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.49
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.098), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00745573562062, Final residual = 8.49758919912e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000410510412489, Final residual = 2.55826358339e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000514670365361, Final residual = 3.2018156251e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00384492463247, Final residual = 0.000187430557791, No Iterations 9
+time step continuity errors : sum local = 1.17302165537e-10, global = -2.22661348977e-14, cumulative = 8.30801533826e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000541833809765, Final residual = 2.57938291983e-05, No Iterations 48
+time step continuity errors : sum local = 1.60922983818e-11, global = 3.42512484178e-12, cumulative = 8.31144046311e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.71061925295e-05, Final residual = 9.02958269048e-09, No Iterations 156
+time step continuity errors : sum local = 5.63410268173e-15, global = 1.61703797181e-17, cumulative = 8.31144047928e-09
+IBM projection residuals: max slip = 0.000169293907782, max divergence = 1.10643911893e-11
+ExecutionTime = 53.7 s  ClockTime = 56 s
+
+Courant Number mean: 0.00667364726984 max: 0.0148101769424
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.495
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.099), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.00713034382521, Final residual = 8.58230124392e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.000406647810537, Final residual = 2.53829647009e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000511073950494, Final residual = 3.178071741e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00398056572248, Final residual = 0.000196565905943, No Iterations 9
+time step continuity errors : sum local = 1.22093543423e-10, global = -2.18813567231e-14, cumulative = 8.31141859792e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.000551860845629, Final residual = 2.56477859213e-05, No Iterations 48
+time step continuity errors : sum local = 1.58817219681e-11, global = 3.30469355684e-12, cumulative = 8.31472329148e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.69548029719e-05, Final residual = 8.81004318348e-09, No Iterations 157
+time step continuity errors : sum local = 5.45605119437e-15, global = 3.76017468597e-17, cumulative = 8.31472332908e-09
+IBM projection residuals: max slip = 0.000167701461816, max divergence = 1.94271869005e-11
+ExecutionTime = 54.23 s  ClockTime = 57 s
+
+Courant Number mean: 0.00667372930413 max: 0.0148131140672
+Interface Courant Number mean: 0 max: 0
+deltaT = 0.005
+Time = 0.5
+
+PIMPLE: iteration 1
+SDF geometry: centre = (0 0 0), rotation = (0 0 0.1), min/max = -0.015/1.20382993823
+IBM classification: solid volume = 0.000170244486401, forcing cells = 76
+smoothSolver:  Solving for alpha.water, Initial residual = 0.0069723299047, Final residual = 8.54517744142e-05, No Iterations 1000
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+MULES: Correcting alpha.water
+MULES: Correcting alpha.water
+Phase-1 volume fraction = 1  Min(alpha.water) = 0.999999999994  Max(alpha.water) = 1
+smoothSolver:  Solving for Ux, Initial residual = 0.00040278983306, Final residual = 2.51804058106e-09, No Iterations 1
+smoothSolver:  Solving for Uy, Initial residual = 0.000507322815154, Final residual = 3.15468526896e-09, No Iterations 1
+DICPCG:  Solving for p_rgh, Initial residual = 0.00380241328634, Final residual = 0.000183030230727, No Iterations 9
+time step continuity errors : sum local = 1.12847823892e-10, global = -2.11793054807e-14, cumulative = 8.31470214977e-09
+DICPCG:  Solving for p_rgh, Initial residual = 0.00053945993062, Final residual = 2.43548881563e-05, No Iterations 48
+time step continuity errors : sum local = 1.49710868234e-11, global = 3.1138114318e-12, cumulative = 8.3178159612e-09
+DICPCG:  Solving for p_rgh, Initial residual = 2.56763476e-05, Final residual = 8.37154108097e-09, No Iterations 156
+time step continuity errors : sum local = 5.14666013663e-15, global = 3.47737455523e-17, cumulative = 8.31781599598e-09
+IBM projection residuals: max slip = 0.000166150228653, max divergence = 9.88186105109e-12
+ExecutionTime = 54.85 s  ClockTime = 58 s
+
+End
+

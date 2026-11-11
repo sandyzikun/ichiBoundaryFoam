@@ -1,0 +1,36 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _1d8f0d55f7-20231221 OPENFOAM=2312 version=v2312
+Arch   : "LSB;label=32;scalar=64"
+Exec   : mirrorMesh -case validation/261103-cylinder/cases/interFoam-body-fitted -overwrite
+Date   : Nov 03 2026
+Time   : 23:56:53
+Host   : login1.barkla2.liv.alces.network
+PID    : 60
+I/O    : uncollated
+Case   : /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/interFoam-body-fitted
+nProcs : 1
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading mirrorMeshDict
+
+Mirroring mesh at origin:(0 0 0) normal:(0 -1 0)
+Mirroring points. Old points: 35424 New points: 70396
+Mirroring faces. Old faces: 69857 New faces: 139490
+Mirroring patches. Old patches: 6 New patches: 6
+Mirroring cells. Old cells: 17382 New cells: 34764
+Mirroring cell shapes.
+
+Creating new mesh
+Writing mirrored mesh
+End
+

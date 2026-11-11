@@ -1,0 +1,8 @@
+ibmForceIntegral
+{
+    type            volFieldValue;
+    libs            (fieldFunctionObjects);
+    operation       volIntegrate;
+    fields          (immersedAcceleration);
+    writeFields     false;
+}

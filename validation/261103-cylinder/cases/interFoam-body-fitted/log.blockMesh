@@ -1,0 +1,152 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _1d8f0d55f7-20231221 OPENFOAM=2312 version=v2312
+Arch   : "LSB;label=32;scalar=64"
+Exec   : blockMesh -case validation/261103-cylinder/cases/interFoam-body-fitted
+Date   : Nov 03 2026
+Time   : 23:56:37
+Host   : login1.barkla2.liv.alces.network
+PID    : 61
+I/O    : uncollated
+Case   : /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/interFoam-body-fitted
+nProcs : 1
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from "system/blockMeshDict"
+Using #codeStream at line 43 in file "system/blockMeshDict"
+Using #codeStream with "/users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/interFoam-body-fitted/dynamicCode/platforms/linux64GccDPInt32-spack/lib/libcodeStream_527f2da72a76d6b4717c1c8b32282250adb82ab0.so"
+Could not load "/users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/interFoam-body-fitted/dynamicCode/platforms/linux64GccDPInt32-spack/lib/libcodeStream_527f2da72a76d6b4717c1c8b32282250adb82ab0.so"
+/users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/interFoam-body-fitted/dynamicCode/platforms/linux64GccDPInt32-spack/lib/libcodeStream_527f2da72a76d6b4717c1c8b32282250adb82ab0.so: cannot open shared object file: No such file or directory
+Creating new library in "dynamicCode/_527f2da72a76d6b4717c1c8b32282250adb82ab0/platforms/linux64GccDPInt32-spack/lib/libcodeStream_527f2da72a76d6b4717c1c8b32282250adb82ab0.so"
+Invoking wmake libso /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/interFoam-body-fitted/dynamicCode/_527f2da72a76d6b4717c1c8b32282250adb82ab0
+wmake libso /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/interFoam-body-fitted/dynamicCode/_527f2da72a76d6b4717c1c8b32282250adb82ab0
+    ln: ./lnInclude
+    dep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    link: /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/interFoam-body-fitted/dynamicCode/_527f2da72a76d6b4717c1c8b32282250adb82ab0/../platforms/linux64GccDPInt32-spack/lib/libcodeStream_527f2da72a76d6b4717c1c8b32282250adb82ab0.so
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+
+Creating topology patches - from boundary section
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 18
+		Number of boundary faces : 48
+		Number of defined boundary faces : 48
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list (topological search)...
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale (1 1 1)
+    Block 0 cell size :
+        i : 0.00407030587793 .. 0.00651248940468
+        j : 0.00314123379694 .. 0.00314123379694
+        k : 0.015 .. 0.015
+
+    Block 1 cell size :
+        i : 0.00407030587791 .. 0.00651248940466
+        j : 0.00314123379694 .. 0.00314123379694
+        k : 0.015 .. 0.015
+
+    Block 2 cell size :
+        i : 0.00748788196721 .. 0.00748788196721
+        j : 0.00749913026813 .. 0.00749913026813
+        k : 0.015 .. 0.015
+
+    Block 3 cell size :
+        i : 0.0081756490221 .. 0.0081756490221
+        j : 0.0081756490221 .. 0.0081756490221
+        k : 0.015 .. 0.015
+
+    Block 4 cell size :
+        i : 0.00749913026813 .. 0.00749913026813
+        j : 0.00748788196721 .. 0.00748788196721
+        k : 0.015 .. 0.015
+
+    Block 5 cell size :
+        i : 0.00651248940468 .. 0.00407030587793
+        j : 0.00749913026813 .. 0.00749913026813
+        k : 0.015 .. 0.015
+
+    Block 6 cell size :
+        i : 0.00651248940466 .. 0.00407030587791
+        j : 0.00749913026813 .. 0.00749913026813
+        k : 0.015 .. 0.015
+
+    Block 7 cell size :
+        i : 0.00748788196721 .. 0.00748788196721
+        j : 0.00675236064347 .. 0.00675236064347
+        k : 0.015 .. 0.015
+
+    Block 8 cell size :
+        i : 0.0081756490221 .. 0.0081756490221
+        j : 0.0081756490221 .. 0.0081756490221
+        k : 0.015 .. 0.015
+
+    Block 9 cell size :
+        i : 0.00749913026813 .. 0.00749913026813
+        j : 0.0081756490221 .. 0.0081756490221
+        k : 0.015 .. 0.015
+
+    Block 10 cell size :
+        i : 0.00753626086957 .. 0.00753626086957
+        j : 0.00675236064347 .. 0.00675236064347
+        k : 0.015 .. 0.015
+
+    Block 11 cell size :
+        i : 0.00753626086957 .. 0.00753626086957
+        j : 0.0081756490221 .. 0.0081756490221
+        k : 0.015 .. 0.015
+
+    Block 12 cell size :
+        i : 0.0075 .. 0.0075
+        j : 0.00675236064347 .. 0.00675236064347
+        k : 0.015 .. 0.015
+
+    Block 13 cell size :
+        i : 0.0075 .. 0.0075
+        j : 0.0081756490221 .. 0.0081756490221
+        k : 0.015 .. 0.015
+
+No patch pairs to merge
+
+Writing polyMesh with 0 cellZones
+----------------
+Mesh Information
+----------------
+  boundingBox: (-0.6075 0 -0.0075) (1.120002 0.6 0.0075)
+  nPoints: 35424
+  nCells: 17382
+  nFaces: 69857
+  nInternalFaces: 34435
+----------------
+Patches
+----------------
+  patch 0 (start: 34435 size: 76) name: inlet
+  patch 1 (start: 34511 size: 76) name: outlet
+  patch 2 (start: 34587 size: 446) name: topAndBottom
+  patch 3 (start: 35033 size: 17382) name: left
+  patch 4 (start: 52415 size: 17382) name: right
+  patch 5 (start: 69797 size: 60) name: cylinder
+
+End
+

@@ -1,0 +1,28 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      ichiBoundaryGeometry;
+}
+fieldName      signedDistance;
+geometry
+{
+    type                cappedCylinder;
+    centre              (0 0 0);
+    radius              0.06;
+    length              0.03;
+    referenceRotation   (0 0 0);
+}
+motion
+{
+    type                static;
+    referenceTime       0;
+}
+ibm
+{
+    enabled             true;
+    transitionWidth     0.01;
+    multiDirectForcing  true;
+    nMultiDirectForcingCorrectors 4;
+    slipTolerance       1e-5;
+}

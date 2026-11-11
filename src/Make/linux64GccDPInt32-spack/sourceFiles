@@ -1,0 +1,8 @@
+SOURCE = \
+main.cpp \
+rigidBodyMotion.C \
+immersedGeometry.C \
+directForcingIbm.C \
+immersedTurbulenceWallTreatment.C \
+
+# sources

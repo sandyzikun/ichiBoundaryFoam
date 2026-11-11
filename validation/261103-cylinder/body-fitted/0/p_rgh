@@ -1,0 +1,35 @@
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    object      p_rgh;
+}
+dimensions      [1 -1 -2 0 0 0 0];
+internalField   uniform 0;
+boundaryField
+{
+    inlet
+    {
+        type            fixedFluxPressure;
+        value           uniform 0;
+    }
+    outlet
+    {
+        type            totalPressure;
+        p0              uniform 0;
+    }
+    topAndBottom
+    {
+        type            symmetry;
+    }
+    cylinder
+    {
+        type            fixedFluxPressure;
+        value           uniform 0;
+    }
+    "(left|right)"
+    {
+        type            empty;
+    }
+}
+

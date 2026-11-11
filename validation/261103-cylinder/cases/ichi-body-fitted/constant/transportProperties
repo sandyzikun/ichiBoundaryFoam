@@ -1,0 +1,21 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      transportProperties;
+}
+phases          (water air);
+water
+{
+    transportModel  Newtonian;
+    nu              3.8952e-6;
+    rho             1000;
+}
+air
+{
+    transportModel  Newtonian;
+    nu              1.48e-5;
+    rho             1;
+}
+sigma           0.07;
+

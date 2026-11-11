@@ -1,0 +1,12 @@
+forcesBody
+{
+    type            forces;
+    libs            (forces);
+    patches         (cylinder);
+    p               p_rgh;
+    U               U;
+    rho             rhoInf;
+    rhoInf          1000;
+    CofR            (0 0 0);
+}
+

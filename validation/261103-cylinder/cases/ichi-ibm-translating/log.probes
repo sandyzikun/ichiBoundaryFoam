@@ -1,0 +1,75 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _1d8f0d55f7-20231221 OPENFOAM=2312 version=v2312
+Arch   : "LSB;label=32;scalar=64"
+Exec   : postProcess -case validation/261103-cylinder/cases/ichi-ibm-translating -func probes
+Date   : Nov 04 2026
+Time   : 00:08:56
+Host   : login1.barkla2.liv.alces.network
+PID    : 61
+I/O    : uncollated
+Case   : /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/ichi-ibm-translating
+nProcs : 1
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Time = 0
+
+Reading fields:
+    volScalarField: alpha.water p_rgh
+    volVectorField: U
+
+Executing functionObjects
+
+Time = 0.1
+
+Reading fields:
+    volScalarField: alpha.water p_rgh
+    volVectorField: U
+
+Executing functionObjects
+
+Time = 0.2
+
+Reading fields:
+    volScalarField: alpha.water p_rgh
+    volVectorField: U
+
+Executing functionObjects
+
+Time = 0.3
+
+Reading fields:
+    volScalarField: alpha.water p_rgh
+    volVectorField: U
+
+Executing functionObjects
+
+Time = 0.4
+
+Reading fields:
+    volScalarField: alpha.water p_rgh
+    volVectorField: U
+
+Executing functionObjects
+
+Time = 0.5
+
+Reading fields:
+    volScalarField: alpha.water p_rgh
+    volVectorField: U
+
+Executing functionObjects
+
+End
+

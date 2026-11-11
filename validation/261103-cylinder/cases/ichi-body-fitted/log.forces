@@ -1,0 +1,71 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _1d8f0d55f7-20231221 OPENFOAM=2312 version=v2312
+Arch   : "LSB;label=32;scalar=64"
+Exec   : ./platforms/linux64GccDPInt32-spack/bin/ichiBoundaryFoam -postProcess -case validation/261103-cylinder/cases/ichi-body-fitted -func forcesBody -latestTime
+Date   : Nov 04 2026
+Time   : 00:08:05
+Host   : login1.barkla2.liv.alces.network
+PID    : 61
+I/O    : uncollated
+Case   : /users/sandyz/slurm_of/waves2-3d/ichiBoundaryFoam/validation/261103-cylinder/cases/ichi-body-fitted
+nProcs : 1
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0.5
+
+
+PIMPLE: Operating solver in PISO mode
+
+forces forcesBody:
+    p: p_rgh
+    U: U
+    rho: rhoInf
+    Freestream density (rhoInf) set to 1000
+    Not including porosity effects
+
+Time = 0.5
+Reading field p_rgh
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Reading transportProperties
+
+Selecting incompressible transport model Newtonian
+Selecting incompressible transport model Newtonian
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+
+Reading g
+
+Reading hRef
+Calculating field g.h
+
+No MRF models present
+
+No finite volume options present
+forces forcesBody write:
+    Sum of forces
+        Total    : (0.000328920597149 -1.35091400986e-11 -9.78504808632e-23)
+        Pressure : (0.000209985871425 -4.22322563239e-12 -9.77138684508e-23)
+        Viscous  : (0.000118934725724 -9.28591446617e-12 -1.36612412364e-25)
+    Sum of moments
+        Total    : (-7.07783783932e-25 4.85207241141e-25 -2.96032323844e-13)
+        Pressure : (-1.62176449332e-24 4.65338389851e-25 -2.70689001458e-22)
+        Viscous  : (9.13980709391e-25 1.98688512899e-26 -2.96032323573e-13)
+    writing force and moment files.
+
+
+End
+
