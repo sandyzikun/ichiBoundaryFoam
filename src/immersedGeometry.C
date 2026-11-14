@@ -174,6 +174,17 @@ ImmersedGeometry::ImmersedGeometry(const fvMesh& mesh)
     }
 }
 //
+void ImmersedGeometry::evaluatePoint
+(
+    const point& globalPoint,
+    scalar& distance,
+    vector& normal,
+    vector& velocity
+) const
+{
+    evaluate(globalPoint, distance, normal, velocity);
+}
+//
 void ImmersedGeometry::update(const scalar timeValue)
 {
     centre_ = motion_.centre(timeValue);

@@ -33,6 +33,7 @@ motion
 ibm
 {
     enabled                         false;
+    couplingMethod                  cellBased;
     forcingMethod                   diffuseVelocity;
     // noSlip constrains all relative-velocity components.
     // freeSlip constrains only the surface-normal component.

@@ -45,6 +45,15 @@ public:
     // [INFO] Construction of an analytic immersed geometry
     explicit ImmersedGeometry(const fvMesh& mesh);
     //
+    // [INFO] Evaluation of geometry data at an arbitrary point
+    void evaluatePoint
+    (
+        const point& globalPoint,
+        scalar& distance,
+        vector& normal,
+        vector& velocity
+    ) const;
+    //
     // [INFO] Update of pose and geometry fields
     void update(const scalar timeValue);
     //

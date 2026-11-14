@@ -21,10 +21,12 @@ class DirectForcingIbm
     const ImmersedGeometry& geometry_;
     dictionary properties_;
     bool enabled_;
+    word couplingMethod_;
     word forcingMethod_;
     word velocityBoundaryCondition_;
     scalar transitionWidth_;
     scalar sharpInterpolationLimit_;
+    scalar markerSupportWidth_;
     bool multiDirectForcing_;
     label nMultiDirectForcingCorrectors_;
     scalar slipTolerance_;
@@ -33,6 +35,12 @@ class DirectForcingIbm
     scalar alphaExtensionWeightPower_;
     bool boundExtendedAlpha_;
     labelListList alphaExtensionStencil_;
+    labelList markerSeedCells_;
+    pointField markerPoints_;
+    vectorField markerNormals_;
+    vectorField markerVelocities_;
+    labelListList markerStencils_;
+    List<scalarList> markerWeights_;
     volScalarField solidFraction_;
     scalarField previousSolidFraction_;
     volScalarField cellType_;
@@ -55,6 +63,23 @@ class DirectForcingIbm
     (
         const vector& relativeVelocity,
         const label celli
+    ) const;
+    //
+    // [INFO] Selection of a marker-relative velocity constraint
+    vector constrainedMarkerRelativeVelocity
+    (
+        const vector& relativeVelocity,
+        const vector& normal
+    ) const;
+    //
+    // [INFO] Rebuilding of marker points and compact stencils
+    void rebuildMarkerStencils();
+    //
+    // [INFO] Application of marker interpolation and spreading
+    void constrainMarkers
+    (
+        volVectorField& predictor,
+        volVectorField& correction
     ) const;
     //
     // [INFO] Application of diffuse velocity forcing
@@ -128,6 +153,12 @@ public:
     //
     // [INFO] Access to the IBM activation state
     bool enabled() const;
+    //
+    // [INFO] Access to the immersed coupling route
+    const word& couplingMethod() const;
+    //
+    // [INFO] Access to the forcing implementation
+    const word& forcingMethod() const;
     //
     // [INFO] Access to the immersed velocity boundary condition
     const word& velocityBoundaryCondition() const;

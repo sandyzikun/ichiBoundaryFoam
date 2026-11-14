@@ -252,9 +252,11 @@ The optional `ibm` dictionary is:
 ibm
 {
     enabled                         false;
+    couplingMethod                  cellBased;
     forcingMethod                   diffuseVelocity;
     transitionWidth                 0;
     sharpInterpolationLimit         1;
+    markerSupportWidth              2;
     multiDirectForcing              false;
     nMultiDirectForcingCorrectors   1;
     slipTolerance                   0;
@@ -267,7 +269,20 @@ ibm
 }
 ```
 
-Two forcing backends are retained:
+IBM selection now has two levels. `couplingMethod` first chooses how
+the Eulerian flow and immersed geometry are coupled. `forcingMethod`
+then chooses the forcing implementation within that route.
+
+* `cellBased` retains the existing cell-classification route and
+  supports `diffuseVelocity` and `sharpReconstruction`.
+* `markerBased` selects the marker interpolation/spreading route and
+  currently supports `markerDirectForcing`.
+
+If `couplingMethod` is omitted, it defaults to `cellBased` for backward
+compatibility. Invalid coupling/forcing combinations stop during case
+setup instead of silently selecting another implementation.
+
+The forcing implementations are:
 
 * `diffuseVelocity` preserves the original implementation.  It blends
   the predictor velocity with the rigid-body velocity using the smooth
@@ -279,11 +294,24 @@ Two forcing backends are retained:
   forcing layer.  Its target velocity is currently obtained by bounded
   linear SDF interpolation between the immersed-surface velocity and
   point-connected fluid neighbours.
+* `markerDirectForcing` is the first operator prototype for a
+  Constant--Pinelli-like route.  It projects fluid-side forcing-cell
+  centres onto the SDF zero surface, interpolates velocity to these
+  markers with compact cosine weights, evaluates the marker residual,
+  and spreads the correction back to the Eulerian cells.
 
 The sharp backend is an experimental first reconstruction backend.  It
 establishes the correct software and cell-classification path towards
 the sharp DF-IBM of Ye et al., but it does not yet reproduce their
 second-order Laplacian interpolation or immersed flux treatment.
+
+The marker backend is also experimental and is disabled unless it is
+selected explicitly.  Its stencils are currently processor-local and
+the pressure equation is unchanged.  It is intended to validate the
+marker interpolation/spreading operators before adding parallel halo
+stencils, conservative adjoint spreading, and a coupled pressure--IBM
+iteration.  Startup diagnostics report marker count, fallback stencil
+count, and the maximum first-moment error.
 
 The model writes:
 

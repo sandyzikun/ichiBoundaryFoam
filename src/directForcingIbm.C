@@ -16,6 +16,14 @@ DirectForcingIbm::DirectForcingIbm
     geometry_(geometry),
     properties_(properties),
     enabled_(properties_.lookupOrDefault<bool>("enabled", false)),
+    couplingMethod_
+    (
+        properties_.lookupOrDefault<word>
+        (
+            "couplingMethod",
+            "cellBased"
+        )
+    ),
     forcingMethod_
     (
         properties_.lookupOrDefault<word>
@@ -42,6 +50,14 @@ DirectForcingIbm::DirectForcingIbm
         (
             "sharpInterpolationLimit",
             1.0
+        )
+    ),
+    markerSupportWidth_
+    (
+        properties_.lookupOrDefault<scalar>
+        (
+            "markerSupportWidth",
+            2.0
         )
     ),
     multiDirectForcing_
@@ -101,6 +117,12 @@ DirectForcingIbm::DirectForcingIbm
         )
     ),
     alphaExtensionStencil_(mesh_.nCells()),
+    markerSeedCells_(),
+    markerPoints_(),
+    markerNormals_(),
+    markerVelocities_(),
+    markerStencils_(),
+    markerWeights_(),
     solidFraction_
     (
         IOobject
@@ -251,14 +273,40 @@ DirectForcingIbm::DirectForcingIbm
     }
     if
     (
-        forcingMethod_ != "diffuseVelocity"
+        couplingMethod_ != "cellBased"
+     && couplingMethod_ != "markerBased"
+    )
+    {
+        FatalIOErrorInFunction(properties_)
+            << "Unsupported couplingMethod: "
+            << couplingMethod_ << nl
+            << "Supported methods: cellBased, markerBased"
+            << exit(FatalIOError);
+    }
+    if
+    (
+        couplingMethod_ == "cellBased"
+     && forcingMethod_ != "diffuseVelocity"
      && forcingMethod_ != "sharpReconstruction"
     )
     {
         FatalIOErrorInFunction(properties_)
-            << "Unsupported forcingMethod: " << forcingMethod_ << nl
+            << "forcingMethod " << forcingMethod_
+            << " is not available for couplingMethod cellBased" << nl
             << "Supported methods: diffuseVelocity, "
             << "sharpReconstruction"
+            << exit(FatalIOError);
+    }
+    if
+    (
+        couplingMethod_ == "markerBased"
+     && forcingMethod_ != "markerDirectForcing"
+    )
+    {
+        FatalIOErrorInFunction(properties_)
+            << "forcingMethod " << forcingMethod_
+            << " is not available for couplingMethod markerBased" << nl
+            << "Supported method: markerDirectForcing"
             << exit(FatalIOError);
     }
     if
@@ -271,6 +319,12 @@ DirectForcingIbm::DirectForcingIbm
             << "Unsupported velocityBoundaryCondition: "
             << velocityBoundaryCondition_ << nl
             << "Supported conditions: noSlip, freeSlip"
+            << exit(FatalIOError);
+    }
+    if (markerSupportWidth_ <= 0.0)
+    {
+        FatalIOErrorInFunction(properties_)
+            << "markerSupportWidth must be positive"
             << exit(FatalIOError);
     }
     if
@@ -349,6 +403,7 @@ DirectForcingIbm::DirectForcingIbm
         << (enabled_ ? "enabled" : "disabled") << nl;
     if (enabled_)
     {
+        Info<< "IBM coupling method: " << couplingMethod_ << nl;
         Info<< "IBM forcing method: " << forcingMethod_ << nl;
         Info<< "IBM velocity boundary condition: "
             << velocityBoundaryCondition_ << nl;
@@ -362,6 +417,15 @@ DirectForcingIbm::DirectForcingIbm
             Info<< "Sharp reconstruction is experimental; "
                 << "interpolation limit = "
                 << sharpInterpolationLimit_ << nl;
+        }
+        if (couplingMethod_ == "markerBased")
+        {
+            Info<< "Marker direct forcing is experimental; "
+                << "compact support width = "
+                << markerSupportWidth_
+                << " local cell widths" << nl;
+            Info<< "Marker stencils are processor-local in this "
+                << "first operator prototype" << nl;
         }
         Info<< "Multi-direct forcing: "
             << (multiDirectForcing_ ? "enabled" : "disabled")
@@ -680,6 +744,10 @@ void DirectForcingIbm::classify()
     }
     solidFraction_.correctBoundaryConditions();
     cellType_.correctBoundaryConditions();
+    if (enabled_ && couplingMethod_ == "markerBased")
+    {
+        rebuildMarkerStencils();
+    }
     scalar coveredVolume = 0.0;
     scalar uncoveredVolume = 0.0;
     forAll(fraction, celli)
@@ -698,6 +766,149 @@ void DirectForcingIbm::classify()
         << returnReduce(coveredVolume, sumOp<scalar>())
         << '/'
         << returnReduce(uncoveredVolume, sumOp<scalar>())
+        << nl;
+}
+//
+void DirectForcingIbm::rebuildMarkerStencils()
+{
+    DynamicList<label> seedCells;
+    DynamicList<point> markerPoints;
+    DynamicList<vector> markerNormals;
+    DynamicList<vector> markerVelocities;
+    const scalarField& distance =
+        geometry_.signedDistance().primitiveField();
+    const scalarField& type = cellType_.primitiveField();
+    const vectorField& normal =
+        geometry_.surfaceNormal().primitiveField();
+    const vectorField& centres = mesh_.cellCentres();
+    //
+    forAll(type, celli)
+    {
+        if (type[celli] != 1.0 || distance[celli] < 0.0)
+        {
+            continue;
+        }
+        const point marker =
+            centres[celli] - distance[celli]*normal[celli];
+        scalar markerDistance = 0.0;
+        vector markerNormal(vector::zero);
+        vector markerVelocity(vector::zero);
+        geometry_.evaluatePoint
+        (
+            marker,
+            markerDistance,
+            markerNormal,
+            markerVelocity
+        );
+        seedCells.append(celli);
+        markerPoints.append(marker);
+        markerNormals.append(markerNormal);
+        markerVelocities.append(markerVelocity);
+    }
+    seedCells.shrink();
+    markerPoints.shrink();
+    markerNormals.shrink();
+    markerVelocities.shrink();
+    markerSeedCells_.transfer(seedCells);
+    markerPoints_.transfer(markerPoints);
+    markerNormals_.transfer(markerNormals);
+    markerVelocities_.transfer(markerVelocities);
+    markerStencils_.setSize(markerSeedCells_.size());
+    markerWeights_.setSize(markerSeedCells_.size());
+    //
+    label emptyStencils = 0;
+    scalar localMaximumMomentError = 0.0;
+    forAll(markerSeedCells_, markeri)
+    {
+        const label seed = markerSeedCells_[markeri];
+        const scalar cellWidth = pow
+        (
+            max(mesh_.V()[seed], ROOTVSMALL),
+            scalar(1.0/3.0)
+        );
+        const scalar supportRadius =
+            markerSupportWidth_*cellWidth;
+        DynamicList<label> stencil;
+        DynamicList<scalar> weights;
+        //
+        const scalar seedDistance = mag
+        (
+            centres[seed] - markerPoints_[markeri]
+        );
+        if (seedDistance < supportRadius)
+        {
+            const scalar q = seedDistance/supportRadius;
+            stencil.append(seed);
+            weights.append
+            (
+                0.5*(1.0 + cos(constant::mathematical::pi*q))
+            );
+        }
+        for (const label celli : alphaExtensionStencil_[seed])
+        {
+            const scalar centreDistance = mag
+            (
+                centres[celli] - markerPoints_[markeri]
+            );
+            if (centreDistance >= supportRadius)
+            {
+                continue;
+            }
+            const scalar q = centreDistance/supportRadius;
+            stencil.append(celli);
+            weights.append
+            (
+                0.5*(1.0 + cos(constant::mathematical::pi*q))
+            );
+        }
+        if (stencil.empty())
+        {
+            stencil.append(seed);
+            weights.append(1.0);
+            ++emptyStencils;
+        }
+        scalar weightSum = 0.0;
+        for (const scalar weight : weights)
+        {
+            weightSum += weight;
+        }
+        point interpolatedPoint(point::zero);
+        forAll(weights, i)
+        {
+            weights[i] /= max(weightSum, ROOTVSMALL);
+            interpolatedPoint += weights[i]*centres[stencil[i]];
+        }
+        localMaximumMomentError = max
+        (
+            localMaximumMomentError,
+            mag(interpolatedPoint - markerPoints_[markeri])
+        );
+        stencil.shrink();
+        weights.shrink();
+        markerStencils_[markeri].transfer(stencil);
+        markerWeights_[markeri].transfer(weights);
+    }
+    const label markerCount = returnReduce
+    (
+        markerSeedCells_.size(),
+        sumOp<label>()
+    );
+    const label fallbackCount = returnReduce
+    (
+        emptyStencils,
+        sumOp<label>()
+    );
+    const scalar maximumMomentError = returnReduce
+    (
+        localMaximumMomentError,
+        maxOp<scalar>()
+    );
+    Info<< "IBM marker operator: markers = "
+        << markerCount
+        << ", fallback stencils = "
+        << fallbackCount
+        << ", max first-moment error = "
+        << maximumMomentError
         << nl;
 }
 //
@@ -731,6 +942,19 @@ vector DirectForcingIbm::constrainedRelativeVelocity
     {
         const vector& normal =
             geometry_.surfaceNormal().primitiveField()[celli];
+        return (relativeVelocity & normal)*normal;
+    }
+    return relativeVelocity;
+}
+//
+vector DirectForcingIbm::constrainedMarkerRelativeVelocity
+(
+    const vector& relativeVelocity,
+    const vector& normal
+) const
+{
+    if (velocityBoundaryCondition_ == "freeSlip")
+    {
         return (relativeVelocity & normal)*normal;
     }
     return relativeVelocity;
@@ -836,6 +1060,53 @@ void DirectForcingIbm::constrainSharp
     correction.correctBoundaryConditions();
 }
 //
+void DirectForcingIbm::constrainMarkers
+(
+    volVectorField& predictor,
+    volVectorField& correction
+) const
+{
+    const vectorField& predictorValues = predictor.primitiveField();
+    vectorField& correctionValues = correction.primitiveFieldRef();
+    vectorField accumulated(mesh_.nCells(), vector::zero);
+    scalarField spreadWeight(mesh_.nCells(), 0.0);
+    correctionValues = vector::zero;
+    //
+    forAll(markerPoints_, markeri)
+    {
+        vector interpolatedVelocity(vector::zero);
+        const labelList& stencil = markerStencils_[markeri];
+        const scalarList& weights = markerWeights_[markeri];
+        forAll(stencil, i)
+        {
+            interpolatedVelocity +=
+                weights[i]*predictorValues[stencil[i]];
+        }
+        const vector markerCorrection =
+            constrainedMarkerRelativeVelocity
+            (
+                markerVelocities_[markeri]
+              - interpolatedVelocity,
+                markerNormals_[markeri]
+            );
+        forAll(stencil, i)
+        {
+            const label celli = stencil[i];
+            accumulated[celli] += weights[i]*markerCorrection;
+            spreadWeight[celli] += weights[i];
+        }
+    }
+    forAll(correctionValues, celli)
+    {
+        if (spreadWeight[celli] > VSMALL)
+        {
+            correctionValues[celli] =
+                accumulated[celli]/spreadWeight[celli];
+        }
+    }
+    correction.correctBoundaryConditions();
+}
+//
 void DirectForcingIbm::constrainPredictor
 (
     volVectorField& predictor,
@@ -861,7 +1132,11 @@ void DirectForcingIbm::constrainPredictor
         mesh_,
         dimensionedVector("zero", dimVelocity, vector::zero)
     );
-    if (forcingMethod_ == "sharpReconstruction")
+    if (couplingMethod_ == "markerBased")
+    {
+        constrainMarkers(predictor, correction);
+    }
+    else if (forcingMethod_ == "sharpReconstruction")
     {
         constrainSharp(predictor, correction);
     }
@@ -1101,8 +1376,32 @@ scalar DirectForcingIbm::maxSlip
     {
         return 0.0;
     }
-    const scalarField& fraction = solidFraction_.primitiveField();
     const vectorField& velocityValues = velocity.primitiveField();
+    if (couplingMethod_ == "markerBased")
+    {
+        scalar localMaximum = 0.0;
+        forAll(markerPoints_, markeri)
+        {
+            vector interpolatedVelocity(vector::zero);
+            const labelList& stencil = markerStencils_[markeri];
+            const scalarList& weights = markerWeights_[markeri];
+            forAll(stencil, i)
+            {
+                interpolatedVelocity +=
+                    weights[i]*velocityValues[stencil[i]];
+            }
+            const vector residual =
+                constrainedMarkerRelativeVelocity
+                (
+                    interpolatedVelocity
+                  - markerVelocities_[markeri],
+                    markerNormals_[markeri]
+                );
+            localMaximum = max(localMaximum, mag(residual));
+        }
+        return returnReduce(localMaximum, maxOp<scalar>());
+    }
+    const scalarField& fraction = solidFraction_.primitiveField();
     const vectorField& bodyVelocity =
         geometry_.surfaceVelocity().primitiveField();
     scalar localMaximum = 0.0;
@@ -1206,6 +1505,16 @@ void DirectForcingIbm::reportPhaseVolume
 bool DirectForcingIbm::enabled() const
 {
     return enabled_;
+}
+//
+const word& DirectForcingIbm::couplingMethod() const
+{
+    return couplingMethod_;
+}
+//
+const word& DirectForcingIbm::forcingMethod() const
+{
+    return forcingMethod_;
 }
 //
 const word& DirectForcingIbm::velocityBoundaryCondition() const
