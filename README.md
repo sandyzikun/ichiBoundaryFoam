@@ -134,11 +134,48 @@ make ibm
 Both targets clean the old objects before compiling because `wmake`
 does not track changes in preprocessor flags by itself.
 
+### Constant--Pinelli marker sub-iteration prototype
+
+Build the forcing--pressure sub-iteration route under a separate executable
+name with:
+
+```sh
+make marker-subiteration
+```
+
+This produces `ichiBoundaryFoam-markerSubIter` without replacing the regular
+`ichiBoundaryFoam` binary. The route must also be enabled at run time through
+the `ibmAwareProjection` dictionary. It alternates the production marker
+constraint solve with a pressure-correction projection until both the maximum
+marker slip and maximum finite-volume divergence meet their configured
+tolerances. It is an experimental alternating projection, not yet a monolithic
+forcing--pressure Schur-complement solve.
+
 The executable is installed under:
 
 ```text
 platforms/<WM_OPTIONS>/bin/ichiBoundaryFoam
 ```
+
+### Marker-operator verification utility
+
+The repository also contains a third, independent build route:
+
+```sh
+make marker-operator-test
+```
+
+This produces `ichiMarkerOperatorTest`. It reads an OpenFOAM mesh and
+the regular `constant/ichiBoundaryGeometry` dictionary, constructs the
+same marker interpolation and spreading implementation used by
+`ichiBoundaryFoam`, and exits without creating a two-phase mixture or
+solving transport, momentum, or pressure equations. A small input case
+and the available test selectors are documented in
+`tests/markerOperatorTest/README.md`.
+
+This target is separate from `PURE_INTERFOAM`: the latter remains a
+full `interFoam` regression path, whereas the marker utility is a
+no-PDE discrete-operator test program.
 
 The top-level Makefile works around the compiler-wrapper ordering used
 by the current Slurm module.  It delegates the OpenFOAM build itself to
@@ -306,12 +343,31 @@ the sharp DF-IBM of Ye et al., but it does not yet reproduce their
 second-order Laplacian interpolation or immersed flux treatment.
 
 The marker backend is also experimental and is disabled unless it is
-selected explicitly.  Its stencils are currently processor-local and
-the pressure equation is unchanged.  It is intended to validate the
-marker interpolation/spreading operators before adding parallel halo
-stencils, conservative adjoint spreading, and a coupled pressure--IBM
-iteration.  Startup diagnostics report marker count, fallback stencil
-count, and the maximum first-moment error.
+selected explicitly.  Its compact stencils use OpenFOAM's
+processor-coupled point-connected cell halos, affine correction enforces
+the zeroth and first moments, and area/volume-weighted force spreading is
+the physical adjoint of interpolation.  A matrix-free preconditioned-CG
+solve now applies the marker-space Schur operator $J S$ and computes the
+Eulerian velocity correction from $J S\lambda=U_b-JU$. The regular build keeps
+the standard pressure equation, while the separately compiled
+`markerSubIter` route alternates this marker correction with an incremental
+pressure projection and checks both residuals after every pass.
+Startup diagnostics report marker count, fallback stencil count, and the
+maximum first-moment error.
+
+The marker constraint solve is controlled by:
+
+```text
+markerConstraintTolerance          1e-8;
+markerConstraintMaxIterations      300;
+requireMarkerConstraintConvergence false;
+```
+
+The tolerance is applied to the global marker residual norm relative to
+its initial value (with a unit absolute scale for small residuals).  The
+strict convergence switch is useful for operator tests; production cases
+normally keep it disabled until mesh and marker-spacing sensitivity have
+been established.
 
 The model writes:
 

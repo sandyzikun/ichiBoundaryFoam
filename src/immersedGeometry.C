@@ -258,6 +258,21 @@ const point& ImmersedGeometry::centre() const
     return centre_;
 }
 //
+scalar ImmersedGeometry::radius() const
+{
+    return radius_;
+}
+//
+scalar ImmersedGeometry::halfLength() const
+{
+    return halfLength_;
+}
+//
+vector ImmersedGeometry::axis() const
+{
+    return rotation_ & vector(0.0, 0.0, 1.0);
+}
+//
 bool ImmersedGeometry::write() const
 {
     return

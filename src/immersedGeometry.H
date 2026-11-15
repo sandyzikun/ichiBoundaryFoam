@@ -69,6 +69,11 @@ public:
     // [INFO] Access to the current body centre
     const point& centre() const;
     //
+    // [INFO] Access to capped-cylinder dimensions and current axis
+    scalar radius() const;
+    scalar halfLength() const;
+    vector axis() const;
+    //
     // [INFO] Writing of geometry fields
     bool write() const;
 };

@@ -1,7 +1,6 @@
 {
-    // This is an experimental alternating constraint-projection
-    // prototype.  It is not yet a monolithic Schur-complement solve.
-    ibmAwareProjection.auditOperators();
+    // Constant--Pinelli-style alternating forcing--pressure
+    // sub-iteration.  This is not a monolithic Schur-complement solve.
     ibm.beginLoadCycle();
     if (correctPhi)
     {

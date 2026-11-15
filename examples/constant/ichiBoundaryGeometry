@@ -40,6 +40,10 @@ ibm
     velocityBoundaryCondition       noSlip;
     transitionWidth                 0;
     sharpInterpolationLimit         1;
+    markerSupportWidth              2;
+    markerConstraintTolerance       1e-8;
+    markerConstraintMaxIterations   300;
+    requireMarkerConstraintConvergence false;
     multiDirectForcing              false;
     nMultiDirectForcingCorrectors   1;
     slipTolerance                   0;
@@ -76,11 +80,9 @@ ibmAwareProjection
 {
     // Both the build-time and run-time switches default to off.
     enabled                         false;
-    algorithm                       alternatingConstraintProjection;
-    operatorModel                   cellVolumeWeightedDiffuse;
+    algorithm                       constantPinelliSubIteration;
     constraintTolerance             1e-6;
     continuityTolerance             1e-8;
-    adjointTolerance                1e-12;
     minimumIterations               1;
     maximumIterations               8;
     requireConvergence              false;

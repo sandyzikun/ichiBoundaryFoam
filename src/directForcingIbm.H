@@ -27,6 +27,9 @@ class DirectForcingIbm
     scalar transitionWidth_;
     scalar sharpInterpolationLimit_;
     scalar markerSupportWidth_;
+    scalar markerConstraintTolerance_;
+    label markerConstraintMaxIterations_;
+    bool requireMarkerConstraintConvergence_;
     bool multiDirectForcing_;
     label nMultiDirectForcingCorrectors_;
     scalar slipTolerance_;
@@ -39,6 +42,7 @@ class DirectForcingIbm
     pointField markerPoints_;
     vectorField markerNormals_;
     vectorField markerVelocities_;
+    scalarField markerAreaWeights_;
     labelListList markerStencils_;
     List<scalarList> markerWeights_;
     volScalarField solidFraction_;
@@ -80,6 +84,28 @@ class DirectForcingIbm
     (
         volVectorField& predictor,
         volVectorField& correction
+    ) const;
+    //
+    // [INFO] Interpolation from Eulerian cells to local markers
+    vectorField interpolateMarkers
+    (
+        const vectorField& eulerianValues
+    ) const;
+    //
+    // [INFO] Algebraic marker-to-cell spreading.  The normalized
+    // form is the operator currently used by the production backend;
+    // the unnormalized form is the transpose of interpolation.
+    void spreadMarkers
+    (
+        const vectorField& markerValues,
+        vectorField& eulerianValues,
+        const bool normalizeOverlap
+    ) const;
+
+    // [INFO] Matrix-free application of J S in marker space
+    vectorField applyMarkerSchur
+    (
+        const vectorField& markerValues
     ) const;
     //
     // [INFO] Application of diffuse velocity forcing
@@ -162,6 +188,34 @@ public:
     //
     // [INFO] Access to the immersed velocity boundary condition
     const word& velocityBoundaryCondition() const;
+    //
+    // [INFO] Local marker data exposed for operator verification
+    const pointField& markerPoints() const;
+    const vectorField& markerNormals() const;
+    const vectorField& markerVelocities() const;
+    const scalarField& markerAreaWeights() const;
+    const labelListList& markerStencils() const;
+    const List<scalarList>& markerWeights() const;
+    //
+    // [INFO] Production interpolation and spreading entry points for
+    // the standalone marker-operator verification utility
+    vectorField interpolateMarkerField
+    (
+        const vectorField& eulerianValues
+    ) const;
+    void spreadMarkerField
+    (
+        const vectorField& markerValues,
+        vectorField& eulerianValues,
+        const bool normalizeOverlap = true
+    ) const;
+    //
+    // [INFO] Area/volume-weighted adjoint force spreading
+    void spreadMarkerForceField
+    (
+        const vectorField& markerForces,
+        vectorField& eulerianForceDensity
+    ) const;
     //
     // [INFO] Access to the solid volume-fraction field
     const volScalarField& solidFraction() const;

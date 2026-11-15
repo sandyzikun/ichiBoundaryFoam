@@ -14,15 +14,12 @@ class IbmAwareProjection
     dictionary properties_;
     bool enabled_;
     word algorithm_;
-    word operatorModel_;
     scalar constraintTolerance_;
     scalar continuityTolerance_;
-    scalar adjointTolerance_;
     label minimumIterations_;
     label maximumIterations_;
     bool requireConvergence_;
     bool writeDiagnostics_;
-    mutable bool operatorsAudited_;
     //
 public:
     // [INFO] Construction of the experimental projection control
@@ -43,15 +40,7 @@ public:
             properties_.lookupOrDefault<word>
             (
                 "algorithm",
-                "alternatingConstraintProjection"
-            )
-        ),
-        operatorModel_
-        (
-            properties_.lookupOrDefault<word>
-            (
-                "operatorModel",
-                "cellVolumeWeightedDiffuse"
+                "constantPinelliSubIteration"
             )
         ),
         constraintTolerance_
@@ -68,14 +57,6 @@ public:
             (
                 "continuityTolerance",
                 1.0e-8
-            )
-        ),
-        adjointTolerance_
-        (
-            properties_.lookupOrDefault<scalar>
-            (
-                "adjointTolerance",
-                1.0e-12
             )
         ),
         minimumIterations_
@@ -109,8 +90,7 @@ public:
                 "writeDiagnostics",
                 false
             )
-        ),
-        operatorsAudited_(false)
+        )
     {
         if (enabled_ && !ibm_.enabled())
         {
@@ -118,22 +98,23 @@ public:
                 << "IBM-aware projection requires enabled IBM"
                 << exit(FatalIOError);
         }
-        if (algorithm_ != "alternatingConstraintProjection")
+        if
+        (
+            algorithm_ != "constantPinelliSubIteration"
+         && algorithm_ != "alternatingConstraintProjection"
+        )
         {
             FatalIOErrorInFunction(properties_)
                 << "Unsupported IBM-aware algorithm: "
                 << algorithm_ << nl
-                << "Supported prototype algorithm: "
-                << "alternatingConstraintProjection"
+                << "Supported algorithm: constantPinelliSubIteration"
                 << exit(FatalIOError);
         }
-        if (operatorModel_ != "cellVolumeWeightedDiffuse")
+        if (enabled_ && ibm_.couplingMethod() != "markerBased")
         {
             FatalIOErrorInFunction(properties_)
-                << "Unsupported IBM-aware operator model: "
-                << operatorModel_ << nl
-                << "Supported operator model: "
-                << "cellVolumeWeightedDiffuse"
+                << "Constant-Pinelli sub-iteration currently requires "
+                << "ibm.couplingMethod markerBased"
                 << exit(FatalIOError);
         }
         if (constraintTolerance_ <= 0.0)
@@ -146,12 +127,6 @@ public:
         {
             FatalIOErrorInFunction(properties_)
                 << "continuityTolerance must be positive"
-                << exit(FatalIOError);
-        }
-        if (adjointTolerance_ <= 0.0)
-        {
-            FatalIOErrorInFunction(properties_)
-                << "adjointTolerance must be positive"
                 << exit(FatalIOError);
         }
         if (minimumIterations_ < 1)
@@ -171,10 +146,8 @@ public:
             << (enabled_ ? "requested" : "disabled") << nl;
         if (enabled_)
         {
-            Info<< "IBM-aware prototype algorithm: "
+            Info<< "IBM-aware algorithm: "
                 << algorithm_ << nl
-                << "IBM-aware constraint operator: "
-                << operatorModel_ << nl
                 << "Constraint/continuity tolerances: "
                 << constraintTolerance_ << '/'
                 << continuityTolerance_ << nl
@@ -184,127 +157,6 @@ public:
                 << "Require convergence: "
                 << (requireConvergence_ ? "yes" : "no") << nl;
         }
-    }
-    //
-    // [INFO] Application of the linear immersed constraint operator
-    void applyConstraint
-    (
-        const vectorField& velocityIncrement,
-        vectorField& constraintValue
-    ) const
-    {
-        const scalarField& weight =
-            ibm_.solidFraction().primitiveField();
-        if (velocityIncrement.size() != weight.size())
-        {
-            FatalErrorInFunction
-                << "Constraint input size differs from the mesh size"
-                << exit(FatalError);
-        }
-        constraintValue.setSize(weight.size());
-        forAll(weight, celli)
-        {
-            constraintValue[celli] =
-                weight[celli]*velocityIncrement[celli];
-        }
-    }
-    //
-    // [INFO] Application of the adjoint force-spreading operator
-    void spreadMultiplier
-    (
-        const vectorField& multiplier,
-        vectorField& spreadValue
-    ) const
-    {
-        const scalarField& weight =
-            ibm_.solidFraction().primitiveField();
-        if (multiplier.size() != weight.size())
-        {
-            FatalErrorInFunction
-                << "Multiplier input size differs from the mesh size"
-                << exit(FatalError);
-        }
-        spreadValue.setSize(weight.size());
-        forAll(weight, celli)
-        {
-            spreadValue[celli] = weight[celli]*multiplier[celli];
-        }
-    }
-    //
-    // [INFO] Auditing of the discrete constraint-spreading pair
-    void auditOperators() const
-    {
-        if (!enabled_ || operatorsAudited_)
-        {
-            return;
-        }
-        const fvMesh& mesh = ibm_.solidFraction().mesh();
-        const vectorField& centre = mesh.C().primitiveField();
-        const scalarField& volume = mesh.V();
-        vectorField testVelocity(mesh.nCells(), vector::zero);
-        vectorField testMultiplier(mesh.nCells(), vector::zero);
-        forAll(testVelocity, celli)
-        {
-            const vector& c = centre[celli];
-            testVelocity[celli] = vector
-            (
-                1.0 + 0.17*c.x(),
-                -0.31 + 0.11*c.y(),
-                0.23 - 0.07*c.z()
-            );
-            testMultiplier[celli] = vector
-            (
-                -0.19 + 0.13*c.z(),
-                0.29 - 0.05*c.x(),
-                0.37 + 0.09*c.y()
-            );
-        }
-        vectorField constrainedVelocity;
-        vectorField spreadMultiplierValue;
-        applyConstraint(testVelocity, constrainedVelocity);
-        spreadMultiplier(testMultiplier, spreadMultiplierValue);
-        scalar localConstraintWork = 0.0;
-        scalar localSpreadWork = 0.0;
-        forAll(volume, celli)
-        {
-            localConstraintWork += volume[celli]
-               *(constrainedVelocity[celli] & testMultiplier[celli]);
-            localSpreadWork += volume[celli]
-               *(testVelocity[celli]
-               & spreadMultiplierValue[celli]);
-        }
-        const scalar constraintWork = returnReduce
-        (
-            localConstraintWork,
-            sumOp<scalar>()
-        );
-        const scalar spreadWork = returnReduce
-        (
-            localSpreadWork,
-            sumOp<scalar>()
-        );
-        const scalar relativeError = mag
-        (
-            constraintWork - spreadWork
-        )/max
-        (
-            max(mag(constraintWork), mag(spreadWork)),
-            VSMALL
-        );
-        Info<< "IBM-aware operator audit: <Jv,lambda> = "
-            << constraintWork << ", <v,S(lambda)> = "
-            << spreadWork << ", relative error = "
-            << relativeError << nl;
-        if (relativeError > adjointTolerance_)
-        {
-            FatalErrorInFunction
-                << "IBM constraint and spreading operators fail the "
-                << "discrete-adjoint audit: relative error = "
-                << relativeError << ", tolerance = "
-                << adjointTolerance_
-                << exit(FatalError);
-        }
-        operatorsAudited_ = true;
     }
     //
     // [INFO] Application of one immersed velocity correction

@@ -1,0 +1,43 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      ichiBoundaryGeometry;
+}
+
+fieldName signedDistance;
+
+geometry
+{
+    type                cappedCylinder;
+    centre              (0 0 0);
+    radius              0.2;
+    length              0.6;
+    referenceRotation   (0 0 0);
+}
+
+motion
+{
+    type                static;
+    referenceTime       0;
+}
+
+ibm
+{
+    enabled                         true;
+    couplingMethod                  markerBased;
+    forcingMethod                   markerDirectForcing;
+    velocityBoundaryCondition       noSlip;
+    transitionWidth                 0;
+    markerSupportWidth              2;
+    markerConstraintTolerance       1e-10;
+    markerConstraintMaxIterations   1000;
+    requireMarkerConstraintConvergence true;
+    multiDirectForcing              false;
+    nMultiDirectForcingCorrectors   1;
+    slipTolerance                   0;
+    extendAlphaIntoSolid            false;
+    nAlphaExtensionLayers           1;
+    alphaExtensionWeightPower       2;
+    boundExtendedAlpha              true;
+}

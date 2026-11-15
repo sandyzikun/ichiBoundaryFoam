@@ -4,10 +4,15 @@ SHELL := /bin/sh
 
 PROJECT := ichiBoundaryFoam
 SOURCE_DIR := src
+MARKER_TEST_DIR := tests/markerOperatorTest
 UUID := B361474C_D507_11F1_9472_A3B0B9D8CE68
 APP_BIN ?= $(CURDIR)/platforms/$(WM_OPTIONS)/bin
 EXE_NAME ?= $(PROJECT)
 EXE_PATH ?= $(APP_BIN)/$(EXE_NAME)
+MARKER_TEST_EXE_NAME ?= ichiMarkerOperatorTest
+MARKER_TEST_EXE_PATH ?= $(APP_BIN)/$(MARKER_TEST_EXE_NAME)
+MARKER_SUBITER_EXE_NAME ?= ichiBoundaryFoam-markerSubIter
+MARKER_SUBITER_EXE_PATH ?= $(APP_BIN)/$(MARKER_SUBITER_EXE_NAME)
 
 ## [INFO] Compiling the SDF-based direct-forcing IBM backend.
 ENABLE_DIRECT_FORCING ?= 1
@@ -62,8 +67,8 @@ PROJECT_DEFINES := \
 BUILD_FLAGS := $(strip \
 	$(FOAM_EXTRA_CXXFLAGS) $(PROJECT_DEFINES))
 
-.PHONY: all build ibm ibm-aware pure-interfoam debug clean distclean \
-	show-config help
+.PHONY: all build ibm ibm-aware marker-subiteration pure-interfoam marker-operator-test \
+	clean-marker-operator-test debug clean distclean show-config help
 
 all: build
 
@@ -88,10 +93,34 @@ ibm-aware: clean
 	@$(MAKE) build PURE_INTERFOAM=0 \
 		ENABLE_IBM_AWARE_PROJECTION=1
 
+## [INFO] Rebuilding the Constant--Pinelli marker sub-iteration
+##  executable under a persistent, non-production binary name.
+marker-subiteration:
+	@$(MAKE) ibm-aware \
+		EXE_NAME='$(MARKER_SUBITER_EXE_NAME)' \
+		EXE_PATH='$(MARKER_SUBITER_EXE_PATH)'
+
 ## [INFO] Rebuilding the pure interFoam regression solver.
 pure-interfoam: clean
 	@$(MAKE) build PURE_INTERFOAM=1 ENABLE_DIRECT_FORCING=0 \
 		ENABLE_ONE_WAY_DPM=0
+
+## [INFO] Building the standalone marker-operator verification utility.
+##  [NOTE] This executable reads a mesh and analytic fields but solves
+##  no transport, momentum, or pressure equation.
+marker-operator-test: check-openfoam
+	@compiler="$$(mpicxx --showme:command)"; \
+	clean_path="$$(printf '%s' "$$PATH" | tr ':' '\n' | \
+		grep -v '/lib/spack/env' | paste -sd: -)"; \
+	PATH="$${compiler%/*}:$$clean_path" \
+	FOAM_USER_APPBIN='$(APP_BIN)' \
+	ICHI_MARKER_TEST_EXE='$(MARKER_TEST_EXE_PATH)' \
+	FOAM_EXTRA_CXXFLAGS='$(BUILD_FLAGS)' \
+		wmake $(MARKER_TEST_DIR)
+
+clean-marker-operator-test: check-openfoam
+	@ICHI_MARKER_TEST_EXE='$(MARKER_TEST_EXE_PATH)' \
+		wclean $(MARKER_TEST_DIR)
 
 debug: check-openfoam
 	@compiler="$$(mpicxx --showme:command)"; \
@@ -117,6 +146,10 @@ show-config:
 	@printf '%-20s %s\n' APP_BIN $(APP_BIN)
 	@printf '%-20s %s\n' EXE_NAME $(EXE_NAME)
 	@printf '%-20s %s\n' EXE_PATH $(EXE_PATH)
+	@printf '%-20s %s\n' MARKER_TEST_EXE \
+		$(MARKER_TEST_EXE_PATH)
+	@printf '%-20s %s\n' MARKER_SUBITER_EXE \
+		$(MARKER_SUBITER_EXE_PATH)
 	@printf '%-20s %s\n' ENABLE_DIRECT_FORCING \
 		$(ENABLE_DIRECT_FORCING)
 	@printf '%-20s %s\n' PURE_INTERFOAM $(PURE_INTERFOAM)
@@ -156,6 +189,9 @@ help:
 		'make ibm ENABLE_ONE_WAY_DPM=1  Add passive DPM tracking.' \
 		'make ibm ENABLE_TURBULENCE_WALL_TREATMENT=0  Omit the immersed turbulence-wall model.' \
 		'make pure-interfoam  Clean and build the pure baseline.' \
+		'make marker-subiteration  Build the Constant--Pinelli prototype under a separate binary name.' \
+		'make marker-operator-test  Build the no-PDE marker operator tester.' \
+		'make clean-marker-operator-test  Clean only the tester objects.' \
 		'make debug        Build with OpenFOAM debug flags.' \
 		'make clean        Remove intermediate files.' \
 		'make distclean    Also remove the executable.' \

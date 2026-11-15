@@ -1,0 +1,8 @@
+main.cpp
+../../src/rigidBodyMotion.C
+../../src/immersedGeometry.C
+../../src/directForcingIbm.C
+
+ICHI_MARKER_TEST_EXE ?= $(FOAM_USER_APPBIN)/ichiMarkerOperatorTest
+
+EXE = $(ICHI_MARKER_TEST_EXE)

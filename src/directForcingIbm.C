@@ -1,10 +1,165 @@
 #include "directForcingIbm.H"
+#include "centredCPCCellToCellStencilObject.H"
+#include "mapDistributeBase.H"
 #include "syncTools.H"
 //
 namespace Foam
 {
 namespace ichiBoundaryFoam
 {
+namespace
+{
+template<class Type>
+Field<Type> distributeCellField
+(
+    const mapDistribute& cellMap,
+    const GeometricField<Type, fvPatchField, volMesh>& field
+)
+{
+    Field<Type> distributedValues
+    (
+        cellMap.constructSize(),
+        pTraits<Type>::zero
+    );
+    forAll(field, celli)
+    {
+        distributedValues[celli] = field[celli];
+    }
+    forAll(field.boundaryField(), patchi)
+    {
+        const fvPatchField<Type>& patchField =
+            field.boundaryField()[patchi];
+        label compacti =
+            patchField.patch().start()
+          - field.mesh().nInternalFaces()
+          + field.mesh().nCells();
+        forAll(patchField, facei)
+        {
+            distributedValues[compacti++] = patchField[facei];
+        }
+    }
+    cellMap.distribute(distributedValues);
+    return distributedValues;
+}
+
+bool affineCorrectWeights
+(
+    const point& marker,
+    const vectorField& centres,
+    const labelList& stencil,
+    scalarList& weights
+)
+{
+    scalar augmented[4][5] = {{0.0}};
+    forAll(stencil, i)
+    {
+        const vector offset = centres[stencil[i]] - marker;
+        const scalar basis[4] =
+        {
+            1.0,
+            offset.x(),
+            offset.y(),
+            offset.z()
+        };
+        for (label row = 0; row < 4; ++row)
+        {
+            for (label col = 0; col < 4; ++col)
+            {
+                augmented[row][col] +=
+                    weights[i]*basis[row]*basis[col];
+            }
+        }
+    }
+    augmented[0][4] = 1.0;
+
+    scalar matrixScale = 0.0;
+    for (label row = 0; row < 4; ++row)
+    {
+        for (label col = 0; col < 4; ++col)
+        {
+            matrixScale = max(matrixScale, mag(augmented[row][col]));
+        }
+    }
+    const scalar pivotTolerance = max(matrixScale, scalar(1))*1e-12;
+    for (label pivot = 0; pivot < 4; ++pivot)
+    {
+        label pivotRow = pivot;
+        scalar pivotMagnitude = mag(augmented[pivot][pivot]);
+        for (label row = pivot + 1; row < 4; ++row)
+        {
+            if (mag(augmented[row][pivot]) > pivotMagnitude)
+            {
+                pivotMagnitude = mag(augmented[row][pivot]);
+                pivotRow = row;
+            }
+        }
+        if (pivotMagnitude <= pivotTolerance)
+        {
+            return false;
+        }
+        if (pivotRow != pivot)
+        {
+            for (label col = pivot; col < 5; ++col)
+            {
+                const scalar temporary = augmented[pivot][col];
+                augmented[pivot][col] = augmented[pivotRow][col];
+                augmented[pivotRow][col] = temporary;
+            }
+        }
+        const scalar diagonal = augmented[pivot][pivot];
+        for (label col = pivot; col < 5; ++col)
+        {
+            augmented[pivot][col] /= diagonal;
+        }
+        for (label row = 0; row < 4; ++row)
+        {
+            if (row == pivot)
+            {
+                continue;
+            }
+            const scalar factor = augmented[row][pivot];
+            for (label col = pivot; col < 5; ++col)
+            {
+                augmented[row][col] -=
+                    factor*augmented[pivot][col];
+            }
+        }
+    }
+
+    const scalar coefficients[4] =
+    {
+        augmented[0][4],
+        augmented[1][4],
+        augmented[2][4],
+        augmented[3][4]
+    };
+    forAll(stencil, i)
+    {
+        const vector offset = centres[stencil[i]] - marker;
+        weights[i] *=
+            coefficients[0]
+          + coefficients[1]*offset.x()
+          + coefficients[2]*offset.y()
+          + coefficients[3]*offset.z();
+    }
+    return true;
+}
+
+scalar globalMarkerDot
+(
+    const vectorField& first,
+    const vectorField& second
+)
+{
+    scalar localDot = 0.0;
+    forAll(first, i)
+    {
+        localDot += first[i] & second[i];
+    }
+    return returnReduce(localDot, sumOp<scalar>());
+}
+}
+
 DirectForcingIbm::DirectForcingIbm
 (
     const fvMesh& mesh,
@@ -58,6 +213,30 @@ DirectForcingIbm::DirectForcingIbm
         (
             "markerSupportWidth",
             2.0
+        )
+    ),
+    markerConstraintTolerance_
+    (
+        properties_.lookupOrDefault<scalar>
+        (
+            "markerConstraintTolerance",
+            1.0e-8
+        )
+    ),
+    markerConstraintMaxIterations_
+    (
+        properties_.lookupOrDefault<label>
+        (
+            "markerConstraintMaxIterations",
+            300
+        )
+    ),
+    requireMarkerConstraintConvergence_
+    (
+        properties_.lookupOrDefault<bool>
+        (
+            "requireMarkerConstraintConvergence",
+            false
         )
     ),
     multiDirectForcing_
@@ -121,6 +300,7 @@ DirectForcingIbm::DirectForcingIbm
     markerPoints_(),
     markerNormals_(),
     markerVelocities_(),
+    markerAreaWeights_(),
     markerStencils_(),
     markerWeights_(),
     solidFraction_
@@ -343,6 +523,18 @@ DirectForcingIbm::DirectForcingIbm
             << "nMultiDirectForcingCorrectors must be at least one"
             << exit(FatalIOError);
     }
+    if (markerConstraintTolerance_ <= 0.0)
+    {
+        FatalIOErrorInFunction(properties_)
+            << "markerConstraintTolerance must be positive"
+            << exit(FatalIOError);
+    }
+    if (markerConstraintMaxIterations_ < 1)
+    {
+        FatalIOErrorInFunction(properties_)
+            << "markerConstraintMaxIterations must be at least one"
+            << exit(FatalIOError);
+    }
     if (slipTolerance_ < 0.0)
     {
         FatalIOErrorInFunction(properties_)
@@ -424,8 +616,11 @@ DirectForcingIbm::DirectForcingIbm
                 << "compact support width = "
                 << markerSupportWidth_
                 << " local cell widths" << nl;
-            Info<< "Marker stencils are processor-local in this "
-                << "first operator prototype" << nl;
+            Info<< "Marker stencils use processor-coupled "
+                << "point-connected cell halos" << nl;
+            Info<< "Marker constraint solver: matrix-free CG, tolerance = "
+                << markerConstraintTolerance_ << ", maximum iterations = "
+                << markerConstraintMaxIterations_ << nl;
         }
         Info<< "Multi-direct forcing: "
             << (multiDirectForcing_ ? "enabled" : "disabled")
@@ -813,10 +1008,95 @@ void DirectForcingIbm::rebuildMarkerStencils()
     markerPoints_.transfer(markerPoints);
     markerNormals_.transfer(markerNormals);
     markerVelocities_.transfer(markerVelocities);
+    markerAreaWeights_.setSize(markerPoints_.size(), 0.0);
+    label localSideMarkers = 0;
+    label localPositiveCapMarkers = 0;
+    label localNegativeCapMarkers = 0;
+    const vector cylinderAxis = geometry_.axis();
+    for (const vector& markerNormal : markerNormals_)
+    {
+        const scalar axialComponent = markerNormal & cylinderAxis;
+        if (axialComponent > 0.5)
+        {
+            ++localPositiveCapMarkers;
+        }
+        else if (axialComponent < -0.5)
+        {
+            ++localNegativeCapMarkers;
+        }
+        else
+        {
+            ++localSideMarkers;
+        }
+    }
+    const label sideMarkers = returnReduce
+    (
+        localSideMarkers,
+        sumOp<label>()
+    );
+    const label positiveCapMarkers = returnReduce
+    (
+        localPositiveCapMarkers,
+        sumOp<label>()
+    );
+    const label negativeCapMarkers = returnReduce
+    (
+        localNegativeCapMarkers,
+        sumOp<label>()
+    );
+    const scalar sideMarkerArea =
+        4.0*constant::mathematical::pi
+       *geometry_.radius()*geometry_.halfLength()
+       /max(sideMarkers, label(1));
+    const scalar capArea =
+        constant::mathematical::pi*sqr(geometry_.radius());
+    const scalar positiveCapMarkerArea =
+        capArea/max(positiveCapMarkers, label(1));
+    const scalar negativeCapMarkerArea =
+        capArea/max(negativeCapMarkers, label(1));
+    forAll(markerAreaWeights_, markeri)
+    {
+        const scalar axialComponent =
+            markerNormals_[markeri] & cylinderAxis;
+        markerAreaWeights_[markeri] = axialComponent > 0.5
+          ? positiveCapMarkerArea
+          : axialComponent < -0.5
+          ? negativeCapMarkerArea
+          : sideMarkerArea;
+    }
+    const centredCPCCellToCellStencilObject& parallelStencil =
+        centredCPCCellToCellStencilObject::New(mesh_);
+    const mapDistribute& cellMap = parallelStencil.map();
+    const pointField distributedCentres
+    (
+        distributeCellField<vector>(cellMap, mesh_.C())
+    );
+    volScalarField localAvailability
+    (
+        IOobject
+        (
+            "markerCompactAvailability",
+            mesh_.time().timeName(),
+            mesh_,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE,
+            false
+        ),
+        mesh_,
+        dimensionedScalar(dimless, 1.0)
+    );
+    localAvailability.correctBoundaryConditions();
+    const scalarField distributedAvailability
+    (
+        distributeCellField<scalar>(cellMap, localAvailability)
+    );
+
     markerStencils_.setSize(markerSeedCells_.size());
     markerWeights_.setSize(markerSeedCells_.size());
     //
     label emptyStencils = 0;
+    label affineFallbacks = 0;
+    label negativeWeightMarkers = 0;
     scalar localMaximumMomentError = 0.0;
     forAll(markerSeedCells_, markeri)
     {
@@ -831,24 +1111,35 @@ void DirectForcingIbm::rebuildMarkerStencils()
         DynamicList<label> stencil;
         DynamicList<scalar> weights;
         //
-        const scalar seedDistance = mag
-        (
-            centres[seed] - markerPoints_[markeri]
-        );
-        if (seedDistance < supportRadius)
+        for (const label celli : parallelStencil.stencil()[seed])
         {
-            const scalar q = seedDistance/supportRadius;
-            stencil.append(seed);
-            weights.append
+            if
             (
-                0.5*(1.0 + cos(constant::mathematical::pi*q))
-            );
-        }
-        for (const label celli : alphaExtensionStencil_[seed])
-        {
+                celli < 0
+             || celli >= distributedCentres.size()
+             || distributedAvailability[celli] < 0.5
+            )
+            {
+                FatalErrorInFunction
+                    << "Marker stencil references unavailable compact "
+                    << "cell data: marker = " << markeri
+                    << ", seed cell = " << seed
+                    << ", compact label = " << celli
+                    << ", construct size = "
+                    << distributedCentres.size()
+                    << ", availability = "
+                    <<
+                    (
+                        celli >= 0
+                     && celli < distributedAvailability.size()
+                      ? distributedAvailability[celli]
+                      : -1.0
+                    )
+                    << exit(FatalError);
+            }
             const scalar centreDistance = mag
             (
-                centres[celli] - markerPoints_[markeri]
+                distributedCentres[celli] - markerPoints_[markeri]
             );
             if (centreDistance >= supportRadius)
             {
@@ -867,17 +1158,39 @@ void DirectForcingIbm::rebuildMarkerStencils()
             weights.append(1.0);
             ++emptyStencils;
         }
-        scalar weightSum = 0.0;
-        for (const scalar weight : weights)
+        const scalarList compactWeights(weights);
+        if
+        (
+            !affineCorrectWeights
+            (
+                markerPoints_[markeri],
+                distributedCentres,
+                stencil,
+                weights
+            )
+        )
         {
-            weightSum += weight;
+            weights = compactWeights;
+            scalar weightSum = 0.0;
+            for (const scalar weight : weights)
+            {
+                weightSum += weight;
+            }
+            forAll(weights, i)
+            {
+                weights[i] /= max(weightSum, ROOTVSMALL);
+            }
+            ++affineFallbacks;
         }
+        bool hasNegativeWeight = false;
         point interpolatedPoint(point::zero);
         forAll(weights, i)
         {
-            weights[i] /= max(weightSum, ROOTVSMALL);
-            interpolatedPoint += weights[i]*centres[stencil[i]];
+            hasNegativeWeight = hasNegativeWeight || weights[i] < 0.0;
+            interpolatedPoint +=
+                weights[i]*distributedCentres[stencil[i]];
         }
+        negativeWeightMarkers += hasNegativeWeight ? 1 : 0;
         localMaximumMomentError = max
         (
             localMaximumMomentError,
@@ -898,6 +1211,16 @@ void DirectForcingIbm::rebuildMarkerStencils()
         emptyStencils,
         sumOp<label>()
     );
+    const label affineFallbackCount = returnReduce
+    (
+        affineFallbacks,
+        sumOp<label>()
+    );
+    const label negativeWeightMarkerCount = returnReduce
+    (
+        negativeWeightMarkers,
+        sumOp<label>()
+    );
     const scalar maximumMomentError = returnReduce
     (
         localMaximumMomentError,
@@ -907,6 +1230,10 @@ void DirectForcingIbm::rebuildMarkerStencils()
         << markerCount
         << ", fallback stencils = "
         << fallbackCount
+        << ", affine fallbacks = "
+        << affineFallbackCount
+        << ", negative-weight markers = "
+        << negativeWeightMarkerCount
         << ", max first-moment error = "
         << maximumMomentError
         << nl;
@@ -1068,43 +1395,234 @@ void DirectForcingIbm::constrainMarkers
 {
     const vectorField& predictorValues = predictor.primitiveField();
     vectorField& correctionValues = correction.primitiveFieldRef();
-    vectorField accumulated(mesh_.nCells(), vector::zero);
-    scalarField spreadWeight(mesh_.nCells(), 0.0);
-    correctionValues = vector::zero;
-    //
-    forAll(markerPoints_, markeri)
+    const vectorField interpolatedVelocity
+    (
+        interpolateMarkers(predictorValues)
+    );
+    vectorField rightHandSide(markerPoints_.size(), vector::zero);
+    forAll(rightHandSide, markeri)
     {
-        vector interpolatedVelocity(vector::zero);
+        rightHandSide[markeri] =
+            constrainedMarkerRelativeVelocity
+            (
+                markerVelocities_[markeri]
+              - interpolatedVelocity[markeri],
+                markerNormals_[markeri]
+            );
+    }
+    vectorField multiplier(markerPoints_.size(), vector::zero);
+    vectorField residual(rightHandSide);
+    scalarField inverseDiagonal(markerPoints_.size(), 0.0);
+    forAll(inverseDiagonal, markeri)
+    {
+        scalar diagonal = 0.0;
+        for (const scalar weight : markerWeights_[markeri])
+        {
+            diagonal += sqr(weight);
+        }
+        inverseDiagonal[markeri] = 1.0/max(diagonal, VSMALL);
+    }
+    vectorField preconditionedResidual(residual);
+    forAll(preconditionedResidual, markeri)
+    {
+        preconditionedResidual[markeri] *= inverseDiagonal[markeri];
+    }
+    vectorField direction(preconditionedResidual);
+    scalar residualNormSqr = globalMarkerDot(residual, residual);
+    scalar residualPreconditionedDot =
+        globalMarkerDot(residual, preconditionedResidual);
+    const scalar initialNorm = sqrt(max(residualNormSqr, scalar(0)));
+    const scalar targetNorm = markerConstraintTolerance_
+       *max(initialNorm, scalar(1));
+    label iteration = 0;
+    bool converged = initialNorm <= targetNorm;
+    for
+    (
+        iteration = 0;
+        !converged && iteration < markerConstraintMaxIterations_;
+        ++iteration
+    )
+    {
+        const vectorField schurDirection(applyMarkerSchur(direction));
+        const scalar denominator =
+            globalMarkerDot(direction, schurDirection);
+        if (denominator <= VSMALL)
+        {
+            break;
+        }
+        const scalar step = residualPreconditionedDot/denominator;
+        multiplier += step*direction;
+        residual -= step*schurDirection;
+        const scalar nextResidualNormSqr =
+            globalMarkerDot(residual, residual);
+        converged = sqrt(max(nextResidualNormSqr, scalar(0)))
+         <= targetNorm;
+        if (!converged)
+        {
+            preconditionedResidual = residual;
+            forAll(preconditionedResidual, markeri)
+            {
+                preconditionedResidual[markeri] *=
+                    inverseDiagonal[markeri];
+            }
+            const scalar nextResidualPreconditionedDot =
+                globalMarkerDot(residual, preconditionedResidual);
+            const scalar beta = nextResidualPreconditionedDot
+               /max(residualPreconditionedDot, VSMALL);
+            direction = preconditionedResidual + beta*direction;
+            residualPreconditionedDot =
+                nextResidualPreconditionedDot;
+        }
+        residualNormSqr = nextResidualNormSqr;
+    }
+    const scalar finalNorm = sqrt(max(residualNormSqr, scalar(0)));
+    Info<< "Marker constraint solve: iterations = " << iteration
+        << ", initial/final residual = " << initialNorm << '/'
+        << finalNorm << ", target = " << targetNorm
+        << ", converged = " << (converged ? "yes" : "no") << nl;
+    if (!converged && requireMarkerConstraintConvergence_)
+    {
+        FatalErrorInFunction
+            << "Marker constraint solve failed to converge: residual = "
+            << finalNorm << ", target = " << targetNorm
+            << exit(FatalError);
+    }
+    spreadMarkers(multiplier, correctionValues, false);
+    correction.correctBoundaryConditions();
+}
+
+vectorField DirectForcingIbm::applyMarkerSchur
+(
+    const vectorField& markerValues
+) const
+{
+    vectorField eulerianValues;
+    spreadMarkers(markerValues, eulerianValues, false);
+    vectorField result(interpolateMarkers(eulerianValues));
+    forAll(result, markeri)
+    {
+        result[markeri] = constrainedMarkerRelativeVelocity
+        (
+            result[markeri],
+            markerNormals_[markeri]
+        );
+    }
+    return result;
+}
+//
+vectorField DirectForcingIbm::interpolateMarkers
+(
+    const vectorField& eulerianValues
+) const
+{
+    if (eulerianValues.size() != mesh_.nCells())
+    {
+        FatalErrorInFunction
+            << "Eulerian input size " << eulerianValues.size()
+            << " does not match local cell count " << mesh_.nCells()
+            << exit(FatalError);
+    }
+    const centredCPCCellToCellStencilObject& parallelStencil =
+        centredCPCCellToCellStencilObject::New(mesh_);
+    volVectorField eulerianField
+    (
+        IOobject
+        (
+            "markerInterpolationSource",
+            mesh_.time().timeName(),
+            mesh_,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE,
+            false
+        ),
+        mesh_,
+        dimensionedVector(dimless, vector::zero)
+    );
+    eulerianField.primitiveFieldRef() = eulerianValues;
+    forAll(eulerianField.boundaryField(), patchi)
+    {
+        if (!eulerianField.boundaryField()[patchi].coupled())
+        {
+            eulerianField.boundaryFieldRef()[patchi] =
+                eulerianField.boundaryField()[patchi].patchInternalField();
+        }
+    }
+    eulerianField.correctBoundaryConditions();
+    const vectorField distributedValues
+    (
+        distributeCellField<vector>(parallelStencil.map(), eulerianField)
+    );
+    vectorField markerValues(markerPoints_.size(), vector::zero);
+    forAll(markerValues, markeri)
+    {
         const labelList& stencil = markerStencils_[markeri];
         const scalarList& weights = markerWeights_[markeri];
         forAll(stencil, i)
         {
-            interpolatedVelocity +=
-                weights[i]*predictorValues[stencil[i]];
+            markerValues[markeri] +=
+                weights[i]*distributedValues[stencil[i]];
         }
-        const vector markerCorrection =
-            constrainedMarkerRelativeVelocity
-            (
-                markerVelocities_[markeri]
-              - interpolatedVelocity,
-                markerNormals_[markeri]
-            );
+    }
+    return markerValues;
+}
+//
+void DirectForcingIbm::spreadMarkers
+(
+    const vectorField& markerValues,
+    vectorField& eulerianValues,
+    const bool normalizeOverlap
+) const
+{
+    if (markerValues.size() != markerPoints_.size())
+    {
+        FatalErrorInFunction
+            << "Marker input size " << markerValues.size()
+            << " does not match local marker count "
+            << markerPoints_.size()
+            << exit(FatalError);
+    }
+    const centredCPCCellToCellStencilObject& parallelStencil =
+        centredCPCCellToCellStencilObject::New(mesh_);
+    const mapDistribute& cellMap = parallelStencil.map();
+    vectorField distributedValues(cellMap.constructSize(), vector::zero);
+    scalarField spreadWeight(cellMap.constructSize(), 0.0);
+    forAll(markerValues, markeri)
+    {
+        const labelList& stencil = markerStencils_[markeri];
+        const scalarList& weights = markerWeights_[markeri];
         forAll(stencil, i)
         {
             const label celli = stencil[i];
-            accumulated[celli] += weights[i]*markerCorrection;
+            distributedValues[celli] +=
+                weights[i]*markerValues[markeri];
             spreadWeight[celli] += weights[i];
         }
     }
-    forAll(correctionValues, celli)
+    mapDistributeBase::distribute
+    (
+        UPstream::defaultCommsType, cellMap.schedule(), mesh_.nCells(),
+        cellMap.constructMap(), cellMap.constructHasFlip(),
+        cellMap.subMap(), cellMap.subHasFlip(), distributedValues,
+        vector::zero, plusEqOp<vector>(), flipOp(),
+        UPstream::msgType(), cellMap.comm()
+    );
+    mapDistributeBase::distribute
+    (
+        UPstream::defaultCommsType, cellMap.schedule(), mesh_.nCells(),
+        cellMap.constructMap(), cellMap.constructHasFlip(),
+        cellMap.subMap(), cellMap.subHasFlip(), spreadWeight,
+        scalar(0), plusEqOp<scalar>(), flipOp(),
+        UPstream::msgType(), cellMap.comm()
+    );
+    eulerianValues.transfer(distributedValues);
+    if (!normalizeOverlap) return;
+    forAll(eulerianValues, celli)
     {
         if (spreadWeight[celli] > VSMALL)
         {
-            correctionValues[celli] =
-                accumulated[celli]/spreadWeight[celli];
+            eulerianValues[celli] /= spreadWeight[celli];
         }
     }
-    correction.correctBoundaryConditions();
 }
 //
 void DirectForcingIbm::constrainPredictor
@@ -1379,21 +1897,17 @@ scalar DirectForcingIbm::maxSlip
     const vectorField& velocityValues = velocity.primitiveField();
     if (couplingMethod_ == "markerBased")
     {
+        const vectorField interpolatedVelocity
+        (
+            interpolateMarkers(velocityValues)
+        );
         scalar localMaximum = 0.0;
         forAll(markerPoints_, markeri)
         {
-            vector interpolatedVelocity(vector::zero);
-            const labelList& stencil = markerStencils_[markeri];
-            const scalarList& weights = markerWeights_[markeri];
-            forAll(stencil, i)
-            {
-                interpolatedVelocity +=
-                    weights[i]*velocityValues[stencil[i]];
-            }
             const vector residual =
                 constrainedMarkerRelativeVelocity
                 (
-                    interpolatedVelocity
+                    interpolatedVelocity[markeri]
                   - markerVelocities_[markeri],
                     markerNormals_[markeri]
                 );
@@ -1520,6 +2034,122 @@ const word& DirectForcingIbm::forcingMethod() const
 const word& DirectForcingIbm::velocityBoundaryCondition() const
 {
     return velocityBoundaryCondition_;
+}
+//
+const pointField& DirectForcingIbm::markerPoints() const
+{
+    return markerPoints_;
+}
+//
+const vectorField& DirectForcingIbm::markerNormals() const
+{
+    return markerNormals_;
+}
+//
+const vectorField& DirectForcingIbm::markerVelocities() const
+{
+    return markerVelocities_;
+}
+//
+const scalarField& DirectForcingIbm::markerAreaWeights() const
+{
+    return markerAreaWeights_;
+}
+//
+const labelListList& DirectForcingIbm::markerStencils() const
+{
+    return markerStencils_;
+}
+//
+const List<scalarList>& DirectForcingIbm::markerWeights() const
+{
+    return markerWeights_;
+}
+//
+vectorField DirectForcingIbm::interpolateMarkerField
+(
+    const vectorField& eulerianValues
+) const
+{
+    return interpolateMarkers(eulerianValues);
+}
+//
+void DirectForcingIbm::spreadMarkerField
+(
+    const vectorField& markerValues,
+    vectorField& eulerianValues,
+    const bool normalizeOverlap
+) const
+{
+    spreadMarkers(markerValues, eulerianValues, normalizeOverlap);
+}
+//
+void DirectForcingIbm::spreadMarkerForceField
+(
+    const vectorField& markerForces,
+    vectorField& eulerianForceDensity
+) const
+{
+    if (markerForces.size() != markerPoints_.size())
+    {
+        FatalErrorInFunction
+            << "Marker force size " << markerForces.size()
+            << " does not match local marker count "
+            << markerPoints_.size() << exit(FatalError);
+    }
+    const centredCPCCellToCellStencilObject& parallelStencil =
+        centredCPCCellToCellStencilObject::New(mesh_);
+    const mapDistribute& cellMap = parallelStencil.map();
+    vectorField distributedForce(cellMap.constructSize(), vector::zero);
+    volScalarField cellVolumes
+    (
+        IOobject
+        (
+            "markerCellVolumes",
+            mesh_.time().timeName(),
+            mesh_,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE,
+            false
+        ),
+        mesh_,
+        dimensionedScalar(dimVolume, 0.0)
+    );
+    cellVolumes.primitiveFieldRef() = mesh_.V();
+    forAll(cellVolumes.boundaryField(), patchi)
+    {
+        if (!cellVolumes.boundaryField()[patchi].coupled())
+        {
+            cellVolumes.boundaryFieldRef()[patchi] =
+                cellVolumes.boundaryField()[patchi].patchInternalField();
+        }
+    }
+    cellVolumes.correctBoundaryConditions();
+    const scalarField distributedVolumes
+    (
+        distributeCellField<scalar>(cellMap, cellVolumes)
+    );
+    forAll(markerForces, markeri)
+    {
+        const labelList& stencil = markerStencils_[markeri];
+        const scalarList& weights = markerWeights_[markeri];
+        forAll(stencil, i)
+        {
+            const label celli = stencil[i];
+            distributedForce[celli] +=
+                weights[i]*markerForces[markeri]
+               *markerAreaWeights_[markeri]/distributedVolumes[celli];
+        }
+    }
+    mapDistributeBase::distribute
+    (
+        UPstream::defaultCommsType, cellMap.schedule(), mesh_.nCells(),
+        cellMap.constructMap(), cellMap.constructHasFlip(),
+        cellMap.subMap(), cellMap.subHasFlip(), distributedForce,
+        vector::zero, plusEqOp<vector>(), flipOp(),
+        UPstream::msgType(), cellMap.comm()
+    );
+    eulerianForceDensity.transfer(distributedForce);
 }
 //
 const volScalarField& DirectForcingIbm::solidFraction() const
