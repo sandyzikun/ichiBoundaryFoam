@@ -290,3 +290,76 @@ L1 网格上的 stencil geometry 也没有稳健支持设计中的 3D affine cor
 > 与 stencil-conditioning 问题。当前实现不进入生产主线，完整代码、tester、
 > 算例设计与失败日志转入 archive branch，主线回到稳定 baseline，并先以
 > 文献 review 寻找下一条更可靠的技术路线。
+
+## Git 归档与主线回档
+
+上述封存决定随后已经落实到 Git 历史，而不只是开发计划。
+
+首先，从当时的 `ichi` 节点 `274dd4c` 创建归档分支：
+
+```text
+archive/constant-pinelli-markerbased-261115
+```
+
+并提交完整的 marker-based 源码、operator tester 与开发日志：
+
+```text
+fadb6dc  archive(ibm): preserve Constant-Pinelli marker-based prototype
+```
+
+该分支已同步为：
+
+```text
+origin/archive/constant-pinelli-markerbased-261115
+```
+
+它保留了 `274dd4c` 的初始 marker prototype，以及其后尚未进入主线提交的
+Constant--Pinelli sub-iteration、compact-halo 尝试、tester 和失败记录。
+
+随后曾在 `ichi` 上用 `git revert` 生成：
+
+```text
+ecf3b30  Revert "wip(ibm): add initial marker-based direct-forcing prototype"
+```
+
+该 commit 的 tree 与 pre-marker baseline 相同，但分支指针仍位于
+`274dd4c` 之后。为了使主线指针本身也明确回到 marker-based 路线开始前，最终
+将 `ichi` reset 到：
+
+```text
+9518c13  feat: establish ichiBoundaryFoam VoF-IBM development baseline
+```
+
+并使用 `git push --force-with-lease origin ichi` 将该指针同步到 GitHub。回档后
+核对结果为：
+
+```text
+HEAD        = 9518c13
+ichi        = 9518c13
+origin/ichi = 9518c13
+```
+
+`9518c13` 的 tree 与当前主线完全一致；`274dd4c` 和最终 marker-based 工作仍
+可由 archive 分支到达，因此 reset 没有丢失 marker 开发成果。另保留了本地
+安全指针：
+
+```text
+safety/ichi-before-reset-20261115 -> ecf3b30
+```
+
+最终 Git 结构可概括为：
+
+```text
+ecf3b30  safety/ichi-before-reset-20261115
+|
+|   fadb6dc  archive/constant-pinelli-markerbased-261115
+|  /
+274dd4c  initial marker-based prototype
+|
+9518c13  ichi, origin/ichi
+```
+
+因此，从 2026-11-15 起，`ichi` 主线的正式开发基线重新定义为 `9518c13`；
+marker-based/Constant--Pinelli 路线只在 archive 分支中保存，不再属于当前生产
+主线。后续文献 review 或新 IBM 路线应从该 baseline 出发，除非明确决定从
+archive 中选择性移植 tester、diagnostics 或其他独立构件。
